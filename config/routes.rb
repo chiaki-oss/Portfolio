@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-  	get 'top' => 'home#top'
+  	get 'top' => 'homes#top'
   	resources :users, only: [:index, :show, :edit, :update]
   	resources :posts
   	resources :genres, only: [:index, :create, :edit, :update]
@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-  	root 'home#top'
-  	get 'about' => 'home#about'
+  	root 'homes#top'
+  	get 'about' => 'homes#about'
   	get 'confirm' => 'users#confirm'
   	put 'confirm' => 'users#withdraw'
   	get 'mypage' => 'users#show'

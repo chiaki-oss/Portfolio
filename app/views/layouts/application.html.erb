@@ -10,6 +10,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="header-content">
+        <%= link_to 'Logo', root_path, class: "logo" %>
+        <ul class="flex">
+          <li><%= link_to 'About', about_path %>
+          <li><%= link_to 'ログイン', new_user_session_path %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to '新規登録', new_user_registration_path %></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>Copyright ©        Inc. All Rights Reserved.</footer>
+
   </body>
 </html>
