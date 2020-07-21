@@ -3,4 +3,7 @@ class Post < ApplicationRecord
 	belongs_to :genre
 	belongs_to :prefecture
 	has_many :post_tags
+
+	attachment :image
+
 end

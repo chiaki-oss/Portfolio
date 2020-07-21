@@ -10,20 +10,26 @@
   </head>
 
   <body>
-    <header>
-      <div class="header-content">
-        <%= link_to 'Logo', root_path, class: "logo" %>
-        <ul class="flex">
-          <li><%= link_to 'About', about_path %>
-          <li><%= link_to 'ログイン', new_user_session_path %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to '新規登録', new_user_registration_path %></li>
-        </ul>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav class='nav navbar-nav navbar-left' >
+          <%= link_to 'Logo', root_path, class: "logo" %>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'About', about_path %></li>
+            <li><%= link_to 'ログイン', new_user_session_path %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to '新規登録', new_user_registration_path %></li>
+          </ul>
+        </nav>
       </div>
     </header>
 
     <main>
-      <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
     </main>
 
     <footer>Copyright ©        Inc. All Rights Reserved.</footer>
