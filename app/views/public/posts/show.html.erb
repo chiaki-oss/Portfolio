@@ -4,7 +4,7 @@
 		<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "no_image.jpg", size:"350x300" %>
 	</div>
 	<div class="col-xs-6">
-		<p><%= link_to @post.user.name, mypage_path %></p>
+		<p><%= link_to @post.user.name, @post.user %></p>
 		<p><%= @post.prefecture.name %></p>
 		<p><%= @post.genre.name %></p>
 	</div>
@@ -14,3 +14,13 @@
 	<h2><%= @post.title %></h2>
 	<p><%= @post.body %></p>
 </div>
+
+
+<div>
+	<% if @post.user == current_user %>
+	<%= link_to "編集する", edit_post_path %>
+	<%= link_to "削除する", post_path, method: :delete, data: {confirm: '本当に削除しますか？'}, class: "btn-sm btn-danger" %>
+	<% end %>
+	<%= link_to "一覧に戻る", posts_path %>
+</div>
+

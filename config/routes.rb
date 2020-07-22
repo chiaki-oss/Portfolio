@@ -25,9 +25,7 @@ Rails.application.routes.draw do
   	get 'about' => 'homes#about'
   	get 'confirm' => 'users#confirm'
   	put 'confirm' => 'users#withdraw'
-  	get 'mypage' => 'users#show'
-  	get 'mypage/edit' => 'users#edit'
-  	patch 'mypage' => 'users#update'
+    resources :users, only: [:show, :edit, :update]
   	resources :posts
   	resources :genres, only: [:index]
   	resources :prefectures, only: [:index]

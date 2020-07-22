@@ -1,0 +1,47 @@
+<h1>post#edit</h1>
+
+<div class="row">
+	<%= form_for(@post, url: post_path(@post)) do |f| %>
+
+	<div class="col-xs-5">
+		<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "no_image.jpg", size:"350x300" %>
+		<span><%= f.attachment_field :image %></span>
+	</div>
+
+	<div class="col-xs-5 col-xs-offset-2">
+		<table>
+			<tbody>
+				<tr>
+					<td><%= f.label :タイトル %></td>
+					<td><%= f.text_field :title %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :都道府県 %></td>
+					<td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name%></td>
+				</tr>
+				<tr>
+					<td><%= f.label :ジャンル %></td>
+					<td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :タグ %></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<%= f.label :説明 %><br>
+		<%= f.text_area :body %>
+	</div>
+</div>
+
+<div>
+	<%= f.submit '更新する' %>
+	<%= link_to '戻る', post_path %>
+</div>
+<% end %>
+
