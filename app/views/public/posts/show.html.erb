@@ -4,7 +4,7 @@
 		<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "no_image.jpg", size:"350x300" %>
 	</div>
 	<div class="col-xs-6">
-		<p><%= @post.user.name %></p>
+		<p><%= link_to @post.user.name, mypage_path %></p>
 		<p><%= @post.prefecture.name %></p>
 		<p><%= @post.genre.name %></p>
 	</div>

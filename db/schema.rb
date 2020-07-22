@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_032326) do
   end
 
   create_table "areas", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_areas_on_name", unique: true
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_032326) do
   end
 
   create_table "prefectures", force: :cascade do |t|
-    t.integer "area_id", null: false
+    t.integer "area_id"
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(version: 2020_07_21_032326) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.string "image_id"
-    t.text "introduction", null: false
-    t.string "recommend", null: false
+    t.text "introduction"
+    t.string "recommend"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
