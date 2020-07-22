@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   	resources :users, only: [:index, :show, :edit, :update]
   	resources :posts
   	resources :genres, only: [:index, :create, :edit, :update]
-  	resources :prefectures, only: [:index]
+  	resources :prefectures, only: [:index, :edit, :update]
   	resources :areas, only: [:index, :create, :edit, :update]
   end
 
