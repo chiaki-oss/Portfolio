@@ -1,0 +1,19 @@
+<div class="col-xs-12">
+	<%= form_for(@genre, url: admin_genres_path) do |f| %>
+		<%= f.label :ジャンル名 %>
+		<%= f.text_field :name %>
+		<%= f.submit '保存する'%>
+	<% end %>
+</div>
+
+<table class="col-xs-12">
+	<h1>ジャンル一覧</h1>
+	<% @genres.each do |genre| %>
+	<tbody>
+		<tr>
+			<td><%= genre.name %></td>
+			<td><%= link_to '編集する', edit_admin_genre_path(genre) %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
