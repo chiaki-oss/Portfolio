@@ -16,7 +16,25 @@ class Public::PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.all
+		@areas = Area.all
+		@genres = Genre.all
+		#エリア毎 = エリアに結びつく都道府県にある投稿取得
+		if params[:area_id]
+			@area = @areas.find(params[:area_id])
+			#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
+			all_posts = Post.where(prefecture_id: @area.prefectures.pluck(:id))
+
+		# ジャンル毎　＝ジャンルに結びつく投稿取得
+		elsif params[:genre_id]
+			@genre = @genres.find(params[:genre_id])
+			#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
+			all_posts = @genre.posts
+		else
+			#全件取得
+			all_posts = Post.all
+		end
+		@posts = all_posts.all              #該当する投稿
+		@all_posts_count = all_posts.count  #検出件数
 	end
 
 	def show

@@ -1,1 +1,13 @@
 <h1>Home#top</h1>
+<div class="area">
+	<h3>ジャンル一覧</h3>
+	<% @genres.each do |genre| %>
+		<%= link_to genre.name, posts_path(genre_id: genre.id) %>
+	<% end %>
+</div>
+<div class="area">
+	<h3>エリア一覧</h3>
+	<% @areas.each do |area| %>
+		<%= link_to area.name, posts_path(area_id: area.id) %>
+	<% end %>
+</div>

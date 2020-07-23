@@ -1,11 +1,19 @@
-<h1>投稿一覧</h1>
+
+<% if params[:area_id] %>
+	<h2><%= @area.name %>の投稿一覧 (全<%= @all_posts_count %>件)</h2>
+<% elsif params[:genre_id]%>
+    <h2><%= @genre.name %>の投稿一覧 (全<%= @all_posts_count %>件)</h2>
+<% else %>
+	<h2">投稿一覧 (全<%= @all_posts_count %>件)</h2>
+<% end %>
+
 <div class="row">
 	<% @posts.each do |post| %>
 		<div class="col-xs-4">
 			<%= link_to post_path(post) do %>
-				<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no-image.jpg", size:"250x200" %>
+				<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no_image.jpg", size:"250x200" %>
 			<% end %>
-			<%= attachment_image_tag(post.user, :image, :fill, 30, 30, fallback: "no_image.jpg") %>
+			<p><%= attachment_image_tag(post.user, :image, :fill, 30, 30, fallback: "no_image.jpg") %></p>
 			<p>投稿者：<%= post.user.name %></p>
 			<p>タイトル：<%= post.title %></p>
 		</div>
