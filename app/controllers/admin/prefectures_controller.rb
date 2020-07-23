@@ -1,10 +1,5 @@
 class Admin::PrefecturesController < ApplicationController
 
-	def index
-		@prefectures = Prefecture.all
-		@areas = Area.all
-	end
-
 	def edit
 		@prefecture = Prefecture.find(params[:id])
 	end
@@ -12,7 +7,7 @@ class Admin::PrefecturesController < ApplicationController
 	def update
 		@prefecture = Prefecture.find(params[:id])
 		if @prefecture.update(prefecture_params)
-			redirect_to admin_prefectures_path
+			redirect_to admin_areas_path
 		else
 			render edit_admin_prefecture_path(@prefecture)
 		end

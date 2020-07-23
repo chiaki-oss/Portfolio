@@ -1,14 +1,10 @@
-<h1>都道府県一覧</h1>
+<h1><%= @area.name %>エリアの都道府県</h1>
 <table>
 	<tbody>
 		<% @prefectures.each do |prefecture| %>
 		<tr>
 			<td><%= prefecture.id %></td>
 			<td><%= link_to prefecture.name, edit_admin_prefecture_path(prefecture) %></td>
-			<td><% @prefecture.areas.each do |area| %>
-				<%= prefecture.area.name %>
-				<% end %>
-			</td>
 		</tr>
 		<% end %>
 	</tbody>

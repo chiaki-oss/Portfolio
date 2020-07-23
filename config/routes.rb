@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   	resources :posts
   	resources :genres, only: [:index, :create, :edit, :update]
   	resources :prefectures, only: [:index, :edit, :update]
-  	resources :areas, only: [:index, :create, :edit, :update]
+  	resources :areas, only: [:index, :show, :create, :edit, :update]
   end
 
   devise_for :users, controllers: {
