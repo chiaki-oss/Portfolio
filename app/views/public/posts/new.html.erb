@@ -1,7 +1,6 @@
 <h1>新規投稿</h1>
+<%= form_for(@post, url: posts_path) do |f| %>
 <div class="row">
-	<%= form_for(@post, url: posts_path) do |f| %>
-
 	<div class="col-xs-5">
 		<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "no_image.jpg", size:"350x300" %>
 		<span><%= f.attachment_field :image %></span>
@@ -24,7 +23,7 @@
 				</tr>
 				<tr>
 					<td><%= f.label :タグ %></td>
-					<td></td>
+					<td><%= f.text_field :tag_ids %></td>
 				</tr>
 			</tbody>
 		</table>
