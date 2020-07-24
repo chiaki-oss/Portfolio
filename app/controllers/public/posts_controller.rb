@@ -4,19 +4,6 @@ class Public::PostsController < ApplicationController
 		@post = Post.new
 	end
 
-	def create
-		@post = Post.new(post_params)
-		@post.user_id = current_user.id
-
-		tag_list = params[:post][:tag_ids].split(",")
-		if @post.save
-			@post.save_tags(tag_list)
-			redirect_to @post, notice:'投稿しました'
-		else
-			render 'new'
-		end
-	end
-
 	def index
 		#エリア毎 = エリアに結びつく都道府県にある投稿取得
 		if params[:area_id]
@@ -51,16 +38,36 @@ class Public::PostsController < ApplicationController
 		@post = Post.find(params[:id])
 	end
 
+	def create
+		@post = Post.new(post_params)
+		@post.user_id = current_user.id
+        # 投稿に紐づくタグの変数生成
+		tag_list = params[:post][:tag_ids].split(",")
+		if @post.save
+			# タグを保存: save_tagsメソッド(Model定義)
+			@post.save_tags(tag_list)
+			redirect_to @post, notice:'投稿しました'
+		else
+			render 'new'
+		end
+	end
+
 	def edit
 		@post = Post.find(params[:id])
+		# 既存タグの取得（name配列）
+		@tag_list = @post.tags.pluck(:name).join(",")
 	end
 
 	def update
 		@post = Post.find(params[:id])
-		if @post.update(post_params)
+		# 既存タグの取得（name配列）
+		tag_list = params[:post][:tag_ids].split(",")
+		# update_attributes：バリデーション チェックされない
+		if @post.update_attributes(post_params)
+			@post.save_tags(tag_list)
 			redirect_to post_path(@post), notice:'投稿を更新しました'
 		else
-			render edit_post_path
+			render 'edit'
 		end
 	end
 
