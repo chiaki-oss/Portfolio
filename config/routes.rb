@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   	get 'confirm' => 'users#confirm'
   	put 'confirm' => 'users#withdraw'
     resources :users, only: [:show, :edit, :update]
-  	resources :posts
+  	resources :posts do
+      resource :favorites, only: [:create, :destroy]
+    end
   	resources :genres, only: [:index]
   	resources :prefectures, only: [:index]
   	resources :areas, only: [:index]

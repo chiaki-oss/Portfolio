@@ -14,6 +14,19 @@
 		</p>
 		<p>投稿日時：<%= @post.created_at.strftime("%Y/%m/%d") %></p>
 		<p>更新日時：<%= @post.updated_at.strftime("%Y/%m/%d ") %></p>
+		<!-- いいね機能 -->
+        <p>
+		    <% if @post.favorited_by?(current_user) %>
+	            <%= link_to post_favorites_path(@post), method: :delete do %>
+		            <span class="glyphicon glyphicon-heart"><%= @post.favorites.count%></span>
+	            <% end %>
+	        <% else %>
+	            <%= link_to post_favorites_path(@post), method: :post do %>
+		            <span class="glyphicon glyphicon-heart-empty">
+		            <%= @post.favorites.count %></span>
+	            <% end %>
+	        <% end %>
+        </p>
 	</div>
 </div>
 

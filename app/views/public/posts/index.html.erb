@@ -16,6 +16,17 @@
 			<p><%= attachment_image_tag(post.user, :image, :fill, 30, 30, fallback: "no_image.jpg") %></p>
 			<p>投稿者：<%= post.user.name %></p>
 			<p>タイトル：<%= post.title %></p>
+			<p><!-- いいね機能 -->
+	            <% if post.favorited_by?(current_user) %>
+		            <%= link_to post_favorites_path(post), method: :delete do %>
+		            <span class="glyphicon glyphicon-heart"><%= post.favorites.count%></span>
+		            <% end %>
+	            <% else %>
+		            <%= link_to post_favorites_path(post), method: :post do %>
+		            <span class="glyphicon glyphicon-heart-empty"><%= post.favorites.count %></span>
+		            <% end %>
+	            <% end %>
+	        </p>
 		</div>
 	<% end %>
 </div>

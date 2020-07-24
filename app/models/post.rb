@@ -7,6 +7,12 @@ class Post < ApplicationRecord
 
 	attachment :image
 
+    # いいね
+	has_many :favorites, dependent: :destroy
+	def favorited_by?(user)
+		favorites.where(user_id: user.id).exists?
+	end
+
 	# タグ保存メソッド
 	def save_tags(savepost_tags)
 		current_tags = self.tags.pluck(:name) unless self.tags.nil?
