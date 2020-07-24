@@ -6,7 +6,6 @@
 	<div class="col-xs-6">
 		<p>ユーザー名：<%= link_to @post.user.name, @post.user %></p>
 		<p>都道府県：<%= @post.prefecture.name %></p>
-		<p>エリア：<%= @post.prefecture.area.name %></p>
 		<p>ジャンル：<%= @post.genre.name %></p>
 		<p>タグ：<% @post.tags.each do |tag| %>
 					<%= tag.name %>
@@ -14,8 +13,8 @@
 		</p>
 		<p>投稿日時：<%= @post.created_at.strftime("%Y/%m/%d") %></p>
 		<p>更新日時：<%= @post.updated_at.strftime("%Y/%m/%d ") %></p>
-		<!-- いいね機能 -->
-        <p>
+		
+        <p> <!-- いいね機能 -->
 		    <% if @post.favorited_by?(current_user) %>
 	            <%= link_to post_favorites_path(@post), method: :delete do %>
 		            <span class="glyphicon glyphicon-heart"><%= @post.favorites.count%></span>
@@ -27,6 +26,12 @@
 	            <% end %>
 	        <% end %>
         </p>
+        <p>コメント数：<%= @post.post_comments.count %></p>
+        <!-- ユーザーの投稿編集・削除ボタン -->
+        <% if @post.user == current_user %>
+	        <p><%= link_to 'Edit', edit_post_path(@post) %>
+	        <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' } %></p>
+	    <% end %>
 	</div>
 </div>
 
@@ -36,11 +41,36 @@
 </div>
 
 
-<div>
-	<% if @post.user == current_user %>
-	<%= link_to "編集する", edit_post_path %>
-	<%= link_to "削除する", post_path, method: :delete, data: {confirm: '本当に削除しますか？'}, class: "btn-sm btn-danger" %>
-	<% end %>
-	<%= link_to "一覧に戻る", posts_path %>
+<!-- コメントフォーム -->
+<div class="row">
+	<h4>コメント</h4>
+	<%= form_for [@post, @post_comment] do |f| %>
+	    <%= f.text_area :comment, size: "90x5" %>
+        <%= f.submit '送信' %>
+    <% end %>
+</div>
+
+<!-- コメント一覧 -->
+<div class="row">
+	<h4>一覧</h4>
+	<table>
+      <% @post.post_comments.each do |post_comment| %>
+        <tr>
+            <td>
+	            <%= link_to user_path(post_comment.user) do %>
+		            <%= attachment_image_tag post_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+	                <%= post_comment.user.name %>
+                <% end %>
+            </td>
+	        <td><%= post_comment.comment %></td>
+	        <!--コメント削除 -->
+	        <% if post_comment.user == current_user %>
+	        <td>
+		        <%= link_to 'Destroy', post_post_comment_path(post_comment.post, post_comment ), method: :delete %>
+		        <% end %>
+		    </td>
+        </tr>
+      <% end %>
+    </table>
 </div>
 
