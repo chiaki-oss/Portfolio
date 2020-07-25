@@ -5,33 +5,49 @@ class Public::PostsController < ApplicationController
 	end
 
 	def index
-		#エリア毎 = エリアに結びつく都道府県にある投稿取得
-		if params[:area_id]
-			@areas = Area.all
-			@area = @areas.find(params[:area_id])
-			#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
-			all_posts = Post.where(prefecture_id: @area.prefectures.pluck(:id))
+		#検索窓
+		if params[:keyword]
+			# 入力された値を区切る。全半角スペース、先頭の空白に対応
+			@keywords = params[:keyword].split(/[[:blank:]]+/).select(&:present?)
 
-		# ジャンル毎　＝ジャンルに結びつく投稿取得
-		elsif params[:genre_id]
-			@genres = Genre.all
-			@genre = @genres.find(params[:genre_id])
-			#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
-			all_posts = @genre.posts
+			@posts = []
 
-		# タグ毎
-		elsif params[:tag_id]
-			@tags = Tag.all
-			@tag = @tags.find(params[:tag_id])
-			#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
-			all_posts = @tag.posts
+			@keywords.each do |keyword|
+				@posts = Post.where('title LIKE(?) or body LIKE(?)', "%#{keyword}%", "%#{keyword}%" )
+			end
+	        # 重複する要素削除
+			@posts.uniq
 
-		#全件取得
-		else
-			all_posts = Post.all
+		elsif
+			#エリア毎 = エリアに結びつく都道府県にある投稿取得
+			if params[:area_id]
+				@areas = Area.all
+				@area = @areas.find(params[:area_id])
+				#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
+				all_posts = Post.where(prefecture_id: @area.prefectures.pluck(:id))
+
+			# ジャンル毎　＝ジャンルに結びつく投稿取得
+			elsif params[:genre_id]
+				@genres = Genre.all
+				@genre = @genres.find(params[:genre_id])
+				#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
+				all_posts = @genre.posts
+
+			# タグ毎
+			elsif params[:tag_id]
+				@tags = Tag.all
+				@tag = @tags.find(params[:tag_id])
+				#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
+				all_posts = @tag.posts
+
+			#全件取得
+			else
+				all_posts = Post.all
+			end
+			@posts = all_posts.all              #該当する投稿
+			@all_posts_count = all_posts.count  #検出件数
 		end
-		@posts = all_posts.all              #該当する投稿
-		@all_posts_count = all_posts.count  #検出件数
+
 	end
 
 	def show

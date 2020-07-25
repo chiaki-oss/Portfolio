@@ -29,6 +29,13 @@
             <li><%= link_to '新規投稿', new_post_path %></li>
             <li><%= link_to 'ログイン', new_user_session_path %></li>
             <li><%= link_to '新規登録', new_user_registration_path %></li>
+            <!-- 検索窓 -->　
+            <li>
+              <%= form_tag(posts_path, method: :get) do %>
+                  <%= text_field_tag :keyword %>
+                  <%= submit_tag '検索' %>
+              <% end %>
+            </li>
           </ul>
         </nav>
       </div>
