@@ -1,9 +1,8 @@
 class Admin::AreasController < ApplicationController
 
 	def index
-		@area = Area.new
 		@areas = Area.all
-		@prefectures = Prefecture.all
+		@new_area = Area.new #新規投稿フォーム
 	end
 
 	def create
@@ -13,11 +12,6 @@ class Admin::AreasController < ApplicationController
 		else
 			render admin_areas_path
 		end
-	end
-
-	def show
-		@area = Area.find(params[:id])
-		@prefectures = @area.prefectures
 	end
 
 	def area_params
