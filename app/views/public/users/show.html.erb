@@ -5,6 +5,7 @@
 		<p>アカウント名：<%= @user.name %></p>
 		<p>おすすめ：<%= @user.recommend %></p>
 		<p>自己紹介：<%= @user.introduction %></p>
+		<p><%= link_to "お気に入りの投稿" , favorites_path %></p>
 		<p>
 			<% if @user == current_user %>
 			<%= link_to "編集する", edit_user_path %>

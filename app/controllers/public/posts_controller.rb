@@ -18,6 +18,8 @@ class Public::PostsController < ApplicationController
 	        # 重複する要素削除
 			@posts.uniq
 
+
+		# トップサイドバーリンク
 		elsif
 			#エリア毎 = エリアに結びつく都道府県にある投稿取得
 			if params[:area_id]
@@ -25,6 +27,11 @@ class Public::PostsController < ApplicationController
 				@area = @areas.find(params[:area_id])
 				#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
 				all_posts = Post.where(prefecture_id: @area.prefectures.pluck(:id))
+
+			elsif params[:prefecture_id]
+				@prefectures = Prefecture.all
+				@prefecture = @prefectures.find(params[:prefecture_id])
+				all_posts = @prefecture.posts
 
 			# ジャンル毎　＝ジャンルに結びつく投稿取得
 			elsif params[:genre_id]

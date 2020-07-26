@@ -7,8 +7,10 @@
 			<%= link_to post_path(post) do %>
 				<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no_image.jpg", size:"250x200" %>
 			<% end %>
-			<p><%= attachment_image_tag(post.user, :image, :fill, 30, 30, fallback: "no_image.jpg") %></p>
-			<p>投稿者：<%= post.user.name %></p>
+			<p>
+				<%= attachment_image_tag(post.user, :image, :fill, 30, 30, fallback: "no_image.jpg") %>
+				<span><%= post.user.name %></span>
+		    </p>
 			<p>タイトル：<%= post.title %></p>
 		</div>
 	<% end %>
@@ -21,14 +23,15 @@
 			<%= link_to post_path(post) do %>
 				<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no_image.jpg", size:"250x200" %>
 			<% end %>
-			<p><%= attachment_image_tag(post.user, :image, :fill, 30, 30, fallback: "no_image.jpg") %></p>
-			<p>投稿者：<%= post.user.name %></p>
+			<p>
+				<%= attachment_image_tag(post.user, :image, :fill, 30, 30, fallback: "no_image.jpg") %>
+				<span><%= post.user.name %></span>
+				<p><%= post.favorites.count %>いいね</p>
+		    </p>
 			<p>タイトル：<%= post.title %></p>
 		</div>
 	<% end %>
 	</div>
-
-
 
 	<div class="col-xs-3">
 		<div class="area">
@@ -39,10 +42,15 @@
 		</div>
 		<div class="area">
 			<h3>エリア一覧</h3>
-			<% @areas.each do |area| %>
-				<%= link_to area.name, posts_path(area_id: area.id) %>
+			<p><% @areas.each do |area| %>
+				<%= link_to area.name, posts_path(area_id: area.id) %>エリア
+					<p><% area.prefectures.each do |prefecture| %>
+						<%= link_to prefecture.name, posts_path(prefecture_id: prefecture.id) %>
+					<% end %></p>
 			<% end %>
+			</p>
 		</div>
+
 		<div class="area">
 			<h3>タグ一覧</h3>
 			<% @tags.each do |tag| %>

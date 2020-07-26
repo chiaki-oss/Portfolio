@@ -13,4 +13,9 @@ class Public::FavoritesController < ApplicationController
 	    favorite.destroy
 	    redirect_to post_path(@post)
 	end
+
+	def index
+		@favorite_posts = current_user.favorite_posts
+	end
+
 end
