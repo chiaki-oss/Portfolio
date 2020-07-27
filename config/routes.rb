@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'contacts/new'
+    get 'contacts/create'
+  end
   devise_for :admins, controllers: {
   	sessions: 'admin/sessions',
     passwords: 'admin/passwords',
@@ -12,6 +16,7 @@ Rails.application.routes.draw do
   	resources :genres, only: [:index, :create, :edit, :update]
   	resources :prefectures, only: [:edit, :update]
   	resources :areas, only: [:index, :create, :edit, :update]
+    resources :contacts, only: [:index, :edit, :update, :destroy]
   end
 
   devise_for :users, controllers: {
@@ -34,6 +39,7 @@ Rails.application.routes.draw do
   	resources :genres, only: [:index]
   	resources :prefectures, only: [:index]
   	resources :areas, only: [:index]
+    resources :contacts, only: [:new, :create]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -16,7 +16,7 @@
 	      <tr>
 	      	<td><%= user.id %></td>
 	      	<td><%= user.name %>
-	      		<%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+	      		<%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
 	        <td>
 	        	<% if user.is_active? %>
 		        	<span>有効</span>

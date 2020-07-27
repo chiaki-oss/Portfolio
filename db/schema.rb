@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_120801) do
+ActiveRecord::Schema.define(version: 2020_07_27_032700) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2020_07_24_120801) do
     t.index ["name"], name: "index_areas_on_name", unique: true
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.text "reply"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
@@ -47,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_07_24_120801) do
 
   create_table "post_comments", force: :cascade do |t|
     t.text "comment"
+    t.float "rate"
     t.integer "user_id"
     t.integer "post_id"
     t.datetime "created_at", null: false

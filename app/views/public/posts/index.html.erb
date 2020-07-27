@@ -1,5 +1,5 @@
 <% if params[:keyword] %>
-	<h2><%= @keywords %>の検索結果：<%= @posts.count %>件ヒットしました</h2>
+	<h2><%= @keyword %>の検索結果：<%= @posts.count %>件ヒットしました</h2>
 <% elsif params[:area_id] %>
 	<h2><%= @area.name %>エリアの投稿一覧 (全<%= @all_posts_count %>件)</h2>
 <% elsif params[:prefecture_id] %>
@@ -16,24 +16,26 @@
 			<%= link_to post_path(post) do %>
 				<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no_image.jpg", size:"250x200" %>
 			<% end %>
-			<p><%= attachment_image_tag(post.user, :image, :fill, 30, 30, fallback: "no_image.jpg") %></p>
-			<p>投稿者：<%= post.user.name %></p>
-			<p>タイトル：<%= post.title %></p>
-			<p>
-				<% if user_signed_in? %>
-				    <!-- いいね機能 -->
-		            <% if post.favorited_by?(current_user) %>
-			            <%= link_to post_favorites_path(post), method: :delete do %>
-			            <span class="glyphicon glyphicon-heart"></span>
+			<p><%= attachment_image_tag(post.user, :image, :fill, 30, 30, fallback: "no_image.jpg") %>
+				<span>投稿者：<%= post.user.name %>
+			</p>
+			<p>タイトル：<%= post.title %>
+				<span>
+					<% if user_signed_in? %>
+					    <!-- いいね機能 -->
+			            <% if post.favorited_by?(current_user) %>
+				            <%= link_to post_favorites_path(post), method: :delete do %>
+				            <span class="glyphicon glyphicon-heart"></span>
+				            <% end %>
+			            <% else %>
+				            <%= link_to post_favorites_path(post), method: :post do %>
+				            <span class="glyphicon glyphicon-heart-empty"></span>
+				            <% end %>
 			            <% end %>
-		            <% else %>
-			            <%= link_to post_favorites_path(post), method: :post do %>
-			            <span class="glyphicon glyphicon-heart-empty"></span>
-			            <% end %>
-		            <% end %>
-		        <% end %>
-		        <span><%= post.favorites.count %>いいね</span>
-	        </p>
+			        <% end %>
+			        <span><%= post.favorites.count %>いいね</span>
+		        </span>
+		    </p>
 		</div>
 	<% end %>
 </div>
