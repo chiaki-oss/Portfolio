@@ -17,7 +17,6 @@
           <td><%= contact.title %></td>
           <td><%= contact.created_at.strftime("%Y年%m月%d日 ") %></td>
           <td><%= link_to "返信", edit_admin_contact_path(contact) %></td>
-          <td><%= link_to "削除", admin_contact_path(contact), method: :delete %></td>
         </tr>
       <% end %>
     <% end %>

@@ -17,14 +17,15 @@
         <p> <!-- いいね機能 -->
 		    <% if @post.favorited_by?(current_user) %>
 	            <%= link_to post_favorites_path(@post), method: :delete do %>
-		            <span class="glyphicon glyphicon-heart"><%= @post.favorites.count%></span>
+		            <span class="glyphicon glyphicon-heart"></span>
 	            <% end %>
 	        <% else %>
 	            <%= link_to post_favorites_path(@post), method: :post do %>
-		            <span class="glyphicon glyphicon-heart-empty">
-		            <%= @post.favorites.count %></span>
-	            <% end %>
+		            <span class="glyphicon glyphicon-heart-empty"></span>
+		        <% end %>
 	        <% end %>
+	        <%= @post.favorites.count %>
+	        <span id="star-rate-#{post.id}"></span>
         </p>
         <% end %>
         <p>コメント数：<%= @post.post_comments.count %></p>
@@ -47,6 +48,11 @@
 		<h4>コメント入力欄</h4>
 		<%= form_for [@post, @post_comment] do |f| %>
 		    <%= f.text_area :comment, size: "90x5" %>
+
+		    <%= f.hidden_field :rate, id: :post_rate %>
+
+		    <div id=star></div>
+
 		    <%= f.submit '送信' %>
 		<% end %>
 	</div>
@@ -56,24 +62,34 @@
 <% if @post_comments.exists? %>
 	<div class="row">
 		<h4>コメント一覧</h4>
-		<table>
-	      <% @post.post_comments.each do |post_comment| %>
-	        <tr>
-	            <td>
-		            <%= link_to user_path(post_comment.user) do %>
-			            <%= attachment_image_tag post_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
-		                <%= post_comment.user.name %>
-	                <% end %>
-	            </td>
-		        <td><%= post_comment.comment %></td>
-		        <!--コメント削除 -->
-		        <% if post_comment.user == current_user %>
-		        <td>
-			        <%= link_to 'Destroy', post_post_comment_path(post_comment.post, post_comment ), method: :delete %>
-			        <% end %>
-			    </td>
-	        </tr>
-	      <% end %>
+		<table class="col-xs-12">
+			<thead>
+				<tr>
+					<td></td>
+					<td>評価</td>
+					<td>コメント</td>
+					<td>投稿日</td>
+			<tbody>
+	        <% @post.post_comments.each do |post_comment| %>
+		        <tr>
+		            <td>
+			            <%= link_to user_path(post_comment.user) do %>
+				            <%= attachment_image_tag post_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+			                <%= post_comment.user.name %>
+		                <% end %>
+		            </td>
+		            <td><%= post_comment.rate %></td>
+			        <td><%= post_comment.comment %></td>
+			        <td><%= post_comment.created_at.strftime("%Y/%m/%d") %></td>
+			        <!--コメント削除 -->
+			        <% if post_comment.user == current_user %>
+			        <td>
+				        <%= link_to 'Destroy', post_post_comment_path(post_comment.post, post_comment ), method: :delete %>
+				        <% end %>
+				    </td>
+		        </tr>
+		    <% end %>
+			</tbody>
 	    </table>
 	</div>
 <% end %>

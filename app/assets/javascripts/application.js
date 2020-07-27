@@ -10,9 +10,32 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_raty
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function() {
+	$(document).on('turbolinks:load', () => {
+		// inputのidから情報の取得
+	    $('#image').on('change', function (e) {
+		// ここから既存の画像のurlの取得
+	    var reader = new FileReader();
+	    reader.onload = function (e) {
+	        $(".image").attr('src', e.target.result);
+	    }
+	    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+		});
+
+		$('#star').raty({
+		path: '/assets/',
+		click: function(score, e) {
+			$("#post_rate").val(score)
+		}
+		});
+	});
+});
+

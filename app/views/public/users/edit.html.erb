@@ -1,28 +1,29 @@
 <h1>登録情報の編集</h1>
 <%= form_for(@user, url: user_path) do |f| %>
+<div class="row">
 
-<div class="field">
-	<%= f.label :アイコン %>
-	<%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", size:"50x50" %>
-	<%= f.attachment_field :image %>
+	<div id="image">
+		<%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", size:"150x100" %>
+		<span><%= f.attachment_field :image %></span>
+	</div>
+
+	<div class="field">
+		<%= f.label :ユーザー名 %>
+		<%= f.text_field :name %>
+	</div>
+
+	<div class="field">
+		<%= f.label :おすすめ %>
+		<%= f.text_field :recommend %>
+	</div>
+
+	<div class="field">
+		<%= f.label :紹介文 %>
+		<%= f.text_area :introduction %>
+	</div>
 </div>
 
-<div class="field">
-	<%= f.label :ユーザー名 %>
-	<%= f.text_field :name %>
-</div>
-
-<div class="field">
-	<%= f.label :おすすめ %>
-	<%= f.text_field :recommend %>
-</div>
-
-<div class="field">
-	<%= f.label :紹介文 %>
-	<%= f.text_area :introduction %>
-</div>
-
-<div class="actions">
+<div>
 	<%= f.submit "更新する" %><%= link_to "パスワードを変更する", edit_user_registration_path %>
 	<p><%= link_to "マイページに戻る", user_path %></p>
 </div>
