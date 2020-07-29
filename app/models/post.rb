@@ -8,6 +8,8 @@ class Post < ApplicationRecord
 
 	attachment :image
 
+	validates :title, presence: true
+
     # いいね いいねしてるかどうかの確認
 	has_many :favorites, dependent: :destroy
 	def favorited_by?(user)
