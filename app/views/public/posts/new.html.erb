@@ -1,46 +1,49 @@
 <h1>新規投稿</h1>
 <%= form_for(@post, url: posts_path) do |f| %>
 <div class="row">
-	<div id="image">
-		<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "no_image.jpg", size:"350x300" %>
-		<span><%= f.attachment_field :image %></span>
+	<div class="col-xs-5">
+		<div id="image">
+			<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "", size:"350x300" %>
+			<span><%= f.attachment_field :image %></span>
+		</div>
 	</div>
 
-	<div class="col-xs-5 col-xs-offset-2">
-		<table>
-			<tbody>
-				<tr>
-					<td><%= f.label :タイトル %></td>
-					<td><%= f.text_field :title %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :都道府県 %></td>
-					<td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name%></td>
-				</tr>
-				<tr>
-					<td><%= f.label :ジャンル %></td>
-					<td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :タグ %></td>
-					<td><%= f.text_field :tag_ids %></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
+	<div class="col-xs-7">
+		<div class="row">
+			<table class="col-xs-12">
+				<tbody>
+					<tr>
+						<td><%= f.label :都道府県 %></td>
+						<td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name%></td>
+					</tr>
+					<tr>
+						<td><%= f.label :ジャンル %></td>
+						<td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
+					</tr>
+					<tr>
+						<td><%= f.label :タイトル %></td>
+						<td><%= f.text_field :title, class: "form-control"%></td>
+					</tr>
 
-<div class="row">
-	<div class="col-xs-12">
-		<%= f.label :説明 %><br>
-		<%= f.text_area :body %>
+					<tr>
+						<td><%= f.label :タグ %></td>
+						<td><%= f.text_field :tag_ids, class: "form-control",placeholder: "タグをつける。複数つけるには','で区切ってください。" %></td>
+					</tr>
+					<tr>
+						<td><%= f.label :説明 %></td>
+						<td><%= f.text_area :body, class: "form-control" %></td>
+					</tr>
+					<tr>
+						<td><%= f.submit '投稿する' %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-</div>
-
-<div>
-	<%= f.submit '投稿する' %>
-</div>
 <% end %>
+</div>
+
+
 
 
 

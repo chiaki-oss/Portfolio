@@ -15,31 +15,81 @@ Areas.each do |area|
 end
 
 #都道府県
-Prefectures = ['北海道',
-				'青森県','岩手県','宮城県','秋田県','山形県','福島県',
-				'茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県',
-				'新潟県','富山県','石川県','福井県','山梨県','長野県',
-				'岐阜県','静岡県','愛知県','三重県',
-				'滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県',
-				'鳥取県','島根県','岡山県','広島県','山口県',
-				'徳島県','香川県','愛媛県','高知県',
-				'福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県']
-
-Prefectures.each do |prefecture|
+require "csv"
+CSV.foreach('db/prefecture.csv', headers: true) do |row|
 	Prefecture.create!(
-		name: prefecture
+		name: row['name'],
+		area_id: row['area_id']
 	)
 end
 
 
 #ジャンル
-Genres = ['イベント','食','体験','景色','その他']
+Genres = ['グルメ','景色','体験','イベント','言葉','トレンド','その他']
 
 Genres.each do |genre|
 	Genre.create!(
 		name: genre
 	)
 end
+
+#管理者
+Admin.create!(
+	email: 'admin@mail',
+	password: 'adminadmin'
+	)
+
+#ユーザー
+User.create!(
+	[
+		{
+		name: 'yamada',
+		email: 'yamada@mail',
+		image: File.open('./app/assets/images/サラリーマン.jpeg'),
+		is_active: true,
+		password: '111111' 
+		},
+		{
+			name: 'tanaka',
+			email: 'tanaka@mail',
+			is_active: true,
+			password: '222222'
+		}
+	])
+
+# 投稿
+Post.create!(
+	[
+		{
+			user_id: 1,
+			genre_id: 1,
+			prefecture_id: 40,
+			title: '明太卵焼き',
+			body: '激ウマ',
+			image: File.open('./app/assets/images/mentaitamago.jpg')
+		},
+		{
+			user_id: 2,
+			genre_id: 1,
+			prefecture_id: 34,
+			title: '屋台のおでん',
+			body: 'うますぎ',
+			image: File.open('./app/assets/images/おでん.jpg')
+		},
+		{
+			user_id: 2,
+			genre_id: 2,
+			prefecture_id: 20,
+			title: '美ヶ原から見える絶景（松本方面）',
+			body: '絶景スポット',
+			image: File.open('./app/assets/images/松本.jpg')
+		}
+	])
+
+
+
+
+
 
 
 

@@ -1,31 +1,47 @@
 <h1>会員一覧</h1>
+<% if params[:keyword] %>
+	<h2><%= @keyword %>の検索結果：<%= @users.count %>件ヒットしました</h2>
+<% end %>
 <div class="row">
+	<div class="col-xs-2">
+		<%= form_tag(admin_users_path, method: :get) do %>
+            <%= text_field_tag :keyword, '', placeholder: "会員を検索" %>
 
-	<table class='table'>
-	  <thead>
-	    <tr>
-	    	<th>会員ID</th>
-			<th>アカウント名</th>
-			<th>会員ステータス</th>
-			<th></th>
-	    </tr>
-	  </thead>
+            <%= submit_tag '検索' %>
+        <% end %>
+        <%= link_to "全会員表示する", admin_users_path %>
+	</div>
 
-	  <tbody>
-	    <% @users.each do |user| %>
-	      <tr>
-	      	<td><%= user.id %></td>
-	      	<td><%= user.name %>
-	      		<%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
-	        <td>
-	        	<% if user.is_active? %>
-		        	<span>有効</span>
-	        	<% else %>
-		        	<span>退会済</span>
-		      	<% end %>
-		    </td>
-	        <td><%= link_to 'Show', admin_user_path(user) %></td>
-	      </tr>
-	    <% end %>
-	  </tbody>
-	</table>
+	<div class="col-xs-10">
+
+		<table class='table'>
+		  <thead>
+		    <tr>
+		    	<th>会員ID</th>
+				<th>アカウント名</th>
+				<th>会員ステータス</th>
+				<th></th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @users.each do |user| %>
+		      <tr>
+		      	<td><%= user.id %>
+		      		<%= attachment_image_tag(user, :image, :fill, 50, 50) %>
+		      	</td>
+		      	<td><%= user.name %></td>
+		        <td>
+		        	<% if user.is_active? %>
+			        	<span>有効</span>
+		        	<% else %>
+			        	<span>退会済</span>
+			      	<% end %>
+			    </td>
+		        <td><%= link_to 'Show', admin_user_path(user) %></td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+</div>

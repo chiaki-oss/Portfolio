@@ -1,7 +1,25 @@
 class Admin::UsersController < ApplicationController
+	before_action :authenticate_admin!
 
 	def index
+		#検索窓
+		if params[:keyword]
+			@keyword = params[:keyword]
+			@users = []
+
+			# 入力された値を区切ってキーワード毎に検索
+			@keyword.split(/[[:blank:]]+/).each do |keyword|
+				# 全半角スペース、先頭の空白に対応
+				next if @keyword == ""
+				@users += User.where('name LIKE(?)', "%#{keyword}%")
+			end
+			# 重複している結果を削除
+			@users.uniq!
+
+		# トップサイドバーリンク
+		elsif
 		@users = User.all
+	end
 	end
 
 	def show

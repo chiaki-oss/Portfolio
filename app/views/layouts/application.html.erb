@@ -28,7 +28,7 @@
               <li><%= link_to '問い合わせ', new_contact_path %></li>
               <li> <!-- 検索窓 -->
                 <%= form_tag(posts_path, method: :get) do %>
-                    <%= text_field_tag :keyword %>
+                    <%= text_field_tag :keyword, '', placeholder: "投稿を検索" %>
                     <%= submit_tag '検索' %>
                 <% end %>
               </li>
@@ -43,7 +43,7 @@
               <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
               <li>
                 <%= form_tag(posts_path, method: :get) do %>
-                    <%= text_field_tag :keyword %>
+                    <%= text_field_tag :keyword, '', placeholder: "投稿を検索" %>
                     <%= submit_tag '検索' %>
                 <% end %>
               </li>
@@ -55,7 +55,7 @@
               <li><%= link_to '新規登録', new_user_registration_path %></li>
               <li>
                 <%= form_tag(posts_path, method: :get) do %>
-                    <%= text_field_tag :keyword %>
+                    <%= text_field_tag :keyword, '', placeholder: "投稿を検索" %>
                     <%= submit_tag '検索' %>
                 <% end %>
               </li>

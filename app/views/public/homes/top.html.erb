@@ -2,35 +2,38 @@
 <div class="row">
 	<div class="col-xs-9">
 		<h3>新着投稿</h3>
-		<% @new_posts.each do |post| %>
-		<div class="col-xs-4">
-			<%= link_to post_path(post) do %>
-				<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no_image.jpg", size:"250x200" %>
+		<div class="row">
+			<% @new_posts.each do |post| %>
+			<div class="col-xs-4">
+				<%= link_to post_path(post) do %>
+					<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no_image.jpg", size:"250x200" %>
+				<% end %>
+				<p>
+					<%= attachment_image_tag(post.user, :image, :fill, 30, 30) %>
+					<span><%= post.user.name %></span>
+			    </p>
+			    <p><%= post.favorites.count %>いいね</p>
+				<p>タイトル：<%= post.title %></p>
+			</div>
 			<% end %>
-			<p>
-				<%= attachment_image_tag(post.user, :image, :fill, 30, 30, fallback: "no_image.jpg") %>
-				<span><%= post.user.name %></span>
-		    </p>
-			<p>タイトル：<%= post.title %></p>
 		</div>
-	<% end %>
-	</div>
 
-	<div class="col-xs-9">
-		<h3>いいね数が多い投稿</h3>
-		<% @liked_posts.each do |post| %>
-		<div class="col-xs-4">
-			<%= link_to post_path(post) do %>
-				<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no_image.jpg", size:"250x200" %>
+		<div class="row">
+			<h3>いいね数が多い投稿</h3>
+			<% @liked_posts.each do |post| %>
+			<div class="col-xs-4">
+				<%= link_to post_path(post) do %>
+					<%= attachment_image_tag post, :image, format: "jpg", fallback: "no_image.jpg", size:"250x200" %>
+				<% end %>
+				<p>
+					<%= attachment_image_tag(post.user, :image, format: "jpg", size: "100x100") %>
+					<span><%= post.user.name %></span>
+					<p><%= post.favorites.count %>いいね</p>
+			    </p>
+				<p>タイトル：<%= post.title %></p>
+			</div>
 			<% end %>
-			<p>
-				<%= attachment_image_tag(post.user, :image, :fill, 30, 30, fallback: "no_image.jpg") %>
-				<span><%= post.user.name %></span>
-				<p><%= post.favorites.count %>いいね</p>
-		    </p>
-			<p>タイトル：<%= post.title %></p>
-		</div>
-	<% end %>
+	    </div>
 	</div>
 
 	<div class="col-xs-3">

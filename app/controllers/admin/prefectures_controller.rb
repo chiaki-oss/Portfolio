@@ -1,4 +1,5 @@
 class Admin::PrefecturesController < ApplicationController
+	before_action :authenticate_admin!
 
 	def edit
 		@prefecture = Prefecture.find(params[:id])

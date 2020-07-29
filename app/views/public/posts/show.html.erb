@@ -74,7 +74,7 @@
 		        <tr>
 		            <td>
 			            <%= link_to user_path(post_comment.user) do %>
-				            <%= attachment_image_tag post_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+				            <%= attachment_image_tag post_comment.user, :image, size: "50x50" %><br>
 			                <%= post_comment.user.name %>
 		                <% end %>
 		            </td>
