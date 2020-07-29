@@ -70,4 +70,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 # 環境変数
 gem 'dotenv-rails'
-
+# デプロイ用
+group :production do
+  gem 'mysql2'
+end
