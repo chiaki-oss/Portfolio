@@ -10,6 +10,14 @@
 	<h2">投稿一覧 (全<%= @all_posts_count %>件)</h2>
 <% end %>
 
+<!-- プルダウン並び替え -->
+<div class="row">
+	<%= form_tag(posts_path, method: :get) do %>
+		<%= select_tag(:option, options_for_select([["新規投稿順", "1"],["古い投稿順","2"]])) %>
+		<%= submit_tag '検索' %>
+	<% end %>
+</div>
+
 <div class="row">
 	<% @posts.each do |post| %>
 		<div class="col-xs-4">

@@ -20,6 +20,15 @@ class Public::PostsController < ApplicationController
 			# 重複している結果を削除
 			@posts.uniq!
 
+		# ソート検索
+		elsif params[:option]
+			@option = params[:option]
+			if @option == '1'
+				@posts = Post.all.order("created_at DESC")
+			elsif @option == '2'
+				@posts = Post.all
+			end
+
 		# トップサイドバーリンク
 		elsif
 			#エリア毎 = エリアに結びつく都道府県にある投稿取得

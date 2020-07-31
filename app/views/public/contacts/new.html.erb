@@ -6,10 +6,10 @@
 <% end %>
 
 <h2 class="contact-title">お問い合わせフォーム</h2>
-	<%= form_for @contact, url: contacts_path do |f| %>
+	<%= form_for @contact, url: contacts_confirm_path do |f| %>
         <%= f.label :タイトル %>
         <%= f.text_field :title, class:"form-control" %>
         <%= f.label :内容 %>
         <%= f.text_field :body, class:"form-control" %>
-        <%= f.submit "送信" %>
+        <%= f.submit "確認画面に進む" %>
     <% end %>

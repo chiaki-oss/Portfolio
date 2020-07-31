@@ -1,0 +1,19 @@
+<h1>問い合わせ内容の確認</h1>
+<div class="row">
+	<%= form_with model: @contact, url: contacts_path do |f| %>
+	<div class="field">
+		<%= f.label :タイトル %>
+		<%= f.text_field :title %>
+	</div>
+
+    <div class="field">
+		<%= f.label :問い合わせ内容 %>
+		<%= f.text_area :body %>
+	</div>
+
+    <div class="field">
+		<%= f.submit '送信する' %>
+	</div>
+	<% end %>
+</div>
+

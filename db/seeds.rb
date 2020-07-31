@@ -45,7 +45,7 @@ User.create!(
 		{
 		name: 'yamada',
 		email: 'yamada@mail',
-		image: File.open('./app/assets/images/サラリーマン.jpeg'),
+		image: File.open('./app/assets/images/icon.jpeg'),
 		is_active: true,
 		password: '111111' 
 		},
@@ -74,7 +74,7 @@ Post.create!(
 			prefecture_id: 34,
 			title: '屋台のおでん',
 			body: 'うますぎ',
-			image: File.open('./app/assets/images/おでん.jpg')
+			image: File.open('./app/assets/images/oden.jpg')
 		},
 		{
 			user_id: 2,
@@ -82,7 +82,7 @@ Post.create!(
 			prefecture_id: 20,
 			title: '美ヶ原から見える絶景（松本方面）',
 			body: '絶景スポット',
-			image: File.open('./app/assets/images/松本.jpg')
+			image: File.open('./app/assets/images/matsumoto.jpg')
 		}
 	])
 

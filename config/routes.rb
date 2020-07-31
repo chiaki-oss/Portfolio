@@ -39,7 +39,8 @@ Rails.application.routes.draw do
   	resources :genres, only: [:index]
   	resources :prefectures, only: [:index]
   	resources :areas, only: [:index]
-    resources :contacts, only: [:new, :create]
+    resources :contacts, only: [:new, :create, :index, :show]
+    post 'contacts/confirm' => 'contacts#confirm'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

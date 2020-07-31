@@ -5,6 +5,10 @@ class Public::ContactsController < ApplicationController
   	@contact = Contact.new
   end
 
+  def confirm
+    @contact = Contact.new(contact_params)
+  end
+
   def create
   	@contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
@@ -15,6 +19,14 @@ class Public::ContactsController < ApplicationController
         @users = User.all
         render :new
     end
+  end
+
+  def index
+    @contacts = Contact.all
+  end
+
+  def show
+    @contact = Contact.find(params[:id])
   end
 
   private
