@@ -19,6 +19,7 @@ class Public::UsersController < ApplicationController
 		end
 	end
 
+	# 退会機能
 	def confirm
 	end
 
@@ -26,6 +27,13 @@ class Public::UsersController < ApplicationController
 		@user = current_user
 		@user.update(is_active: false)
 		redirect_to root_path
+	end
+
+	# フォロー機能
+	def follow
+	end
+
+	def followers
 	end
 
 	private

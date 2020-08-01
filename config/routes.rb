@@ -30,7 +30,11 @@ Rails.application.routes.draw do
   	get 'about' => 'homes#about'
   	get 'confirm' => 'users#confirm'
   	put 'confirm' => 'users#withdraw'
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'follows' => 'relationships#follower', as: 'follows'
+      get 'followers' => 'relationships#followed', as: 'followers'
+    end
     get 'favorites' => 'favorites#index'
   	resources :posts do
       resources :post_comments, only: [:create, :destroy]

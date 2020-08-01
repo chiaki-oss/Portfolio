@@ -20,6 +20,8 @@
 
 $(function() {
 	$(document).on('turbolinks:load', () => {
+
+		// 画像プレビュー
 		// inputのidから情報の取得
 	    $('#image').on('change', function (e) {
 		// ここから既存の画像のurlの取得
@@ -30,12 +32,25 @@ $(function() {
 	    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
 		});
 
+		// 星評価
 		$('#star').raty({
-		path: '/assets/',
-		click: function(score, e) {
-			$("#post_rate").val(score)
-		}
+		size: 36,
+	    starOff: '/assets/star-off.png',
+	    starOn: '/assets/star-on.png',
+	    starHalf: '/assets/star-half.png',
+	    scoreName: 'post_comment[rate]', //reviewカラムに保存するので忘れないように
+	    half: true, //★の半分の入力を行う
 		});
+
+		$('.star-rate-<%= post_comment.id %>').raty({
+		size: 36,
+	    starOff: '/assets/star-off.png',
+	    starOn: '/assets/star-on.png',
+	    starHalf: '/assets/star-half.png',
+	    scoreName: 'post_comment[rate]', //reviewカラムに保存するので忘れないように
+	    half: true, //★の半分の入力を行う
+		});
+
 	});
 });
 

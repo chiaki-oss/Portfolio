@@ -49,9 +49,9 @@
 		<%= form_for [@post, @post_comment] do |f| %>
 		    <%= f.text_area :comment, size: "90x5" %>
 
-		    <%= f.hidden_field :rate, id: :post_rate %>
-
-		    <div id=star></div>
+		    <div id=star>
+			    <%= f.hidden_field :rate, id: :post_comment_rate %>
+		    </div>
 
 		    <%= f.submit '送信' %>
 		<% end %>
@@ -70,7 +70,7 @@
 					<td>コメント</td>
 					<td>投稿日</td>
 			<tbody>
-	        <% @post.post_comments.each do |post_comment| %>
+	        <% @post_comments.each do |post_comment| %>
 		        <tr>
 		            <td>
 			            <%= link_to user_path(post_comment.user) do %>
@@ -78,7 +78,9 @@
 			                <%= post_comment.user.name %>
 		                <% end %>
 		            </td>
-		            <td><%= post_comment.rate %></td>
+		            <td class="star-rate-<%= post_comment.id %>">
+		            	<%= post_comment.rate %>
+		            </td>
 			        <td><%= post_comment.comment %></td>
 			        <td><%= post_comment.created_at.strftime("%Y/%m/%d") %></td>
 			        <!--コメント削除 -->
