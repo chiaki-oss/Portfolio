@@ -1,32 +1,33 @@
 <h1>ユーザー情報</h1>
 <div class="row">
 	<div class="col-xs-12">
-		<p><%= attachment_image_tag(@user, :image, :fill, 50, 50) %></p>
-		<p>アカウント名：<%= @user.name %></p>
+		<p><%= attachment_image_tag @user, :image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30" %><%= @user.name %></p>
 		<p>おすすめ：<%= @user.recommend %></p>
 		<p>自己紹介：<%= @user.introduction %></p>
-		<p><%= link_to "お気に入りの投稿" , favorites_path %></p>
+
 		<% if @user == current_user %>
+			<p><%= link_to "お気に入りの投稿" , favorites_path %></p>
+			<p>
+				<%= link_to "編集する", edit_user_path %>
+				<%= link_to "退会したい", confirm_path %>
+				<%= link_to "問い合わせ履歴", contacts_path %>
+			</p>
+			<p>Follows：<%= link_to @user.follower.count, user_follows_path(@user) %>
+			Follower：<%= link_to @user.followed.count, user_followers_path(@user) %>
+			</p>
+		<% end %>
+		<!-- フォロー機能 -->
+		<% if user_signed_in? %>
 		<p>
-			<%= link_to "編集する", edit_user_path %>
-			<%= link_to "退会したい", confirm_path %>
-			<%= link_to "問い合わせ履歴", contacts_path %>
-		</p>
-		<p>Follows：<%= link_to @user.follower.count, user_follows_path(@user) %>
-		Follower：<%= link_to @user.followed.count, user_followers_path(@user) %>
+			<% if current_user != @user %>
+				<% if current_user.following?(@user) %>
+		            <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete %>
+		        <% else %>
+		            <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST %>
+		        <% end %>
+		    <% end %>
 		</p>
 		<% end %>
-		<p>
-		<!-- フォロー機能 -->
-		<% if current_user != @user %>
-			<% if current_user.following?(@user) %>
-	            <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete %>
-	        <% else %>
-	            <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST %>
-	        <% end %>
-	    <% end %>
-		</p>
-
 	</div>
 </div>
 

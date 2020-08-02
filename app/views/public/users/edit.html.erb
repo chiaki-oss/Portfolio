@@ -25,7 +25,7 @@
 
 <div>
 	<%= f.submit "更新する" %><%= link_to "パスワードを変更する", edit_user_registration_path %>
-	<p><%= link_to "マイページに戻る", user_path %></p>
+	<p><%= link_to 'マイページに戻る', user_path(current_user) %></p>
 </div>
 <% end %>
 

@@ -5,3 +5,4 @@
 <%= link_to "退会する", confirm_path, method: :put, class: "btn btn-outline-danger", "data-confirm" => "本当に退会しますか？", class:"btn btn-danger" %>
 
 <%= link_to "退会しない", user_path(current_user), class:"btn btn-default" %>
+<%= link_to 'マイページに戻る', user_path(current_user) %>

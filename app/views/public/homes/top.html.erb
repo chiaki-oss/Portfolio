@@ -9,7 +9,7 @@
 					<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no_image.jpg", size:"250x200" %>
 				<% end %>
 				<p>
-					<%= attachment_image_tag(post.user, :image, :fill, 30, 30) %>
+					<%= attachment_image_tag post.user, :image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30" %>
 					<span><%= post.user.name %></span>
 			    </p>
 			    <p><%= post.favorites.count %>いいね</p>
@@ -26,7 +26,7 @@
 					<%= attachment_image_tag post, :image, format: "jpg", fallback: "no_image.jpg", size:"250x200" %>
 				<% end %>
 				<p>
-					<%= attachment_image_tag(post.user, :image, format: "jpg", size: "100x100") %>
+					<%= attachment_image_tag post.user, :image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30" %>
 					<span><%= post.user.name %></span>
 					<p><%= post.favorites.count %>いいね</p>
 			    </p>
