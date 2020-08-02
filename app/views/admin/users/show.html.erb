@@ -1,7 +1,7 @@
 <h1>ユーザー情報</h1>
 <div class="row">
 	<div class="col-xs-12">
-		<p><%= attachment_image_tag(@user, :image, :fill, 50, 50) %></p>
+		<p><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %></p>
 		<p>会員ID：<%= @user.id %></p>
 		<p>会員ステータス：
 			<% if @user.is_active? %>

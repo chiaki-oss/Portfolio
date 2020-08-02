@@ -3,7 +3,7 @@
 <div class="row">
 
 	<div id="image">
-		<%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", size:"150x100" %>
+		<%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg", size:"50x50" %>
 		<span><%= f.attachment_field :image %></span>
 	</div>
 

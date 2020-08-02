@@ -24,7 +24,7 @@
 			<%= link_to post_path(post) do %>
 				<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no_image.jpg", size:"250x200" %>
 			<% end %>
-			<p><%= attachment_image_tag post.user, :image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30" %>
+			<p><%= attachment_image_tag post.user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
 				<span>投稿者：<%= post.user.name %>
 			</p>
 			<p>タイトル：<%= post.title %>
