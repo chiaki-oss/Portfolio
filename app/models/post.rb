@@ -37,4 +37,27 @@ class Post < ApplicationRecord
 		end
 	end
 
+	# 通知
+	has_many :notifications, dependent: :destroy
+	# いいね通知
+	def create_notification_like!(current_user)
+		notification = current_user.active_notifications.new(
+			post_id: id,
+			visited_id: user_id,
+			action: 'like'
+		)
+		notification.save if notification.valid?
+	end
+
+	# コメント通知
+	def create_notification_post_comment!(current_user, post_comment_id)
+		notification = current_user.active_notifications.new(
+			post_id: id,
+			post_comment_id: post_comment_id,
+			visited_id: user_id,
+			action: 'post_comment'
+		)
+		notification.save if notification.valid?
+	end
+
 end

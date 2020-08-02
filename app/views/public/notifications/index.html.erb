@@ -1,0 +1,11 @@
+<h1>通知一覧</h1>
+<div>
+	<% if @notifications.exists? %>
+        <!-- collectionオプション 複数形で渡す＝そのテンプレートを繰り返し表示できる -->
+		<%= render @notifications %>
+
+	<% else %>
+		<P>通知はありません</P>
+	<% end %>
+
+</div>

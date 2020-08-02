@@ -14,8 +14,23 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: 'post'
 
+  # 通知(active:アクションを起こす/passive:通知を受け取る)
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
+  # フォロー通知
+  def create_notification_follow!(current_user)
+    notification = current_user.active_notifications.new(
+      visited_id: id,
+      action: 'follow'
+    )
+    notification.save if notification.valid?
+  end
+
+  # 問い合わせ
   has_many :contacts
 
+  # フォロー
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
@@ -30,7 +45,7 @@ class User < ApplicationRecord
     follower.find_by(followed_id: user_id).destroy
   end
 
-  # フォローしていればtrueを返す
+  # フォロー済の場合はtrueを返す
   def following?(user)
     following_user.include?(user)
   end

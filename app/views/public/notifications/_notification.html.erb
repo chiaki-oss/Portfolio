@@ -1,0 +1,27 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+<div>
+	<div>
+		<span>
+			<%= link_to user_path(visitor) do %>
+				<%= attachment_image_tag visitor, :image, :fill,30,30, format:"jpeg" %>
+				<%= visitor.name %>
+			<% end %>
+			さんが
+
+			<% case notification.action
+			when 'follow' then %>
+				あなたをフォローしました
+			<% when 'like' then %>
+				<%= link_to 'あなたの投稿', notification.post %>
+				にいいねしました
+			<% when 'post_comment' then %>
+				<%= link_to 'あなたの投稿', notification.post %>
+				<% PostComment.find_by(id: notification.post_comment.id)&.comment %>
+				にコメントしました
+			<% end %>
+		</span>
+		<span><%= time_ago_in_words(notification.created_at).upcase %></span>
+	</div>
+</div>
