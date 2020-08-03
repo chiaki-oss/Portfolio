@@ -54,3 +54,42 @@ $(function() {
 	});
 });
 
+//エリア・都道府県クリックで表示
+document.addEventListener("turbolinks:load", function() {
+	$(function(){
+		$(".openBtn").click(function(){
+		  $(this).next(".textArea").animate({
+		  	height: 'toggle', opacity: 'toggle'  //折りたたみ
+		  },'nomal');  //速度
+		});
+	});
+
+
+	// マウスオンで検索サイドバーを表示
+	$(function() {
+	    $('#slide').hover(
+	    	function(){
+	    		$(this).stop(true).animate({'marginRight':'300px'},500);
+	    	},
+	    	function () {
+	    		$(this).animate({'marginRight':'0'},500);
+	    	}
+	    );
+	});
+
+	// スライドさせる
+	$(document).ready(function(){
+		fit();
+		$(window).resize(function(){
+			fit();
+		})
+		function fit(){
+			var h = $(window).height();
+			$('.slide-inner').css("height",h);
+		}
+	});
+})
+
+
+
+

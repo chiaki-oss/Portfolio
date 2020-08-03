@@ -16,10 +16,74 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- header{
- background-color: white;
+/*ヘッダー*/
+ .navbar-inverse{
+	 background-color: white;
+
+	.navbar-nav > li > a {
+	color: black;
+	}
+ }
+
+/*検索サイドバー*/
+ #slide{
+	z-index: 1;
+	position: fixed;
+	top: 0;
+	right: -300px;
+	width: 350px;
+	height: 100%;
+	padding: 50px 0 0 50px;
+	overflow: auto;
+
+	.slide-inner {
+		overflow: auto;
+	}
+
+	.nav-icon{
+		position: absolute;
+		left: 10px;
+		top: 450px;
+		font-size: 20px;
+
+		.p{
+			font-size: 15px;
+		}
+	}
+ }
+
+
+/*サイドバーエリア*/
+ .openBtn {
+	cursor: pointer;
+	padding: 10px;
+	border: 1px solid black;
+	border-left: 10px solid black;
+	color: black;
+ }
+
+ .openBtn:hover {
+	opacity: 0.7;
+ }
+
+ .textArea{
+	display: none;
+	padding: 10px 10px 10px 10px;
  }
 
  body{
- margin-top:50px;
+	margin-top:50px;
+ }
+
+ a{
+	color: inherit;
+	text-decoration: none;
+	cursor: default;
+ }
+
+ footer{
+	 width: 100%;
+	 text-align: center;
+	 padding: 10px 0;
+	 margin-top: 10px;
  }

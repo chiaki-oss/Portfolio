@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/a1e5d906c0.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
@@ -12,74 +13,17 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <nav class='nav navbar-nav navbar-left' >
-          <%= link_to 'Logo', root_path, class: "logo" %>
-        </nav>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-
-            <% if user_signed_in? %>
-              <li><%= link_to 'About', about_path %></li>
-              <li><%= link_to 'マイページ', user_path(current_user) %></li>
-              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-              <li><%= link_to '新規投稿', new_post_path %></li>
-              <li><%= link_to '投稿一覧', posts_path %></li>
-              <li><%= link_to '問い合わせ', new_contact_path %></li>
-              <li><%= link_to(notifications_path) do %>
-                  <% if unchecked_notifications.any? %>
-                    <span>通知</span>
-                  <% else %>
-                    <span>通知</span>
-                  <% end %>
-                  <% end %>
-              </li>
-              <li> <!-- 検索窓 -->
-                <%= form_tag(posts_path, method: :get) do %>
-                    <%= text_field_tag :keyword, '', placeholder: "投稿を検索" %>
-                    <%= submit_tag '検索' %>
-                <% end %>
-              </li>
-
-            <% elsif admin_signed_in? %>
-              <li><%= link_to 'About', about_path %></li>
-              <li><%= link_to '問い合わせ一覧', admin_contacts_path %></li>
-              <li><%= link_to '投稿一覧', posts_path %></li>
-              <li><%= link_to 'エリア一覧', admin_areas_path %></li>
-              <li><%= link_to 'ジャンル一覧', admin_genres_path %></li>
-              <li><%= link_to '会員一覧', admin_users_path %></li>
-              <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-              <li>
-                <%= form_tag(posts_path, method: :get) do %>
-                    <%= text_field_tag :keyword, '', placeholder: "投稿を検索" %>
-                    <%= submit_tag '検索' %>
-                <% end %>
-              </li>
-
-            <% else %>
-              <li><%= link_to 'About', about_path %></li>
-              <li><%= link_to '投稿一覧', posts_path %></li>
-              <li><%= link_to 'ログイン', new_user_session_path %></li>
-              <li><%= link_to '新規登録', new_user_registration_path %></li>
-              <li>
-                <%= form_tag(posts_path, method: :get) do %>
-                    <%= text_field_tag :keyword, '', placeholder: "投稿を検索" %>
-                    <%= submit_tag '検索' %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <!-- HEADER -->
+    <%= render 'layouts/header' %>
 
     <main>
+  
       <div class="container">
         <p id="notice"><%= notice %></p>
         <%= yield %>
       </div>
-    </main>
+
+    </div>
 
     <footer>Copyright ©        Inc. All Rights Reserved.</footer>
 

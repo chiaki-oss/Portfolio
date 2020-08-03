@@ -1,64 +1,82 @@
 <h1>Home#top</h1>
-<div class="row">
-	<div class="col-xs-9">
-		<h3>新着投稿</h3>
-		<div class="row">
-			<% @new_posts.each do |post| %>
-			<div class="col-xs-4">
-				<%= link_to post_path(post) do %>
-					<%= attachment_image_tag post, :image, format: "jpeg", fallback: "sample.jpg", size:"250x200" %>
-				<% end %>
-				<p>
-					<%= attachment_image_tag post.user, :image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30" %>
-					<span><%= post.user.name %></span>
-			    </p>
-			    <p><%= post.favorites.count %>いいね</p>
-				<p>タイトル：<%= post.title %></p>
-			</div>
-			<% end %>
-		</div>
 
-		<div class="row">
-			<h3>いいね数が多い投稿</h3>
-			<% @liked_posts.each do |post| %>
-			<div class="col-xs-4">
-				<%= link_to post_path(post) do %>
-					<%= attachment_image_tag post, :image, format: "jpg", fallback: "no_image.jpg", size:"250x200" %>
-				<% end %>
-				<p>
-					<%= attachment_image_tag post.user, :image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30" %>
-					<span><%= post.user.name %></span>
-					<p><%= post.favorites.count %>いいね</p>
-			    </p>
-				<p>タイトル：<%= post.title %></p>
+	<div>
+		<div id="slide">
+			<span class="nav-icon">
+				<i class="fas fa-search"></i>
+				<p>検索</p>
+			</span>
+
+
+			<div class="slide-inner">
+				<div>
+					<h5>キーワードで探す</h5>
+		            <%= form_tag(posts_path, method: :get) do %>
+		                <%= text_field_tag :keyword, '', placeholder: "キーワードで検索" %>
+		                <%= submit_tag '検索' %>
+		            <% end %>
+				</div>
+				<div>
+					<h5>ジャンルから探す</h5>
+					<% @genres.each do |genre| %>
+						<%= link_to genre.name, posts_path(genre_id: genre.id) %>
+					<% end %>
+				</div>
+				<div>
+					<h5>タグから探す</h5>
+					<% @tags.each do |tag| %>
+						<%= link_to tag.name, posts_path(tag_id: tag.id) %>
+					<% end %>
+				</div>
+				<div class="area">
+					<h5>エリア / 都道府県から探す</h5>
+					<% @areas.each do |area| %>
+						<p class="openBtn"><%= link_to area.name, posts_path(area_id: area.id) %>エリア
+						</p>
+						<p class="textArea">
+							<% area.prefectures.each do |prefecture| %>
+								<%= link_to prefecture.name, posts_path(prefecture_id: prefecture.id) %>
+							<% end %>
+						</p>
+					<% end %>
+				</div>
 			</div>
-			<% end %>
-	    </div>
+		</div>
 	</div>
 
-	<div class="col-xs-3">
-		<div class="area">
-			<h3>ジャンル一覧</h3>
-			<% @genres.each do |genre| %>
-				<%= link_to genre.name, posts_path(genre_id: genre.id) %>
+	<h3>New Post</h3>
+	<div class="row">
+		<% @new_posts.each do |post| %>
+		<div class="col-xs-4">
+			<%= link_to post_path(post) do %>
+				<%= attachment_image_tag post, :image, format: "jpeg", fallback: "sample.jpg", size:"250x200" %>
 			<% end %>
+			<p>
+				<%= attachment_image_tag post.user, :image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30" %>
+				<span><%= post.user.name %></span>
+		    </p>
+		    <p><%= post.favorites.count %>いいね</p>
+			<p>タイトル：<%= post.title %></p>
 		</div>
-		<div class="area">
-			<h3>エリア一覧</h3>
-			<p><% @areas.each do |area| %>
-				<%= link_to area.name, posts_path(area_id: area.id) %>エリア
-					<p><% area.prefectures.each do |prefecture| %>
-						<%= link_to prefecture.name, posts_path(prefecture_id: prefecture.id) %>
-					<% end %></p>
-			<% end %>
-			</p>
-		</div>
-
-		<div class="area">
-			<h3>タグ一覧</h3>
-			<% @tags.each do |tag| %>
-				<%= link_to tag.name, posts_path(tag_id: tag.id) %>
-			<% end %>
-		</div>
+		<% end %>
 	</div>
+
+	<div class="row">
+		<h3>いいね数が多い投稿</h3>
+		<% @liked_posts.each do |post| %>
+		<div class="col-xs-4">
+			<%= link_to post_path(post) do %>
+				<%= attachment_image_tag post, :image, format: "jpg", fallback: "no_image.jpg", size:"250x200" %>
+			<% end %>
+			<p>
+				<%= attachment_image_tag post.user, :image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30" %>
+				<span><%= post.user.name %></span>
+				<p><%= post.favorites.count %>いいね</p>
+		    </p>
+			<p>タイトル：<%= post.title %></p>
+		</div>
+		<% end %>
+    </div>
+
 </div>
+
