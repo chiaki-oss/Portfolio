@@ -14,11 +14,14 @@
           <li><%= link_to '投稿一覧', posts_path %></li>
           <li><%= link_to '問い合わせ', new_contact_path %></li>
           <li><%= link_to(notifications_path) do %>
-              <% if unchecked_notifications.any? %>
-                <span>通知</span>
-              <% else %>
-                <span>通知</span>
-              <% end %>
+                <% if unchecked_notifications.any? %>
+                  <span class="fa-stack">
+                    <i class="far fa-bell fa-lg fa-stack-2x" style="font-size: 1.7em;"></i>
+                    <i class="fas fa-circle n-circle fa-stack-1x"></i>
+                  </span>
+                <% else %>
+                  <i class="far fa-bell fa-lg" style="font-size: 1.7em;"></i>
+                <% end %>
               <% end %>
           </li>
 

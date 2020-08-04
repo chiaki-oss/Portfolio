@@ -18,33 +18,7 @@
 	<% end %>
 </div>
 
-<div class="row">
-	<% @posts.each do |post| %>
-		<div class="col-xs-4">
-			<%= link_to post_path(post) do %>
-				<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no_image.jpg", size:"250x200" %>
-			<% end %>
-			<p><%= attachment_image_tag post.user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
-				<span>投稿者：<%= post.user.name %>
-			</p>
-			<p>タイトル：<%= post.title %>
-				<span>
-					<% if user_signed_in? %>
-					    <!-- いいね機能 -->
-			            <% if post.favorited_by?(current_user) %>
-				            <%= link_to post_favorites_path(post), method: :delete do %>
-				            <span class="glyphicon glyphicon-heart"></span>
-				            <% end %>
-			            <% else %>
-				            <%= link_to post_favorites_path(post), method: :post do %>
-				            <span class="glyphicon glyphicon-heart-empty"></span>
-				            <% end %>
-			            <% end %>
-			        <% end %>
-			        <span><%= post.favorites.count %>いいね</span>
-		        </span>
-		    </p>
-		</div>
-	<% end %>
-	<p><%= link_to '戻る', :back %></p>
-</div>
+<!-- Post#index -->
+<%= render 'public/posts/index', posts: @posts %>
+<p><%= link_to '戻る', :back %></p>
+

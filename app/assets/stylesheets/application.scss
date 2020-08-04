@@ -25,6 +25,13 @@
 	}
  }
 
+ .n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
+}
+
 /*検索サイドバー*/
  #slide{
 	z-index: 1;
@@ -35,6 +42,8 @@
 	height: 100%;
 	padding: 50px 0 0 50px;
 	overflow: auto;
+	background-color: #D7EEFF;
+	opacity: 0.8;
 
 	.slide-inner {
 		overflow: auto;
@@ -44,12 +53,17 @@
 		position: absolute;
 		left: 10px;
 		top: 450px;
-		font-size: 20px;
 
-		.p{
-			font-size: 15px;
+
+		.fa{
+		font-size: 30px;
 		}
+
 	}
+ }
+
+ .fa{
+ color: black;
  }
 
 

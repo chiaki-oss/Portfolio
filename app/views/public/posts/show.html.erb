@@ -14,21 +14,25 @@
 		<p>投稿日時：<%= @post.created_at.strftime("%Y/%m/%d") %></p>
 		<p>更新日時：<%= @post.updated_at.strftime("%Y/%m/%d ") %></p>
 		<% if user_signed_in? %>
-        <p> <!-- いいね機能 -->
-		    <% if @post.favorited_by?(current_user) %>
-	            <%= link_to post_favorites_path(@post), method: :delete do %>
-		            <span class="glyphicon glyphicon-heart"></span>
-	            <% end %>
-	        <% else %>
-	            <%= link_to post_favorites_path(@post), method: :post do %>
-		            <span class="glyphicon glyphicon-heart-empty"></span>
+	        <p> <!-- いいね機能 -->
+			    <% if @post.favorited_by?(current_user) %>
+		            <%= link_to post_favorites_path(@post), method: :delete do %>
+			            <span class="glyphicon glyphicon-heart fa-lg"></span>
+		            <% end %>
+		        <% else %>
+		            <%= link_to post_favorites_path(@post), method: :post do %>
+			            <span class="glyphicon glyphicon-heart-empty fa-lg"></span>
+			        <% end %>
 		        <% end %>
-	        <% end %>
-	        <%= @post.favorites.count %>
-	        <span id="star-rate-#{post.id}"></span>
-        </p>
+		        <%= @post.favorites.count %>
+		        <span id="star-rate-#{post.id}"></span>
+		        <span><i class="far fa-comment-dots fa-lg"></i><%= @post.post_comments.count %></span>
+	        </p>
+	    <% else %>
+	        <span class="glyphicon glyphicon-heart fa-lg"><%= @post.favorites.count %></span>
+	        <span><i class="far fa-comment-dots fa-lg"></i><%= @post.post_comments.count %></span>
         <% end %>
-        <p>コメント数：<%= @post.post_comments.count %></p>
+        <p>
         <!-- ユーザーの投稿編集・削除ボタン -->
         <% if @post.user == current_user %>
 	        <p><%= link_to 'Edit', edit_post_path(@post) %>
@@ -66,8 +70,8 @@
 			<thead>
 				<tr>
 					<td></td>
-					<td>評価</td>
-					<td>コメント</td>
+					<td><i class="far fa-star fa-lg"></i></td>
+					<td><i class="far fa-comment-dots fa-lg"></i></td>
 					<td>投稿日</td>
 			<tbody>
 	        <% @post_comments.each do |post_comment| %>
