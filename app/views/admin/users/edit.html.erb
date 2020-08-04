@@ -1,5 +1,5 @@
 <h1><%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", size:"50x50" %>
-	<%= @user.name %>さんの登録情報の編集</h1>
+	<%= @user.name %>さんの会員ステータスの編集</h1>
 
 <%= form_for(@user, url: admin_user_path(@user)) do |f| %>
 

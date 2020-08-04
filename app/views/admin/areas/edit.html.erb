@@ -1,0 +1,11 @@
+<h2><%= @area.name %>エリア</h2>
+
+<%= form_for(@area, url: admin_area_path(@area)) do |f| %>
+	<div class="field">
+		<%= f.label :エリア名の編集 %><br>
+		<%= f.text_field :name %>
+		<%= f.submit '更新' %>
+
+	</div>
+
+<% end %>

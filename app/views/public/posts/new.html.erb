@@ -1,6 +1,13 @@
-<h1>新規投稿</h1>
-<%= form_for(@post, url: posts_path) do |f| %>
+<h1>Let's Post!!</h1>
+<p>地元や訪れた場所のお気に入り、印象に残っていること<br>
+	あなたのお気に入りの場所、もの、<br>
+	あなたしか知らない場所、<br>
+	もしかしたら、、、あなたしか知らないことかもしれません<br>
+	あなたがみんなに知ってほしいこと、なんでもいいので投稿してみましょう！！！
+</p>
+
 <div class="row">
+	<%= form_for(@post, url: posts_path) do |f| %>
 	<div class="col-xs-5">
 		<div id="image">
 			<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "sample.jpg", size:"350x300" %>
@@ -14,11 +21,11 @@
 				<tbody>
 					<tr>
 						<td><%= f.label :都道府県 %></td>
-						<td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name%></td>
+						<td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, :prompt => "選択してください"%></td>
 					</tr>
 					<tr>
 						<td><%= f.label :ジャンル %></td>
-						<td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
+						<td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "選択してください"%></td>
 					</tr>
 					<tr>
 						<td><%= f.label :タイトル %></td>
@@ -27,7 +34,7 @@
 
 					<tr>
 						<td><%= f.label :タグ %></td>
-						<td><%= f.text_field :tag_ids, class: "form-control",placeholder: "タグをつける。複数つけるには','で区切ってください。" %></td>
+						<td><%= f.text_field :tag_ids, class: "form-control",placeholder: "タグをつける。複数つける場合は ,(コンマ)で区切ってください。" %></td>
 					</tr>
 					<tr>
 						<td><%= f.label :説明 %></td>

@@ -1,18 +1,27 @@
-<div class="col-xs-12">
-	<%= form_for(@new_area, url: admin_areas_path) do |f| %>
-		<%= f.label :エリア名 %>
-		<%= f.text_field :name %>
-		<%= f.submit '保存する'%>
-	<% end %>
-</div>
+<div class="col-xs-5">
 
-<div class ="col-xs-12">
-	<h1>エリア別都道府県一覧</h1>
+	<h2>エリア別都道府県一覧</h2>
 	<% @areas.each do |area| %>
-		<p><%= area.name %> ：
+		<p><%= link_to area.name, edit_admin_area_path(area) %> ：
 			<% area.prefectures.each do |prefecture| %>
 				<%= link_to prefecture.name, edit_admin_prefecture_path(prefecture) %>
 			<% end %>
 		</p>
+	<% end %>
+
+</div>
+
+<div class="col-xs-7">
+	<h3>ご利用方法</h3>
+
+	<p>・新たにエリアを作成する場合　＝＞　下記フォームより登録ください。</p>
+	<p>・エリア名を変更する場合　＝＞　左の一覧にある各エリア名をクリックし、編集フォームにて変更ください。</p>
+	<p>・都道府県のエリアを変更する場合　＝＞　左の一覧にある各都道府県をクリックし、編集フォームにて変更ください</p>
+
+	<h3>新規エリア登録</h3>
+	<%= form_for(@new_area, url: admin_areas_path) do |f| %>
+		<%= f.label :エリア名 %>
+		<%= f.text_field :name %>
+		<%= f.submit '新たにエリアを登録する'%>
 	<% end %>
 </div>

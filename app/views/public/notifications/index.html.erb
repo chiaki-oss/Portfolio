@@ -1,8 +1,9 @@
-<h1>通知一覧</h1>
+<h1>あなたへのお知らせ</h1>
 <div>
-	<% if @notifications.exists? %>
+	<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+	<% if notifications.exists? %>
         <!-- collectionオプション 複数形で渡す＝そのテンプレートを繰り返し表示できる -->
-		<%= render @notifications %>
+		<%= render notifications %>
 
 	<% else %>
 		<P>通知はありません</P>

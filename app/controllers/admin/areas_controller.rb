@@ -15,6 +15,19 @@ class Admin::AreasController < ApplicationController
 		end
 	end
 
+	def edit
+		@area = Area.find(params[:id])
+	end
+
+	def update
+		@area = Area.find(params[:id])
+		if @area.update(area_params)
+			redirect_to admin_areas_path
+		else
+			render edit_admin_area_path(@area)
+		end
+	end
+
 	def area_params
 		params.require(:area).permit(:name)
 	end

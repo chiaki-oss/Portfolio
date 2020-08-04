@@ -20,6 +20,7 @@
 		    	<th>会員ID</th>
 				<th>アカウント名</th>
 				<th>会員ステータス</th>
+				<th>投稿数</th>
 				<th></th>
 		    </tr>
 		  </thead>
@@ -27,10 +28,11 @@
 		  <tbody>
 		    <% @users.each do |user| %>
 		      <tr>
-		      	<td><%= user.id %>
+		      	<td><%= user.id %></td>
+		      	<td>
 		      		<%= attachment_image_tag user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
+		      		<%= user.name %>
 		      	</td>
-		      	<td><%= user.name %></td>
 		        <td>
 		        	<% if user.is_active? %>
 			        	<span>有効</span>
@@ -38,6 +40,7 @@
 			        	<span>退会済</span>
 			      	<% end %>
 			    </td>
+			    <td><%= user.posts.count %>
 		        <td><%= link_to 'Show', admin_user_path(user) %></td>
 		      </tr>
 		    <% end %>

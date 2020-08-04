@@ -6,8 +6,10 @@
 	<h2><%= @prefecture.name %>の投稿一覧 (全<%= @all_posts_count %>件)</h2>
 <% elsif params[:genre_id]%>
     <h2><%= @genre.name %>の投稿一覧 (全<%= @all_posts_count %>件)</h2>
+<% elsif params[:tag_id]%>
+    <h2>#<%= @tag.name %>の投稿一覧 (全<%= @all_posts_count %>件)</h2>
 <% else %>
-	<h2">投稿一覧 (全<%= @all_posts_count %>件)</h2>
+	<h2>投稿一覧 (全<%= @all_posts_count %>件)</h2>
 <% end %>
 
 <!-- プルダウン並び替え -->

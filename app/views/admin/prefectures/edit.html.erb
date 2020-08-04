@@ -1,18 +1,7 @@
-<h1>エリア設定</h1>
+<h1><%= @prefecture.name %>のエリア設定</h1>
 <%= form_for(@prefecture, url: admin_prefecture_path(@prefecture)) do |f| %>
-	<table>
-		<tbody>
-			<tr>
-				<td>都道府県名</td>
-				<td><%= @prefecture.name %></td>
-			</tr>
-			<tr>
-				<td>エリア名</td>
-				<td><%= f.collection_select :area_id, Area.all, :id, :name%></td>
-			</tr>
-			<tr>
-				<td><%= f.submit '更新' %></td>
-			</tr>
-		</tbody>
-	</table>
+	<div>
+		<%= f.collection_select :area_id, Area.all, :id, :name, :prompt => "選択してください"%>
+		<%= f.submit '更新' %></td>
+	</div>
 <% end %>

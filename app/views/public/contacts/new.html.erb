@@ -6,6 +6,10 @@
 <% end %>
 
 <h2 class="contact-title">お問い合わせフォーム</h2>
+<p> サイトに関する質問やご意見等ございましたら、下記問い合わせフォームよりお気軽にお問い合わせください。<br>
+回答はメールにてお送りいたします。</p>
+
+
 	<%= form_for @contact, url: contacts_confirm_path do |f| %>
         <%= f.label :タイトル %>
         <%= f.text_field :title, class:"form-control" %>
@@ -15,3 +19,6 @@
     <% end %>
 
 <p><%= link_to '戻る', :back %></p>
+
+<h3>よくあるご質問</h3>
+<p>・・・準備中・・・</p>

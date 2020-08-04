@@ -9,6 +9,9 @@ class Post < ApplicationRecord
 	attachment :image
 
 	validates :title, presence: true
+	validates :body, presence: true
+	validates :genre_id, presence: true
+	validates :prefecture_id, presence: true
 
     # いいね いいねしてるかどうかの確認
 	has_many :favorites, dependent: :destroy
@@ -41,12 +44,24 @@ class Post < ApplicationRecord
 	has_many :notifications, dependent: :destroy
 	# いいね通知
 	def create_notification_like!(current_user)
-		notification = current_user.active_notifications.new(
-			post_id: id,
-			visited_id: user_id,
-			action: 'like'
-		)
-		notification.save if notification.valid?
+		# 連打による通知重複防止のため、いいねしてるかの確認
+		temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
+		# いいねされていない場合レコード作成
+		if temp.blank?
+			notification = current_user.active_notifications.new(
+				post_id: id,
+				visited_id: user_id,
+				action: 'like'
+			)
+
+			# 自分の投稿に対するいいねは通知済にする
+			if notification.visitor_id == notification.visited_id
+				notification.checked = true
+		    end
+
+			notification.save if notification.valid?
+		end
+
 	end
 
 	# コメント通知

@@ -1,20 +1,14 @@
-<h1>ユーザー情報</h1>
+<h1>Profile</h1>
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-xs-10">
 		<p><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %><%= @user.name %></p>
-		<p>おすすめ：<%= @user.recommend %></p>
-		<p>自己紹介：<%= @user.introduction %></p>
-
+		<p>Recommend<%= @user.recommend %></p>
+		<p>introduction<br><%= @user.introduction %></p>
 		<% if @user == current_user %>
-			<p><%= link_to "お気に入りの投稿" , favorites_path %></p>
-			<p>
-				<%= link_to "編集する", edit_user_path %>
-				<%= link_to "退会したい", confirm_path %>
-				<%= link_to "問い合わせ履歴", contacts_path %>
-			</p>
 			<p>Follows：<%= link_to @user.follower.count, user_follows_path(@user) %>
 			Follower：<%= link_to @user.followed.count, user_followers_path(@user) %>
 			</p>
+			<p><%= link_to "お気に入りの投稿" , favorites_path %></p>
 		<% end %>
 		<!-- フォロー機能 -->
 		<% if user_signed_in? %>
@@ -29,12 +23,21 @@
 		</p>
 		<% end %>
 	</div>
+
+	<div class="col-xs-2">
+		<% if @user == current_user %>
+			<p><%= link_to "プロフィールを編集する", edit_user_path %></p>
+			<p><%= link_to "退会したい", confirm_path %></p>
+			<p><%= link_to "問い合わせ履歴", contacts_path %></p>
+		<% end %>
+		
+	</div>
 </div>
 
-<h2>投稿一覧</h2>
+<h2>User Post（<%= @user.posts.count %>件）</h2>
 <div class="row">
 	<% @posts.each do |post| %>
-	<div class="col-xs-4">
+	<div class="col-xs-3">
 		<%= link_to post_path(post) do %>
 			<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no-image.jpg", size:"250x200" %>
 		<% end %>
