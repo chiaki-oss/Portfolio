@@ -30,7 +30,6 @@
 			<p><%= link_to "退会したい", confirm_path %></p>
 			<p><%= link_to "問い合わせ履歴", contacts_path %></p>
 		<% end %>
-		
 	</div>
 </div>
 
@@ -42,24 +41,9 @@
 			<%= attachment_image_tag post, :image, format: "jpeg", fallback: "no-image.jpg", size:"250x200" %>
 		<% end %>
 		<p><%= post.title %>
-			<span>
-				<% if user_signed_in? %>
-		            <% if post.favorited_by?(current_user) %>
-			            <%= link_to post_favorites_path(post), method: :delete do %>
-			            <span class="glyphicon glyphicon-heart"></span>
-			            <% end %>
-		            <% else %>
-			            <%= link_to post_favorites_path(post), method: :post do %>
-			            <span class="glyphicon glyphicon-heart-empty"></span>
-			            <% end %>
-		            <% end %>
-		             <span><%= post.favorites.count %></span>
-		             <span><i class="far fa-comment-dots fa-lg"></i><%= post.post_comments.count %></span>
-		        <% else %>
-			        <span class="glyphicon glyphicon-heart"><%= post.favorites.count %></span>
-			        <span><i class="far fa-comment-dots fa-lg"></i><%= post.post_comments.count %></span>
-		       <% end %>
-	        </span>
+			<span id="favorite-<%= post.id %>"><!-- いいね機能 -->
+				<%= render 'public/favorites/favorite', post: post %>
+			</span>
 		</p>
 	</div>
 	<% end %>

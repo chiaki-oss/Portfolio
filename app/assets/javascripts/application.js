@@ -39,16 +39,7 @@ $(function() {
 	    starOff: '/assets/star-off.png',
 	    starOn: '/assets/star-on.png',
 	    starHalf: '/assets/star-half.png',
-	    scoreName: 'post_comment[rate]', //reviewカラムに保存するので忘れないように
-	    half: true, //★の半分の入力を行う
-		});
-
-		$('.star-rate-<%= post_comment.id %>').raty({
-		size: 36,
-	    starOff: '/assets/star-off.png',
-	    starOn: '/assets/star-on.png',
-	    starHalf: '/assets/star-half.png',
-	    scoreName: 'post_comment[rate]', //reviewカラムに保存するので忘れないように
+	    scoreName: 'post_comment[rate]', //reviewカラムに保存
 	    half: true, //★の半分の入力を行う
 		});
 
@@ -90,25 +81,3 @@ document.addEventListener("turbolinks:load", function() {
 		}
 	});
 })
-
-var swiper;
-$(window).load(function() {
-  swiper = new Swiper('.swiper-container', {
-      speed: 400,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      slidesPerView: 1,
-      loop: true,
-      on: {
-          slideChange: function () {
-            console.log('swiper slideChange');
-          },
-      }
-  });
-});
-
-
-
-

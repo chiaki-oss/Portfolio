@@ -55,14 +55,9 @@
 			</div>
 		</div>
 	</div>
-
-
-	
-	<!-- Slider全体のコンテナ -->
-	<div class="swiper-container">
-	    <!-- Sliderのラッパー(各スライドを内包する箱みたいなイメージ) -->
+    <!-- Main Visual -->
+	<div class="swiper-container swiper1">
 	    <div class="swiper-wrapper">
-	        <!-- Slideさせたいコンテンツ -->
 	        <div class="swiper-slide">Slide 1</div>
 	        <div class="swiper-slide">Slide 2</div>
 	        <div class="swiper-slide">Slide 3</div>
@@ -72,31 +67,80 @@
 	        <div class="swiper-slide">Slide 7</div>
 	        <div class="swiper-slide">Slide 8</div>
 	        <div class="swiper-slide">Slide 9</div>
+	        <div class="swiper-slide">Slide 10</div>
 	    </div>
+	</div>
 
-		<div class="swiper-pagination"></div>
+	<div class="swiper-container swiper2" dir="rtl">
+	    <div class="swiper-wrapper">
+	        <div class="swiper-slide">Slide 1</div>
+	        <div class="swiper-slide">Slide 2</div>
+	        <div class="swiper-slide">Slide 3</div>
+	        <div class="swiper-slide">Slide 4</div>
+	        <div class="swiper-slide">Slide 5</div>
+	        <div class="swiper-slide">Slide 6</div>
+	        <div class="swiper-slide">Slide 7</div>
+	        <div class="swiper-slide">Slide 8</div>
+	        <div class="swiper-slide">Slide 9</div>
+	        <div class="swiper-slide">Slide 10</div>
+	    </div>
+	</div>
 
+	<div class="swiper-container swiper3">
+	    <div class="swiper-wrapper">
+	        <div class="swiper-slide">Slide 1</div>
+	        <div class="swiper-slide">Slide 2</div>
+	        <div class="swiper-slide">Slide 3</div>
+	        <div class="swiper-slide">Slide 4</div>
+	        <div class="swiper-slide">Slide 5</div>
+	        <div class="swiper-slide">Slide 6</div>
+	        <div class="swiper-slide">Slide 7</div>
+	        <div class="swiper-slide">Slide 8</div>
+	        <div class="swiper-slide">Slide 9</div>
+	        <div class="swiper-slide">Slide 10</div>
+	        <div class="swiper-slide">Slide 11</div>
+	        <div class="swiper-slide">Slide 12</div>
+	    </div>
 	</div>
 
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
-	    var mySwiper = new Swiper('.swiper-container', {
-	    	spaceBetween: 10, //スライド毎の間隔
-	    	slidesPerView: 6, //一度に表示するスライドの枚数
+	    var mySwiper1 = new Swiper('.swiper1', {
+	    	initialSlide: 2,
+	    	speed: 800,
+	    	loop: true,
+	    	spaceBetween: 5, //スライド毎の間隔
+	    	slidesPerView: 8, //一度に表示するスライドの枚数
 			autoplay: {
-				delay: 3000, //速さ
-				stopOnLastSlide: false, //最後までいったら最初に戻る
+				delay: 300, //速さ
 				reverseDirection: false //最初から順に再生
-			},
-			pagination: {
-				el: '.swiper-pagination',
-				type: 'bullets',
-				clickable: true
+			}
+	    });
+
+	    var mySwiper2 = new Swiper('.swiper2', {
+	    	speed: 800,
+	    	loop: true,
+	    	spaceBetween: 5, //スライド毎の間隔
+	    	slidesPerView: 8, //一度に表示するスライドの枚数
+			autoplay: {
+				delay: 300, //速さ
+				reverseDirection: false //最初から順に再生
+			}
+	    });
+
+	    var mySwiper3 = new Swiper('.swiper3', {
+	    	initialSlide: 6,
+	    	speed: 800,
+	    	loop: true,
+	    	spaceBetween: 5, //スライド毎の間隔
+	    	slidesPerView: 8, //一度に表示するスライドの枚数
+			autoplay: {
+				delay: 300, //速さ
+				reverseDirection: false //最初から順に再生
 			}
 	    });
 	</script>
-
 
 	<h2>New Post</h2>
 	<%= render 'public/posts/index', posts: @new_posts %>

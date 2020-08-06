@@ -10,38 +10,21 @@
 	        <span class="post-prefecture"><%= link_to @post.prefecture.name, posts_path(prefecture_id: @post.prefecture.id)  %></span>
 			<span class="post-genre"><%= link_to @post.genre.name, posts_path(genre_id: @post.genre.id) %></span>
 		</p>
-		
+
 		<%= link_to user_path(@post.user) do %>
             <%= attachment_image_tag @post.user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
             <%= @post.user.name %>
         <% end %>
 
-
-		<p>タグ　<% @post.tags.each do |tag| %>
-					#<%= link_to tag.name, posts_path(tag_id: tag.id) %>
-				<% end %>
+		<p><% @post.tags.each do |tag| %>
+				#<%= link_to tag.name, posts_path(tag_id: tag.id) %>
+			<% end %>
 		</p>
 		<p><%= @post.body %></p>
-		
-		<% if user_signed_in? %>
-	        <p> <!-- いいね機能 -->
-			    <% if @post.favorited_by?(current_user) %>
-		            <%= link_to post_favorites_path(@post), method: :delete do %>
-			            <span class="glyphicon glyphicon-heart fa-lg"></span>
-		            <% end %>
-		        <% else %>
-		            <%= link_to post_favorites_path(@post), method: :post do %>
-			            <span class="glyphicon glyphicon-heart-empty fa-lg"></span>
-			        <% end %>
-		        <% end %>
-		        <%= @post.favorites.count %>
-		        <span id="star-rate-#{post.id}"></span>
-		        <span><i class="far fa-comment-dots fa-lg"></i><%= @post.post_comments.count %></span>
-	        </p>
-	    <% else %>
-	        <span class="glyphicon glyphicon-heart fa-lg"><%= @post.favorites.count %></span>
-	        <span><i class="far fa-comment-dots fa-lg"></i><%= @post.post_comments.count %></span>
-        <% end %>
+		<!-- いいね機能 -->
+		<p id="favorite-<%= @post.id %>">
+			<%= render 'public/favorites/favorite', post: @post %>
+		</p>
     </div>
 
     <div class="col-xs-2">
@@ -54,7 +37,6 @@
 
 </div>
 
-
 <!-- コメントフォーム -->
 <% if user_signed_in? %>
 	<div class="row">
@@ -62,6 +44,7 @@
 		<%= form_for [@post, @post_comment] do |f| %>
 		    <%= f.text_area :comment, size: "90x5" %>
 
+		    <!-- 星評価 -->
 		    <div id=star>
 			    <%= f.hidden_field :rate, id: :post_comment_rate %>
 		    </div>
@@ -91,9 +74,11 @@
 			                <%= post_comment.user.name %>
 		                <% end %>
 		            </td>
-		            <td class="star-rate-<%= post_comment.id %>">
+		            <!-- 星評価 -->
+		            <td id="star-rate-#{post_comment.id}">
 		            	<%= post_comment.rate %>
 		            </td>
+
 			        <td><%= post_comment.comment %></td>
 			        <td><%= post_comment.created_at.strftime("%Y/%m/%d") %></td>
 			        <!--コメント削除 -->

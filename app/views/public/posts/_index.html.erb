@@ -10,24 +10,10 @@
 		<p>
 			<%= attachment_image_tag post.user, :image, format: "jpeg", fallback: "no_image.jpg", size: "20x20" %>
 			<span><%= post.user.name %></span>
+
 			<!-- いいね機能 -->
-			<span>
-				<% if user_signed_in? %>
-		            <% if post.favorited_by?(current_user) %>
-			            <%= link_to post_favorites_path(post), method: :delete do %>
-			            <span class="glyphicon glyphicon-heart"></span>
-			            <% end %>
-		            <% else %>
-			            <%= link_to post_favorites_path(post), method: :post do %>
-			            <span class="glyphicon glyphicon-heart-empty"></span>
-			            <% end %>
-		            <% end %>
-		             <span><%= post.favorites.count %></span>
-		             <span><i class="far fa-comment-dots fa-lg"></i><%= post.post_comments.count %></span>
-		        <% else %>
-			        <span class="glyphicon glyphicon-heart"><%= post.favorites.count %></span>
-			        <span><i class="far fa-comment-dots fa-lg"></i><%= post.post_comments.count %></span>
-			    <% end %>
+			<span id="favorite-<%= post.id %>">
+				<%= render 'public/favorites/favorite', post: post %>
 	        </span>
 	    </p>
 	    <span class="post-prefecture"><%= link_to post.prefecture.name, posts_path(prefecture_id: post.prefecture.id)  %></span>
