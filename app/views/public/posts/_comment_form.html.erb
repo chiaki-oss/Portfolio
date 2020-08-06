@@ -1,0 +1,9 @@
+<%= form_with model: [post, post_comment] do |f| %>
+    <%= f.text_area :comment, size: "90x5" %>
+    <!-- 星評価 -->
+    <div id=star>
+	    <%= f.hidden_field :rate, id: :post_comment_rate %>
+    </div>
+
+    <%= f.submit '送信' %>
+<% end %>

@@ -40,17 +40,10 @@
 <!-- コメントフォーム -->
 <% if user_signed_in? %>
 	<div class="row">
-		<h4>コメント入力欄</h4>
-		<%= form_for [@post, @post_comment] do |f| %>
-		    <%= f.text_area :comment, size: "90x5" %>
-
-		    <!-- 星評価 -->
-		    <div id=star>
-			    <%= f.hidden_field :rate, id: :post_comment_rate %>
-		    </div>
-
-		    <%= f.submit '送信' %>
-		<% end %>
+		<h4>Comment Form</h4>
+		<div id="comment-form<%= @post.id %>">
+			<%= render 'public/posts/comment_form', {post: @post, post_comment: @post_comment} %>
+		</div>
 	</div>
 <% end %>
 
@@ -58,39 +51,9 @@
 <% if @post_comments.exists? %>
 	<div class="row">
 		<h4>コメント一覧</h4>
-		<table class="col-xs-12">
-			<thead>
-				<tr>
-					<td></td>
-					<td><i class="far fa-star fa-lg"></i></td>
-					<td><i class="far fa-comment-dots fa-lg"></i></td>
-					<td>コメント日</td>
-			<tbody>
-	        <% @post_comments.each do |post_comment| %>
-		        <tr>
-		            <td>
-			            <%= link_to user_path(post_comment.user) do %>
-				            <%= attachment_image_tag post_comment.user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %><br>
-			                <%= post_comment.user.name %>
-		                <% end %>
-		            </td>
-		            <!-- 星評価 -->
-		            <td id="star-rate-#{post_comment.id}">
-		            	<%= post_comment.rate %>
-		            </td>
-
-			        <td><%= post_comment.comment %></td>
-			        <td><%= post_comment.created_at.strftime("%Y/%m/%d") %></td>
-			        <!--コメント削除 -->
-			        <% if post_comment.user == current_user %>
-			        <td>
-				        <%= link_to 'コメント（評価）を削除する', post_post_comment_path(post_comment.post, post_comment ), method: :delete %>
-				        <% end %>
-				    </td>
-		        </tr>
-		    <% end %>
-			</tbody>
-	    </table>
+		<table id="comment_<%= @post.id %>">
+			<%= render 'public/posts/comment', post_comments: @post_comments %>
+		</table>
 	</div>
 <% end %>
 
