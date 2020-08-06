@@ -56,11 +56,53 @@
 		</div>
 	</div>
 
-	<h3>New Post</h3>
+
+	
+	<!-- Slider全体のコンテナ -->
+	<div class="swiper-container">
+	    <!-- Sliderのラッパー(各スライドを内包する箱みたいなイメージ) -->
+	    <div class="swiper-wrapper">
+	        <!-- Slideさせたいコンテンツ -->
+	        <div class="swiper-slide">Slide 1</div>
+	        <div class="swiper-slide">Slide 2</div>
+	        <div class="swiper-slide">Slide 3</div>
+	        <div class="swiper-slide">Slide 4</div>
+	        <div class="swiper-slide">Slide 5</div>
+	        <div class="swiper-slide">Slide 6</div>
+	        <div class="swiper-slide">Slide 7</div>
+	        <div class="swiper-slide">Slide 8</div>
+	        <div class="swiper-slide">Slide 9</div>
+	    </div>
+
+		<div class="swiper-pagination"></div>
+
+	</div>
+
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+	    var mySwiper = new Swiper('.swiper-container', {
+	    	spaceBetween: 10, //スライド毎の間隔
+	    	slidesPerView: 6, //一度に表示するスライドの枚数
+			autoplay: {
+				delay: 3000, //速さ
+				stopOnLastSlide: false, //最後までいったら最初に戻る
+				reverseDirection: false //最初から順に再生
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				type: 'bullets',
+				clickable: true
+			}
+	    });
+	</script>
+
+
+	<h2>New Post</h2>
 	<%= render 'public/posts/index', posts: @new_posts %>
 
-	<h3>Popular Post</h3>
+	<h2>Popular Post</h2>
 	<%= render 'public/posts/index', posts: @liked_posts %>
 
-</div>
+
 

@@ -5,8 +5,10 @@
 		<%= link_to post_path(post) do %>
 			<%= attachment_image_tag post, :image, format: "jpeg", fallback: "sample.jpg", size:"250x200" %>
 		<% end %>
+		<h4><%= post.title %></h4>
+		<hr>
 		<p>
-			<%= attachment_image_tag post.user, :image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30" %>
+			<%= attachment_image_tag post.user, :image, format: "jpeg", fallback: "no_image.jpg", size: "20x20" %>
 			<span><%= post.user.name %></span>
 			<!-- いいね機能 -->
 			<span>
@@ -28,7 +30,10 @@
 			    <% end %>
 	        </span>
 	    </p>
-		<p><%= post.title %></p>
+	    <span class="post-prefecture"><%= link_to post.prefecture.name, posts_path(prefecture_id: post.prefecture.id)  %></span>
+		<span class="post-genre"><%= link_to post.genre.name, posts_path(genre_id: post.genre.id) %></span>
+
+
 	</div>
 	<% end %>
 </div>

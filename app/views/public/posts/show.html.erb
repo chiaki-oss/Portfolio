@@ -6,13 +6,17 @@
 		   更新日 <%= @post.updated_at.strftime("%Y/%m/%d ") %></p>
 	</div>
 	<div class="col-xs-5">
+		<p>
+	        <span class="post-prefecture"><%= link_to @post.prefecture.name, posts_path(prefecture_id: @post.prefecture.id)  %></span>
+			<span class="post-genre"><%= link_to @post.genre.name, posts_path(genre_id: @post.genre.id) %></span>
+		</p>
+		
 		<%= link_to user_path(@post.user) do %>
             <%= attachment_image_tag @post.user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
             <%= @post.user.name %>
         <% end %>
 
-		<p>都道府県　<%= @post.prefecture.name %></p>
-		<p>ジャンル　<%= @post.genre.name %></p>
+
 		<p>タグ　<% @post.tags.each do |tag| %>
 					#<%= link_to tag.name, posts_path(tag_id: tag.id) %>
 				<% end %>

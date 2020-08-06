@@ -18,6 +18,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+
 $(function() {
 	$(document).on('turbolinks:load', () => {
 
@@ -89,6 +90,24 @@ document.addEventListener("turbolinks:load", function() {
 		}
 	});
 })
+
+var swiper;
+$(window).load(function() {
+  swiper = new Swiper('.swiper-container', {
+      speed: 400,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      slidesPerView: 1,
+      loop: true,
+      on: {
+          slideChange: function () {
+            console.log('swiper slideChange');
+          },
+      }
+  });
+});
 
 
 
