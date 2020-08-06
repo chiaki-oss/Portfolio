@@ -19,8 +19,44 @@
 //= require_tree .
 
 
-$(function() {
 	$(document).on('turbolinks:load', () => {
+
+		var mySwiper1 = new Swiper('.swiper1', {
+	    	initialSlide: 0,
+	    	speed: 8000,
+	    	loop: true,
+	    	spaceBetween: 5, //スライド毎の間隔
+	    	slidesPerView: 8, //一度に表示するスライドの枚数
+			autoplay: {
+				delay: 0, //速さ
+				reverseDirection: true //最初から順に再生
+			}
+	    });
+
+	    var mySwiper2 = new Swiper('.swiper2', {
+	    	speed: 8000,
+	    	loop: true,
+	    	spaceBetween: 5, //スライド毎の間隔
+	    	slidesPerView: 8, //一度に表示するスライドの枚数
+			autoplay: {
+				delay: 300, //速さ
+				reverseDirection: false //最初から順に再生
+			}
+	    });
+
+	    var mySwiper3 = new Swiper('.swiper3', {
+	    	initialSlide: 6,
+	    	speed: 8000,
+	    	loop: true,
+	    	spaceBetween: 5, //スライド毎の間隔
+	    	slidesPerView: 8, //一度に表示するスライドの枚数
+			autoplay: {
+				delay: 300, //速さ
+				reverseDirection: false //最初から順に再生
+			}
+	    });
+
+
 
 		// 画像プレビュー
 		// inputのidから情報の取得
@@ -43,22 +79,16 @@ $(function() {
 	    half: true, //★の半分の入力を行う
 		});
 
-	});
-});
 
 //エリア・都道府県クリックで表示
-document.addEventListener("turbolinks:load", function() {
-	$(function(){
 		$(".openBtn").click(function(){
 		  $(this).next(".textArea").animate({
 		  	height: 'toggle', opacity: 'toggle'  //折りたたみ
 		  },'nomal');  //速度
 		});
-	});
 
 
 	// マウスオンで検索サイドバーを表示
-	$(function() {
 	    $('#slide').hover(
 	    	function(){
 	    		$(this).stop(true).animate({'marginRight':'300px'},500);
@@ -67,10 +97,8 @@ document.addEventListener("turbolinks:load", function() {
 	    		$(this).animate({'marginRight':'0'},500);
 	    	}
 	    );
-	});
 
 	// スライドさせる
-	$(document).ready(function(){
 		fit();
 		$(window).resize(function(){
 			fit();
@@ -79,5 +107,4 @@ document.addEventListener("turbolinks:load", function() {
 			var h = $(window).height();
 			$('.slide-inner').css("height",h);
 		}
-	});
-})
+});

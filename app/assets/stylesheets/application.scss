@@ -17,7 +17,6 @@
  @import "bootstrap";
 
 
-
 /* トップスライド*/
 
 /* 全体のスタイル */
@@ -30,50 +29,7 @@
 .swiper-slide {
 	color: #000;
 	text-align: center;
-	background-size: cover;
-	background-position: center;
 }
-
-
-.swiper-slide:first-child {
-	background-image: image-url("bridge.jpg");
-}
-.swiper-slide:nth-child(2) {
-   background-color: #f2fdf9;
-}
-.swiper-slide:nth-child(3) {
-	background-image: image-url("green.jpg");
-}
-.swiper-slide:nth-child(4) {
-	background-image: image-url("ichiba.jpg");
-}
-.swiper-slide:nth-child(5) {
-	
-}
-.swiper-slide:nth-child(6) {
-	background-image: image-url("pizza.jpg");
-}
-
-.swiper-slide:nth-child(7) {
-	background-image: image-url("yakitori.jpg");
-}
-.swiper-slide:nth-child(8){
-	background-image: image-url("bridge3.jpg");
-}
-.swiper-slide:nth-child(9) {
-	background-color: #fdf3f2;
-}
-.swiper-slide:nth-child(10){
-	background-image: image-url("winter.jpg");
-}
-.swiper-slide:nth-child(11) {
-	
-}
-.swiper-slide:nth-child(12) {
-	background-image: image-url("tunnel.jpg");
-}
-
-
 
 /*検索サイドバー*/
  #slide{
