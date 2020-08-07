@@ -13,8 +13,8 @@
 
 		<p>おすすめ：<%= @user.recommend %></p>
 		<p>自己紹介：<%= @user.introduction %></p>
-		<p>Follows：<%= link_to @user.follower.count, user_follows_path(@user) %>
-			Follower：<%= link_to @user.followed.count, user_followers_path(@user) %>
+		<p>Follows：<%= @user.follower.count %>
+			Follower：<%= @user.followed.count %>
 		</p>
 
 
