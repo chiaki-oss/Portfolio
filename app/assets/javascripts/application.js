@@ -21,41 +21,29 @@
 
 	$(document).on('turbolinks:load', () => {
 
-		var mySwiper1 = new Swiper('.swiper1', {
+		var mySwiper1 = new Swiper('.swiperTop', {
 	    	initialSlide: 0,
 	    	speed: 8000,
 	    	loop: true,
 	    	spaceBetween: 5, //スライド毎の間隔
-	    	slidesPerView: 8, //一度に表示するスライドの枚数
+	    	slidesPerView: 5, //一度に表示するスライドの枚数
 			autoplay: {
 				delay: 0, //速さ
 				reverseDirection: true //最初から順に再生
 			}
 	    });
 
-	    var mySwiper2 = new Swiper('.swiper2', {
-	    	speed: 8000,
-	    	loop: true,
-	    	spaceBetween: 5, //スライド毎の間隔
-	    	slidesPerView: 8, //一度に表示するスライドの枚数
-			autoplay: {
-				delay: 300, //速さ
-				reverseDirection: false //最初から順に再生
-			}
-	    });
-
-	    var mySwiper3 = new Swiper('.swiper3', {
+	    var mySwiper2 = new Swiper('.swiperBottom', {
 	    	initialSlide: 6,
 	    	speed: 8000,
 	    	loop: true,
 	    	spaceBetween: 5, //スライド毎の間隔
-	    	slidesPerView: 8, //一度に表示するスライドの枚数
+	    	slidesPerView: 5, //一度に表示するスライドの枚数
 			autoplay: {
 				delay: 300, //速さ
 				reverseDirection: false //最初から順に再生
 			}
 	    });
-
 
 
 		// 画像プレビュー

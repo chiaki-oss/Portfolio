@@ -1,3 +1,8 @@
+<!-- SIDEBAR -->
+<div>
+	<%= render 'layouts/sidebar', {genres: @genres, tags: @tags, areas: @areas} %>
+</div>
+
 <% if params[:keyword] %>
 	<h2><%= @keyword %>の検索結果：<%= @posts.count %>件ヒットしました</h2>
 <% elsif params[:area_id] %>

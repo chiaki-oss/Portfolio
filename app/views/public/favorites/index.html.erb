@@ -1,3 +1,7 @@
+<!-- SIDEBAR -->
+<div>
+	<%= render 'layouts/sidebar', {genres: @genres, tags: @tags, areas: @areas} %>
+</div>
 <h3>お気に入りの投稿一覧</h3>
 <%= render 'public/posts/index', posts: @favorite_posts %>
 <%= link_to 'マイページに戻る', user_path(current_user) %>

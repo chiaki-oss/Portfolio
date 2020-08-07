@@ -1,1 +1,5 @@
-$("#favorite-<%= @post.id %>").html("<%= j(render partial: 'public/favorites/favorite', locals: {post: @post}) %>");
+// $("#favorite-<%= @post.id %>").html("<%= j(render partial: 'public/favorites/favorite', locals: {post: @post}) %>");
+// 同一ページに複数存在するため、classで指定してeach文で回して該当するもの全てに実行
+$('.favorite-<%= @post.id %>').each(function(index,element){
+  $(element).html("<%= j(render partial: 'public/favorites/favorite', locals: {post: @post}) %>");
+});

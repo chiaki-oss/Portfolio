@@ -1,5 +1,6 @@
 class Public::FavoritesController < ApplicationController
 	before_action :authenticate_user!
+	before_action :sidebar
 
 	def create
 		@post = Post.find(params[:post_id])

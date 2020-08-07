@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
 	before_action :authenticate_user!, only: [:edit, :update, :confirm, :withdraw]
+	before_action :sidebar
 
 	def show
 		@user = User.find(params[:id])

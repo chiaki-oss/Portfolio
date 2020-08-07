@@ -12,7 +12,7 @@
 			<span><%= post.user.name %></span>
 
 			<!-- いいね機能 -->
-			<span id="favorite-<%= post.id %>">
+			<span class="favorite-<%= post.id %>">
 				<%= render 'public/favorites/favorite', post: post %>
 	        </span>
 	    </p>

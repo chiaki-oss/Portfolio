@@ -1,158 +1,37 @@
 
 	<!-- SIDEBAR -->
 	<div>
-		<div id="slide">
-			<span class="nav-icon">
-				<i class="fas fa-search"></i>
-				<p>検索</p>
-			</span>
-
-
-			<div class="slide-inner">
-				<div>
-					<h5>
-						<span><i class="fas fa-angle-double-right"></i></span>
-						キーワードで探す
-					</h5>
-		            <%= form_tag(posts_path, method: :get) do %>
-		                <%= text_field_tag :keyword, '', placeholder: "キーワードで検索" %>
-		                <%= submit_tag '検索' %>
-		            <% end %>
-				</div>
-				<div>
-					<h5>
-						<span><i class="fas fa-angle-double-right"></i></span>
-						ジャンルから探す
-					</h5>
-					<% @genres.each do |genre| %>
-						<%= link_to genre.name, posts_path(genre_id: genre.id) %>
-					<% end %>
-				</div>
-				<div>
-					<h5>
-						<span><i class="fas fa-angle-double-right"></i></span>
-						タグから探す
-					</h5>
-					<% @tags.each do |tag| %>
-						#<%= link_to tag.name, posts_path(tag_id: tag.id) %>
-					<% end %>
-				</div>
-				<div class="area">
-					<h5>
-						<span><i class="fas fa-angle-double-right"></i></span>
-						エリア / 都道府県から探す
-					</h5>
-					<% @areas.each do |area| %>
-						<p class="openBtn"><%= link_to area.name, posts_path(area_id: area.id) %>エリア
-						</p>
-						<p class="textArea">
-							<% area.prefectures.each do |prefecture| %>
-								<%= link_to prefecture.name, posts_path(prefecture_id: prefecture.id) %>
-							<% end %>
-						</p>
-					<% end %>
-				</div>
-			</div>
-		</div>
+		<%= render 'layouts/sidebar', {genres: @genres, tags: @tags, areas: @areas} %>
 	</div>
 
     <!-- Main Visual -->
-	<div class="swiper-container swiper1">
+	<div class="swiper-container swiperTop">
 	    <div class="swiper-wrapper">
-	        <div class="swiper-slide">Slide 1
-	        	<%= image_tag asset_path("asakusa.jpg", :width => 'auto', :height => '70px')%>
-        	</div>
+	        <div class="swiper-slide">Slide 1</div>
 	        <div class="swiper-slide">Slide 2</div>
-	        <div class="swiper-slide">Slide 3
-	        	<%= image_tag asset_path("nikuya.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 4
-	        	<%= image_tag asset_path("plum.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 5
-	        	<%= image_tag asset_path("bridge.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 6
-	        	<%= image_tag asset_path("sea.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 7
-	        	<%= image_tag asset_path("pond.jpg", :width =>'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 8
-	        	<%= image_tag asset_path("winter.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 9
-	        	<%= image_tag asset_path("cafe.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 10
-	        	<%= image_tag asset_path("oden.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	    </div>
-	</div>
-
-	<div class="swiper-container swiper2" dir="rtl">
-	    <div class="swiper-wrapper">
-	        <div class="swiper-slide">Slide 1
-	        	<%= image_tag asset_path("pizza.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 2
-	        	<%= image_tag asset_path("street.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 3
-	        	<%= image_tag asset_path("tunnel.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 4
-	        	<%= image_tag asset_path("bridge2.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
+	        <div class="swiper-slide">Slide3</div>
+	        <div class="swiper-slide">Slide4</div>
 	        <div class="swiper-slide">Slide 5</div>
-	        <div class="swiper-slide">Slide 6
-	        	<%= image_tag asset_path("yakitori.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 7
-	        	<%= image_tag asset_path("pond.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 8
-	        	<%= image_tag asset_path("takoyaki.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 9
-	        	<%= image_tag asset_path("green.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 10
-	        	<%= image_tag asset_path("bridge3.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
+	        <div class="swiper-slide">Slide 6</div>
+	        <div class="swiper-slide">Slide7 </div>
+	        <div class="swiper-slide">Slide8</div>
 	    </div>
 	</div>
 
-	<div class="swiper-container swiper3">
+	<div class="swiper-container">
+		<h3>Welcome!!</h3>
+	</div>
+
+	<div class="swiper-container swiperBottom">
 	    <div class="swiper-wrapper">
-	        <div class="swiper-slide">Slide 1
-	        	<%= image_tag asset_path("rake.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 2
-	        	<%= image_tag asset_path("cafe.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 3
-	        	<%= image_tag asset_path("street.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 4
-	        	<%= image_tag asset_path("nikuya.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 5
-	        	<%= image_tag asset_path("tunnel.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 6
-	        	<%= image_tag asset_path("sea.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 7
-	        	<%= image_tag asset_path("plum.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 8
-	        	<%= image_tag asset_path("winter.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 9
-	        	<%= image_tag asset_path("ichiba.jpg", :width => 'auto', :height => '70px') %>
-	        </div>
-	        <div class="swiper-slide">Slide 10</div>
+	        <div class="swiper-slide">Slide 1</div>
+	        <div class="swiper-slide">Slide 2</div>
+	        <div class="swiper-slide">Slide3 </div>
+	        <div class="swiper-slide">Slide4</div>
+	        <div class="swiper-slide">Slide5</div>
+	        <div class="swiper-slide">Slide 6</div>
+	        <div class="swiper-slide">Slide7</div>
+	        <div class="swiper-slide">Slide8</div>
 	    </div>
 	</div>
 
