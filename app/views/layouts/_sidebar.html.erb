@@ -1,0 +1,52 @@
+<div id="slide">
+	<span class="nav-icon">
+		<i class="fas fa-search"></i>
+		<p>検索</p>
+	</span>
+
+	<div class="slide-inner">
+		<div>
+			<h5>
+				<span><i class="fas fa-angle-double-right"></i></span>
+				キーワードで探す
+			</h5>
+            <%= form_tag(posts_path, method: :get) do %>
+                <%= text_field_tag :keyword, '', placeholder: "キーワードで検索" %>
+                <%= submit_tag '検索' %>
+            <% end %>
+		</div>
+		<div>
+			<h5>
+				<span><i class="fas fa-angle-double-right"></i></span>
+				ジャンルから探す
+			</h5>
+			<% genres.each do |genre| %>
+				<%= link_to genre.name, posts_path(genre_id: genre.id) %>
+			<% end %>
+		</div>
+		<div>
+			<h5>
+				<span><i class="fas fa-angle-double-right"></i></span>
+				タグから探す
+			</h5>
+			<% tags.each do |tag| %>
+				#<%= link_to tag.name, posts_path(tag_id: tag.id) %>
+			<% end %>
+		</div>
+		<div class="area">
+			<h5>
+				<span><i class="fas fa-angle-double-right"></i></span>
+				エリア / 都道府県から探す
+			</h5>
+			<% areas.each do |area| %>
+				<p class="openBtn"><%= link_to area.name, posts_path(area_id: area.id) %>エリア
+				</p>
+				<p class="textArea">
+					<% area.prefectures.each do |prefecture| %>
+						<%= link_to prefecture.name, posts_path(prefecture_id: prefecture.id) %>
+					<% end %>
+				</p>
+			<% end %>
+		</div>
+	</div>
+</div>
