@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
 	private
 
 	def sidebar
-		@areas = Area.includes(:prefectures)
-		@genres = Genre.limit(8)
+		@s_areas = Area.includes(:prefectures)
+		@s_genres = Genre.limit(8)
 		# 投稿をもつタグのみ表示
-		@tags = Tag.joins(:posts).where("posts.id is NOT NULL")
+		@s_tags = Tag.joins(:posts).where("posts.id is NOT NULL")
 		#新着投稿
 	end
 

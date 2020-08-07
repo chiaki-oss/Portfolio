@@ -37,34 +37,33 @@ class Public::PostsController < ApplicationController
 				@areas = Area.all
 				@area = @areas.find(params[:area_id])
 				#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
-				all_posts = Post.where(prefecture_id: @area.prefectures.pluck(:id))
+				@posts = Post.includes(:user, :genre, :prefecture).where(prefecture_id: @area.prefectures.pluck(:id))
 
 			# 都道府県毎
 			elsif params[:prefecture_id]
 				@prefectures = Prefecture.all
 				@prefecture = @prefectures.find(params[:prefecture_id])
-				all_posts = @prefecture.posts
+				@posts = @prefecture.posts.includes(:user, :genre)
 
 			# ジャンル毎　＝ジャンルに結びつく投稿取得
 			elsif params[:genre_id]
 				@genres = Genre.all
 				@genre = @genres.find(params[:genre_id])
 				#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
-				all_posts = @genre.posts
+				@posts = @genre.posts.includes(:user, :prefecture)
 
 			# タグ毎
 			elsif params[:tag_id]
 				@tags = Tag.all
 				@tag = @tags.find(params[:tag_id])
 				#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
-				all_posts = @tag.posts
+				@posts = @tag.posts.includes(:user, :genre, :prefecture)
 
 			#全件取得
 			else
-				all_posts = Post.all
+				@posts = Post.includes(:user, :genre, :prefecture)
 			end
-			@posts = all_posts.all              #該当する投稿
-			@all_posts_count = all_posts.count  #検出件数
+
 		end
 
 	end
@@ -72,7 +71,7 @@ class Public::PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@post_comment = PostComment.new
-		@post_comments = @post.post_comments
+		@post_comments = @post.post_comments.includes(:user)
 	end
 
 	def create
