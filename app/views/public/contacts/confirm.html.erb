@@ -3,12 +3,12 @@
 	<%= form_with model: @contact, url: contacts_path do |f| %>
 	<div class="field">
 		<%= f.label :タイトル %>
-		<%= f.text_field :title %>
+		<%= f.text_field :title, class:"form-control" %>
 	</div>
 
     <div class="field">
 		<%= f.label :問い合わせ内容 %>
-		<%= f.text_area :body %>
+		<%= f.text_area :body, rows:'10', class:"form-control" %>
 	</div>
 
     <div class="field">

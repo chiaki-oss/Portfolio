@@ -1,9 +1,10 @@
 <thead>
 	<tr>
-		<td></td>
-		<td><i class="far fa-star fa-lg"></i></td>
-		<td><i class="far fa-comment-dots fa-lg"></i></td>
-		<td>コメント日</td>
+		<td class="col-xs-1"></td>
+		<td class="col-xs-1"><i class="far fa-star fa-lg"></i></td>
+		<td class="col-xs-6"><i class="far fa-comment-dots fa-lg"></i></td>
+		<td class="col-xs-2">コメント日</td>
+        <td class="col-xs-2"></td>
 	</tr>
 </thead>
 <tbody>
@@ -25,9 +26,10 @@
         <!--コメント削除 -->
         <% if post_comment.user == current_user %>
         <td>
-	        <%= link_to 'コメント（評価）を削除する', post_post_comment_path(post_comment.post, post_comment ), method: :delete, remote: true %>
+	        <%= link_to '削除する', post_post_comment_path(post_comment.post, post_comment ), method: :delete, remote: true %>
 	        <% end %>
 	    </td>
+        <td></td>
     </tr>
 <% end %>
 </tbody>

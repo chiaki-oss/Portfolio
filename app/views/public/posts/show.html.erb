@@ -57,7 +57,7 @@
 <% if @post_comments.exists? %>
 	<div class="row">
 		<h4>コメント一覧</h4>
-		<table id="comment_<%= @post.id %>">
+		<table id="comment_<%= @post.id %>" class="table">
 			<%= render 'public/posts/comment', post_comments: @post_comments %>
 		</table>
 	</div>

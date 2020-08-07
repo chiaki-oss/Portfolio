@@ -13,24 +13,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :現在のパスワード %>
+    <%= f.label :現在のパスワード %><br>
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
   <div class="field">
     <%= f.label :新しいパスワード %> 
-    <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <em><%= @minimum_password_length %> 文字以上</em>
     <% end %>
+    <br>
+    <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
     <%= f.label :新しいパスワード（確認用） %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
-  
 
   <div class="actions">
     <%= f.submit "変更する" %>　<%= link_to "戻る", :back %>

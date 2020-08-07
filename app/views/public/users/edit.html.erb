@@ -1,31 +1,47 @@
-<h1>登録情報の編集</h1>
+<h3>登録情報の編集</h3>
+<p>あなたの一番のおすすめ、紹介文も書いてみましょう！</p>
+
 <%= form_for(@user, url: user_path) do |f| %>
 <div class="row">
 
-	<div id="image">
-		<%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg", size:"50x50" %>
-		<span><%= f.attachment_field :image %></span>
+	<div class="col-xs-5">
+
+		<div class="field">
+			<%= f.label :Username %>
+			<%= f.text_field :name %>
+		</div>
+
+		<div id="image">
+			<%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg", size:"50x50" %>
+			<span><%= f.attachment_field :image %></span>
+		</div>
+
 	</div>
 
-	<div class="field">
-		<%= f.label :ユーザー名 %>
-		<%= f.text_field :name %>
+	<div class="col-xs-7">
+
+		<div class="field">
+			<%= f.label :おすすめ %><br>
+			<%= f.text_field :recommend %>
+		</div>
+
+		<div class="field">
+			<%= f.label :紹介文 %><br>
+			<%= f.text_area :introduction, size: "90x5", placeholder:"（例）訪れてよかった場所、印象に残っている出来事、景色、食べもの、出身地など"  %>
+		</div>
+
+		<div>
+			<%= f.submit "編集内容を保存する" %>
+　　　　 </div>
 	</div>
 
-	<div class="field">
-		<%= f.label :おすすめ %>
-		<%= f.text_field :recommend %>
-	</div>
-
-	<div class="field">
-		<%= f.label :紹介文 %>
-		<%= f.text_area :introduction %>
-	</div>
-</div>
-
-<div>
-	<%= f.submit "更新する" %><%= link_to "パスワードを変更する", edit_user_registration_path %>
-	<p><%= link_to 'マイページに戻る', user_path(current_user) %></p>
 </div>
 <% end %>
+
+<div>
+	<%= link_to "パスワードを変更する", edit_user_registration_path %>
+	<%= link_to 'マイページに戻る', user_path(current_user) %>
+</div>
+
+
 

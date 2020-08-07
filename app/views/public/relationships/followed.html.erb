@@ -5,6 +5,8 @@
 		    <tr>
 			    <th>image</th>
 			    <th>name</th>
+			    <th>投稿数</th>
+			    <th></th>
 		    </tr>
 		</thead>
 
@@ -13,6 +15,7 @@
 		    <tr>
 		        <td><%= attachment_image_tag user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %></td>
 		        <td><%= user.name %></td>
+		        <td><%= user.posts.count %></td>
 		        <td>
 		          <% if current_user != user %>
 		            <% if current_user.following?(user) %>
