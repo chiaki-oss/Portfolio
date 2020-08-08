@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		#検索窓
+		# 検索窓
 		if params[:keyword]
 			@keyword = params[:keyword]
 			@users = []

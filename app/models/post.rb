@@ -10,8 +10,6 @@ class Post < ApplicationRecord
 
 	validates :title, presence: true
 	validates :body, presence: true
-	validates :genre_id, presence: true
-	validates :prefecture_id, presence: true
 
     # いいね いいねしてるかどうかの確認
 	has_many :favorites, dependent: :destroy

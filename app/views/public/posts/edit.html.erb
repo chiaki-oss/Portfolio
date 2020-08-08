@@ -1,5 +1,7 @@
 <h1>post#edit</h1>
 
+<%= render 'layouts/error_messages', resource: @post %>
+
 <%= form_for(@post, url: post_path(@post)) do |f| %>
 <div class="row">
 	<div class="col-xs-5">

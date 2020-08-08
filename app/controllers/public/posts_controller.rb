@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
 	end
 
 	def index
-		#検索窓
+		# 検索窓
 		if params[:keyword]
 			@keyword = params[:keyword]
 			@posts = []
@@ -32,11 +32,11 @@ class Public::PostsController < ApplicationController
 
 		# トップサイドバーリンク
 		elsif
-			#エリア毎 = エリアに結びつく都道府県にある投稿取得
+			# エリア毎 = エリアに結びつく都道府県にある投稿取得
 			if params[:area_id]
 				@areas = Area.all
 				@area = @areas.find(params[:area_id])
-				#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
+				# 投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
 				@posts = Post.includes(:user, :genre, :prefecture).where(prefecture_id: @area.prefectures.pluck(:id))
 
 			# 都道府県毎
@@ -49,17 +49,17 @@ class Public::PostsController < ApplicationController
 			elsif params[:genre_id]
 				@genres = Genre.all
 				@genre = @genres.find(params[:genre_id])
-				#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
+				# 投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
 				@posts = @genre.posts.includes(:user, :prefecture)
 
 			# タグ毎
 			elsif params[:tag_id]
 				@tags = Tag.all
 				@tag = @tags.find(params[:tag_id])
-				#投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
+				# 投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
 				@posts = @tag.posts.includes(:user, :genre, :prefecture)
 
-			#全件取得
+			# 全件取得
 			else
 				@posts = Post.includes(:user, :genre, :prefecture)
 			end

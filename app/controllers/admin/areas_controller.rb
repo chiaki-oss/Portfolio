@@ -3,7 +3,7 @@ class Admin::AreasController < ApplicationController
 
 	def index
 		@areas = Area.all
-		@new_area = Area.new #新規投稿フォーム
+		@new_area = Area.new # 新規投稿フォーム
 	end
 
 	def create

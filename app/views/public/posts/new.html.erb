@@ -3,6 +3,8 @@
 	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
 </div>
 
+<%= render 'layouts/error_messages', resource: @post %>
+
 <h1>Let's Post!!</h1>
 <p>地元や訪れた場所のお気に入り、印象に残っていること<br>
 	あなたのお気に入りの場所、もの、<br>
@@ -11,8 +13,9 @@
 	あなたがみんなに知ってほしいこと、なんでもいいので投稿してみましょう！！！
 </p>
 
+<%= form_for(@post, url: posts_path) do |f| %>
 <div class="row">
-	<%= form_for(@post, url: posts_path) do |f| %>
+
 	<div class="col-xs-5">
 		<div id="image">
 			<span><%= f.attachment_field :image %></span>

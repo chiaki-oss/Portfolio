@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 		@s_genres = Genre.limit(8)
 		# 投稿をもつタグのみ表示
 		@s_tags = Tag.joins(:posts).where("posts.id is NOT NULL")
-		#新着投稿
+		# 新着投稿
 	end
 
 	#sign up時の登録情報追加 # ログイン時にnameを使用

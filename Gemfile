@@ -53,6 +53,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -75,6 +76,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 # 環境変数
 gem 'dotenv-rails'
+# 日本語化
+gem 'rails-i18n'
 # デプロイ用
 group :production do
   gem 'mysql2'

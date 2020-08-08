@@ -26,7 +26,7 @@
 	    	speed: 8000,
 	    	loop: true,
 	    	spaceBetween: 5, //スライド毎の間隔
-	    	slidesPerView: 5, //一度に表示するスライドの枚数
+	    	slidesPerView: 7, //一度に表示するスライドの枚数
 			autoplay: {
 				delay: 0, //速さ
 				reverseDirection: true //最初から順に再生
@@ -34,13 +34,11 @@
 	    });
 
 	    var mySwiper2 = new Swiper('.swiperBottom', {
-	    	initialSlide: 6,
-	    	speed: 8000,
+	    	speed: 50000,
 	    	loop: true,
-	    	spaceBetween: 5, //スライド毎の間隔
-	    	slidesPerView: 5, //一度に表示するスライドの枚数
+	    	slidesPerView: 0.9, //一度に表示するスライドの枚数
 			autoplay: {
-				delay: 300, //速さ
+				delay: 0, //速さ
 				reverseDirection: false //最初から順に再生
 			}
 	    });

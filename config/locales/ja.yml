@@ -1,0 +1,41 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        title: "タイトル"
+        body: "説明"
+        image: "画像"
+        price: "税抜価格"
+        genre: "ジャンル"
+        prefecture: "都道府県"
+      genre:
+        name: "ジャンル名"
+  views:
+    pagination:
+      first: "≪"
+      previous: "<"
+      next: ">"
+      last: "≫"
+  devise:
+    failure:
+      already_authenticated: "既にログイン済みです。"
+      # inactive: "Your account is not activated yet."
+      invalid: "メールアドレスまたはパスワードが正しくありません。"
+      not_found_in_database: "メールアドレスまたはパスワードが正しくありません。"
+      # timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "続けるにはログインが必要です。"
+    registrations:
+      signed_up: "会員登録が完了しました。ようこそNaganoCakeへ！"
+      updated: "パスワードの更新が完了しました。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "ログアウトしました。"
+  errors:
+    messages:
+      already_confirmed: "メールアドレスは既に登録されています。"
+      # not_found: "not found"
+      # not_locked: "was not locked"
+      not_saved: 
+        one: "エラーが発生しました。以下ご確認お願いいたします。"
+        other: "エラーが発生しました。以下ご確認お願いいたします。"
