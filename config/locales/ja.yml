@@ -10,6 +10,9 @@ ja:
         prefecture: "都道府県"
       genre:
         name: "ジャンル名"
+      contact:
+        title: "タイトル"
+        body: "お問い合わせ内容"
   views:
     pagination:
       first: "≪"

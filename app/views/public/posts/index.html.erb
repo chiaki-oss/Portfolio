@@ -20,7 +20,7 @@
 <!-- プルダウン並び替え -->
 <div class="row">
 	<%= form_tag(posts_path, method: :get) do %>
-		<%= select_tag(:option, options_for_select([["新規投稿順", "1"],["古い投稿順","2"]])) %>
+		<%= select_tag(:option, options_for_select([['新規投稿順', 'new'],['古い投稿順','old'],['人気の投稿順', 'likes']])) %>
 		<%= submit_tag '検索' %>
 	<% end %>
 </div>

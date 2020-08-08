@@ -19,6 +19,7 @@
 //= require_tree .
 
 
+	// Mainvisual
 	$(document).on('turbolinks:load', () => {
 
 		var mySwiper1 = new Swiper('.swiperTop', {
@@ -44,8 +45,8 @@
 	    });
 
 
-		// 画像プレビュー
-		// inputのidから情報の取得
+	// 画像プレビュー
+	// inputのidから情報の取得
 	    $('#image').on('change', function (e) {
 		// ここから既存の画像のurlの取得
 	    var reader = new FileReader();
@@ -55,7 +56,7 @@
 	    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
 		});
 
-		// 星評価
+	// 星評価
 		$('#star').raty({
 		size: 36,
 	    starOff: '/assets/star-off.png',
@@ -64,15 +65,6 @@
 	    scoreName: 'post_comment[rate]', //reviewカラムに保存
 	    half: true, //★の半分の入力を行う
 		});
-
-
-//エリア・都道府県クリックで表示
-		$(".openBtn").click(function(){
-		  $(this).next(".textArea").animate({
-		  	height: 'toggle', opacity: 'toggle'  //折りたたみ
-		  },'nomal');  //速度
-		});
-
 
 	// マウスオンで検索サイドバーを表示
 	    $('#slide').hover(
@@ -84,7 +76,7 @@
 	    	}
 	    );
 
-	// スライドさせる
+	// スクロール
 		fit();
 		$(window).resize(function(){
 			fit();
@@ -92,5 +84,13 @@
 		function fit(){
 			var h = $(window).height();
 			$('.slide-inner').css("height",h);
-		}
+		};
+
+	//エリア・都道府県クリックで表示
+		$(".openBtn").click(function(){
+		  $(this).next(".textArea").animate({
+		  	height: 'toggle', opacity: 'toggle'  //折りたたみ
+		  },'nomal');  //速度
+		});
+
 });

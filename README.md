@@ -1,4 +1,4 @@
-# みんなのご当地自慢  〜もっと日本を知ろう！盛り上げよう！〜
+# Local みんなのご当地自慢  〜もっと日本を知ろう！盛り上げよう！〜
 
 ## サイト概要
 日本各地の魅力発信促進を目的としたサイト
@@ -28,6 +28,9 @@
 
 
 ## 設計書
+
+### ER図
+https://www.draw.io/#G10n8eUDWcJ5UF8dnEImURZU7JQIySfp0G
 
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1BHcceiJKLOO_TDw_dU_oI27XxXt5mlhcQk4XSwe4xwE/edit?usp=sharing>

@@ -24,10 +24,12 @@ class Public::PostsController < ApplicationController
 		# ソート検索
 		elsif params[:option]
 			@option = params[:option]
-			if @option == '1'
-				@posts = Post.all.order("created_at DESC")
-			elsif @option == '2'
-				@posts = Post.all
+			if @option == 'new'
+				@posts = Post.includes(:user, :genre, :prefecture).order("created_at DESC")
+			elsif @option == 'old'
+				@posts = Post.includes(:user, :genre, :prefecture)
+			elsif @option == 'likes'
+				@posts = Post.includes(:user, :prefecture, :genre).find(Favorite.group(:post_id).order('count(post_id)desc').pluck(:post_id))
 			end
 
 		# トップサイドバーリンク

@@ -3,15 +3,14 @@
 	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
 </div>
 
-
 <h2><%= @post.title %></h2>
 <div class="row">
 	<div class="col-xs-5">
-		<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "sample.jpg", size:"450x300" %>
+		<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "sample.jpg", width:'100%', height: '100%' %>
 		<p>投稿日 <%= @post.created_at.strftime("%Y/%m/%d") %>
 		   更新日 <%= @post.updated_at.strftime("%Y/%m/%d ") %></p>
 	</div>
-	<div class="col-xs-5">
+	<div class="col-xs-3">
 		<p>
 	        <span class="post-prefecture"><%= link_to @post.prefecture.name, posts_path(prefecture_id: @post.prefecture.id)  %></span>
 			<span class="post-genre"><%= link_to @post.genre.name, posts_path(genre_id: @post.genre.id) %></span>
@@ -26,21 +25,39 @@
 				#<%= link_to tag.name, posts_path(tag_id: tag.id) %>
 			<% end %>
 		</p>
-		<p><%= @post.body %></p>
 		<!-- いいね機能 -->
 		<p class="favorite-<%= @post.id %>">
 			<%= render 'public/favorites/favorite', post: @post %>
 		</p>
     </div>
 
-    <div class="col-xs-2">
+    <div class="col-xs-4">
         <!-- ユーザーの投稿編集・削除ボタン -->
-        <% if @post.user == current_user %>
+        <% if @post.user == current_user  %>
 	        <p><%= link_to '投稿を編集する', edit_post_path(@post) %><br>
 	        <%= link_to '投稿を削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' } %></p>
+
+	    <% elsif user_signed_in? %>
+	    <!-- howto -->
+		    <p>「知らなかった！」「行ってみたい！」と思った投稿に♡を送りましょう。
+			    ♡をつけた投稿はマイページから確認できます。</p>
+			    <p>
+			    「もっと知りたい！」など投稿者に聞いてみたいことや、「これは伝えたい！」などあなたが感じたことがあればコメントを送ったり、星の評価を送ってみましょう。</p>
+
+		<% else %>
+			<p>お気に入り投稿の登録（♡）やコメント、☆評価は会員登録済の方のみ可能となります。</p>
+			<p>会員登録をして、あなたのおすすめを投稿したり、お気に入りやコメントを送ったり、、、みんなと交流してみましょう！</p>
+			<p>
+				-><%= link_to '会員登録はこちらから', user_session_path %>
+			</p>
+
 	    <% end %>
 	</div>
+</div>
 
+<div class="row">
+	<p>《紹介文》</p>
+	<p><%= @post.body %></p>
 </div>
 
 <!-- コメントフォーム -->
