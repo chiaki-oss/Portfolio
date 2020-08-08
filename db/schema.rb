@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_01_082401) do
+ActiveRecord::Schema.define(version: 2020_08_08_124513) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 2020_08_01_082401) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_areas_on_name", unique: true
+  end
+
+  create_table "browsing_histories", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "contacts", force: :cascade do |t|

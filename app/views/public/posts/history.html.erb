@@ -1,0 +1,23 @@
+<h2>閲覧履歴</h2>
+<% @histories.each do |history| %>
+	<div class="col-xs-3">
+		<%= link_to post_path(history.post) do %>
+			<%= attachment_image_tag history.post, :image, format: "jpeg", fallback: "sample.jpg", size:"250x200" %>
+		<% end %>
+		<h4><%= history.post.title %></h4>
+		<hr>
+		<p>
+			<%= attachment_image_tag history.post.user, :image, format: "jpeg", fallback: "no_image.jpg", size: "20x20" %>
+			<span><%= history.post.user.name %></span>
+
+			<!-- いいね機能 -->
+			<span class="favorite-<%= history.post.id %>">
+				<%= render 'public/favorites/favorite', post: history.post %>
+	        </span>
+	    </p>
+	    <span class="post-prefecture"><%= link_to history.post.prefecture.name, posts_path(prefecture_id: history.post.prefecture.id)  %></span>
+		<span class="post-genre"><%= link_to history.post.genre.name, posts_path(genre_id: history.post.genre.id) %></span>
+	</div>
+	<% end %>
+</div>
+
