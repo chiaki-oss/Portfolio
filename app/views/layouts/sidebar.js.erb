@@ -1,0 +1,5 @@
+$('#tag_lists').append(`<%= j(render partial: 'layouts/tag_list',locals: { tags: @s_tags }) %>`);
+$('#view_more').hide();
+
+// append: 子要素を表示
+// hide: すべてが表示されたらボタンを非表示に

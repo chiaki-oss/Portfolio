@@ -24,15 +24,22 @@
 				<%= link_to genre.name, posts_path(genre_id: genre.id) %>
 			<% end %>
 		</div>
+
+
 		<div>
 			<h5>
 				<span><i class="fas fa-angle-double-right"></i></span>
 				タグから探す
 			</h5>
-			<% tags.each do |tag| %>
-				#<%= link_to tag.name, posts_path(tag_id: tag.id) %>
-			<% end %>
+			<div id="tag_lists"><%= render 'layouts/tag_list', tags: tags %></div>
+
+			<div class="more">
+				<%= link_to_next_page tags, 'もっと見る', remote: true, id: 'view_more' %>
+			</div>
 		</div>
+
+
+
 		<div class="area">
 			<h5>
 				<span><i class="fas fa-angle-double-right"></i></span>

@@ -73,22 +73,25 @@ class Public::PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		@post_comment = PostComment.new
 		@post_comments = @post.post_comments.includes(:user)
+
 		# 閲覧履歴
-		new_history = @post.browsing_histories.new
-		new_history.user_id = current_user.id
+		if user_signed_in?
+			new_history = @post.browsing_histories.new
+			new_history.user_id = current_user.id
 
-		# 閲覧履歴が既にあるか確認、ある場合は古い記録を削除して新しく保存
-		if current_user.browsing_histories.exists?(post_id: "#{params[:id]}")
-			old_history = current_user.browsing_histories.find_by(post_id: "#{params[:id]}")
-			old_history.destroy
-		end
-		new_history.save
+			# 閲覧履歴が既にあるか確認、ある場合は古い記録を削除して新しく保存
+			if current_user.browsing_histories.exists?(post_id: "#{params[:id]}")
+				old_history = current_user.browsing_histories.find_by(post_id: "#{params[:id]}")
+				old_history.destroy
+			end
+			new_history.save
 
-		# 閲覧履歴の上限設定。超えたら古い記録を削除
-		histories_limit = 10
-		histories = current_user.browsing_histories.all
-		if histories.count > histories_limit
-			histories[0].destroy
+			# 閲覧履歴の上限設定。超えたら古い記録を削除
+			histories_limit = 10
+			histories = current_user.browsing_histories.all
+			if histories.count > histories_limit
+				histories[0].destroy
+			end
 		end
 	end
 
