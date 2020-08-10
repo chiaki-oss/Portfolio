@@ -35,16 +35,103 @@
 	    </div>
 	</div>
 
-	<h2>New Post</h2>
-	<%= render 'public/posts/index', posts: @new_posts %>
+	<% if user_signed_in? %>
 
-	<h2>Popular Post</h2>
-	<%= render 'public/posts/index', posts: @liked_posts %>
+		<div class="row">
+			<div class="col-xs-8">
 
-	<%= link_to posts_path do %>
-	<div class="to_posts">
-		もっとみる
+				<h2>New Post</h2>
+				<%= render 'public/homes/index', posts: @new_posts %>
+
+				<h2>Popular Post</h2>
+				<%= render 'public/homes/index', posts: @liked_posts %>
+
+				<%= link_to posts_path do %>
+					<div class="to_posts">
+						もっとみる
+					</div>
+				<% end %>
+
+				<h2>Browsing Histroy</h2>
+				<div class="row">
+					<% @histories.each do |history| %>
+						<div class="col-xs-4">
+							<%= link_to post_path(history.post) do %>
+								<%= attachment_image_tag history.post, :image, format: "jpeg", fallback: "sample.jpg", size:"230x150" %>
+							<% end %>
+							<h4><%= history.post.title %></h4>
+							<hr>
+							<p>
+								<%= attachment_image_tag history.post.user, :image, format: "jpeg", fallback: "no_image.jpg", size: "20x20" %>
+								<span><%= history.post.user.name %></span>
+
+								<!-- いいね機能 -->
+								<span class="favorite-<%= history.post.id %>">
+									<%= render 'public/favorites/favorite', post: history.post %>
+						        </span>
+						    </p>
+						    <span class="post-prefecture"><%= link_to history.post.prefecture.name, posts_path(prefecture_id: history.post.prefecture.id)  %></span>
+							<span class="post-genre"><%= link_to history.post.genre.name, posts_path(genre_id: history.post.genre.id) %></span>
+						</div>
+					<% end %>
+				</div>
+
+			</div>
+
+			<div class="col-xs-4">
+				<h2>Timeline</h2>
+				<div class="row">
+					<% @following_posts.each do |post| %>
+					<div class="col-xs-6">
+						<%= link_to post_path(post) do %>
+							<%= attachment_image_tag post, :image, format: "jpeg", fallback: "sample.jpg", size:"160x100" %>
+						<% end %>
+						<h4><%= post.title %></h4>
+						<hr>
+						<p>
+							<%= attachment_image_tag post.user, :image, format: "jpeg", fallback: "no_image.jpg", size: "20x20" %>
+							<span><%= post.user.name %></span>
+
+							<!-- いいね機能 -->
+							<span class="favorite-<%= post.id %>">
+								<%= render 'public/favorites/favorite', post: post %>
+					        </span>
+					    </p>
+					    <span class="post-prefecture"><%= link_to post.prefecture.name, posts_path(prefecture_id: post.prefecture.id)  %></span>
+						<span class="post-genre"><%= link_to post.genre.name, posts_path(genre_id: post.genre.id) %></span>
+					</div>
+					<% end %>
+				</div>
+
+				<%= link_to user_follows_timeline_path (current_user.id)do %>
+					<div class="to_posts">
+						もっとみる
+					</div>
+				<% end %>
+
+			</div>
+		</div>
+
+	<% else %>
+
+	<div>
+
+		<h2>New Post</h2>
+		<%= render 'public/posts/index', posts: @new_posts %>
+
+		<h2>Popular Post</h2>
+		<%= render 'public/posts/index', posts: @liked_posts %>
+
+		<%= link_to posts_path do %>
+			<div class="to_posts">
+				もっとみる
+			</div>
+		<% end %>
+
 	</div>
+
 	<% end %>
+
+	
 
 

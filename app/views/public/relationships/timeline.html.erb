@@ -1,0 +1,3 @@
+<h2>Timeline</h2>
+<p><%= link_to 'Following User', user_follows_path %></p>
+<%= render 'public/posts/index', posts: @following_posts, post: @post %>
