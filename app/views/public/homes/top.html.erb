@@ -46,13 +46,7 @@
 				<h2>Popular Post</h2>
 				<%= render 'public/homes/index', posts: @liked_posts %>
 
-				<%= link_to posts_path do %>
-					<div class="to_posts">
-						もっとみる
-					</div>
-				<% end %>
-
-				<h2>Browsing Histroy</h2>
+				<h2>Browsing Histroy<h5><%= link_to 'もっと見る', history_posts_path %></h5></h2>
 				<div class="row">
 					<% @histories.each do |history| %>
 						<div class="col-xs-4">
@@ -75,6 +69,12 @@
 						</div>
 					<% end %>
 				</div>
+
+				<%= link_to posts_path do %>
+					<div class="to_posts">
+						投稿をもっとみる
+					</div>
+				<% end %>
 
 			</div>
 
@@ -105,7 +105,7 @@
 
 				<%= link_to user_follows_timeline_path (current_user.id)do %>
 					<div class="to_posts">
-						もっとみる
+						タイムラインをもっとみる
 					</div>
 				<% end %>
 
