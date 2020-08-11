@@ -10,7 +10,7 @@ class Post < ApplicationRecord
 	attachment :image
 
 	validates :title, presence: true
-	validates :body, presence: true
+	validates :body, presence: true, length: { maximum: 20}
 
     # いいね いいねしてるかどうかの確認
 	has_many :favorites, dependent: :destroy

@@ -5,7 +5,7 @@
 		<%= link_to post_path(post) do %>
 			<%= attachment_image_tag post, :image, format: "jpeg", fallback: "sample.jpg", size:"250x200" %>
 		<% end %>
-		<h4><%= post.title %></h4>
+		<h5><%= post.title %></h5>
 		<hr>
 		<p>
 			<%= attachment_image_tag post.user, :image, format: "jpeg", fallback: "no_image.jpg", size: "20x20" %>

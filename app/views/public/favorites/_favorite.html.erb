@@ -1,3 +1,4 @@
+
 <% if user_signed_in? %>
     <% if post.favorited_by?(current_user) %>
         <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
@@ -11,9 +12,13 @@
      <span><%= post.favorites.count %></span>
      <span><i class="far fa-comment-dots fa-lg"></i><%= post.post_comments.count %></span>
 <% else %>
-    <span class="glyphicon glyphicon-heart"><%= post.favorites.count %></span>
+    <span class="glyphicon glyphicon-heart-empty"><%= post.favorites.count %></span>
     <span><i class="far fa-comment-dots fa-lg"></i><%= post.post_comments.count %></span>
 <% end %>
+
+
+
+<!-- home/top,_index  post/show,index,_index,history -->
 
 
 

@@ -36,7 +36,6 @@ Rails.application.routes.draw do
       get 'follows/timeline' => 'relationships#timeline'
       get 'followers' => 'relationships#followed', as: 'followers'
     end
-    get 'favorites' => 'favorites#index'
   	resources :posts do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
@@ -44,9 +43,7 @@ Rails.application.routes.draw do
         get :history
       end
     end
-  	resources :genres, only: [:index]
-  	resources :prefectures, only: [:index]
-  	resources :areas, only: [:index]
+    get 'favorites' => 'favorites#index'
     resources :contacts, only: [:new, :create, :index, :show]
     post 'contacts/confirm' => 'contacts#confirm'
     resources :notifications, only: [:index]

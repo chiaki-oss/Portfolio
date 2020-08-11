@@ -35,3 +35,6 @@ https://www.draw.io/#G10n8eUDWcJ5UF8dnEImURZU7JQIySfp0G
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1BHcceiJKLOO_TDw_dU_oI27XxXt5mlhcQk4XSwe4xwE/edit?usp=sharing>
 
+### アプリケーション設計
+https://docs.google.com/spreadsheets/d/1COu9TfA8Tukf26nQ7qjY0rESWDAqhOTc/edit#gid=310645721
+
