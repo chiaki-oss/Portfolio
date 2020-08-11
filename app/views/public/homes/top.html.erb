@@ -20,12 +20,12 @@
 	    </div>
 	</div>
 
-	<div class="swiper-container">
-		<h3>ようこそ 
-			<% if user_signed_in? %>
-				<%= current_user.name %>さん
-			<% end %>
-		</h3>
+	<div class="main-msg">
+		<h3> LOCAL </h3>
+		<p>みんなが知っているローカルの魅力を発信、共有するサイトです。<br>
+			<%= link_to "(→ もっと知る)", about_path %>
+		</p>
+
 	</div>
 
 	<div class="swiper-container swiperBottom">
@@ -116,10 +116,10 @@
 
 	<div>
 
-		<h2>New Post</h2>
+		<h3>新しい投稿</h3>
 		<%= render 'public/posts/index', posts: @new_posts %>
 
-		<h2>Popular Post</h2>
+		<h3>人気の投稿</h3>
 		<%= render 'public/posts/index', posts: @liked_posts %>
 
 		<%= link_to posts_path do %>
