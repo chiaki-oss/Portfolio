@@ -1,3 +1,8 @@
+<!-- SIDEBAR -->
+<div>
+	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
+</div>
+
 <h2>Timeline</h2>
 <p><%= link_to 'Following User', user_follows_path %></p>
 <%= render 'public/posts/index', posts: @following_posts, post: @post %>

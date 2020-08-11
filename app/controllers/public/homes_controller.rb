@@ -17,7 +17,4 @@ class Public::HomesController < ApplicationController
 		end
 	end
 
-	def about
-	end
-
 end

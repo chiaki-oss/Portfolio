@@ -1,3 +1,8 @@
+<!-- SIDEBAR -->
+<div>
+	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
+</div>
+
 <h2>閲覧履歴</h2>
 <% @histories.each do |history| %>
 	<div class="col-xs-3">

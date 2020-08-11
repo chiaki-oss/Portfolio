@@ -1,5 +1,6 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
+  before_action :sidebar, only: [:timeline]
 
 	# Follow
 	def create
