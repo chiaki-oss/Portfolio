@@ -59,7 +59,7 @@ class User < ApplicationRecord
 
   #会員ステータス1＝会員のみログイン可
   def active_for_authentication?
-    super && (self.is_active == true)
+    super && (self.is_active == 1)
   end
 
 end

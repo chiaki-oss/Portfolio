@@ -12,6 +12,16 @@ class ApplicationController < ActionController::Base
 		render 'layouts/sidebar'
 	end
 
+	def after_sign_in_path_for(resource)
+		# 管理者ログイン後　＝＞　トップページ
+		if admin_signed_in?
+			admin_top_path
+		# 会員ログイン後　＝＞　トップページ
+		elsif user_signed_in?
+			root_path
+		end
+    end
+
 
 	private
 

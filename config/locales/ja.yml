@@ -13,6 +13,10 @@ ja:
       contact:
         title: "タイトル"
         body: "お問い合わせ内容"
+      area:
+        name: "エリア名"
+      prefecture:
+        name: "都道府県名"
   views:
     pagination:
       first: "≪"

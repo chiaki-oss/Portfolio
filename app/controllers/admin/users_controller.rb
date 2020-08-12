@@ -16,10 +16,9 @@ class Admin::UsersController < ApplicationController
 			# 重複している結果を削除
 			@users.uniq!
 
-		# トップサイドバーリンク
 		elsif
-		@users = User.all
-	end
+			@users = User.all
+		end
 	end
 
 	def show
@@ -34,15 +33,15 @@ class Admin::UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update(user_params)
-			redirect_to admin_user_path
+			redirect_to admin_user_path(@user), notice:'会員情報を更新しました'
 		else
-			render edit_admin_user_path
+			render 'edit'
 		end
 	end
 
 	private
 	def user_params
-		params.require(:user).permit(:name, :email, :image, :introduction, :recommend, :is_active)
+		params.require(:user).permit(:name, :is_active)
 	end
 
 end

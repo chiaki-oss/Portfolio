@@ -46,13 +46,11 @@ User.create!(
 		name: 'yamada',
 		email: 'yamada@mail',
 		image: File.open('./app/assets/images/icon.jpeg'),
-		is_active: true,
 		password: '111111' 
 		},
 		{
 			name: 'tanaka',
 			email: 'tanaka@mail',
-			is_active: true,
 			password: '222222'
 		}
 	])

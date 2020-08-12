@@ -28,8 +28,10 @@
 
     </main>
 
-    <footer class="fixed-bottom">Copyright ©        Inc. All Rights Reserved.</footer>
-    <div>Logo created by <a href="https://www.designevo.com/logo-maker/" title="Free Online Logo Maker">DesignEvo logo maker</a></div>
-
+    <footer class="fixed-bottom">
+      <%= link_to new_admin_session_path do %>
+        Copyright ©Local Inc. All Rights Reserved.
+      <% end %>
+    </footer>
   </body>
 </html>

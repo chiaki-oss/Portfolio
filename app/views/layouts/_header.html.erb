@@ -28,9 +28,7 @@
           </li>
 
         <% elsif admin_signed_in? %>
-          <li><%= link_to 'About', about_path %></li>
           <li><%= link_to '問い合わせ一覧', admin_contacts_path %></li>
-          <li><%= link_to '投稿一覧', posts_path %></li>
           <li><%= link_to 'エリア一覧', admin_areas_path %></li>
           <li><%= link_to 'ジャンル一覧', admin_genres_path %></li>
           <li><%= link_to '会員一覧', admin_users_path %></li>

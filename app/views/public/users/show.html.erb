@@ -14,6 +14,8 @@
 			Follower：<%= link_to @user.followed.count, user_followers_path(@user) %>
 			</p>
 			<p><%= link_to "お気に入りの投稿" , favorites_path %></p>
+			<p><%= link_to "閲覧履歴", history_posts_path %></p>
+			<p><%= link_to "Timeline", user_follows_timeline_path(current_user) %></p>
 		<% end %>
 		<!-- フォロー機能 -->
 		<% if user_signed_in? %>

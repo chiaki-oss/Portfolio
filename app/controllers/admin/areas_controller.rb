@@ -2,16 +2,18 @@ class Admin::AreasController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		@areas = Area.all
+		@areas = Area.includes(:prefectures)
 		@new_area = Area.new # 新規投稿フォーム
 	end
 
 	def create
 		@area = Area.new(area_params)
 		if @area.save
-			redirect_to admin_areas_path
+			redirect_to admin_areas_path, notice:'エリアを登録しました'
 		else
-			render admin_areas_path
+			@areas = Area.includes(:prefectures)
+			@new_area = Area.new # 新規投稿フォーム
+			render 'index'
 		end
 	end
 
@@ -22,9 +24,9 @@ class Admin::AreasController < ApplicationController
 	def update
 		@area = Area.find(params[:id])
 		if @area.update(area_params)
-			redirect_to admin_areas_path
+			redirect_to admin_areas_path, notice:'エリア名を更新しました'
 		else
-			render edit_admin_area_path(@area)
+			render 'edit'
 		end
 	end
 

@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update(user_params)
-			redirect_to user_path
+			redirect_to user_path, notice:'会員情報を更新しました'
 		else
 			render edit_user_path
 		end
@@ -26,7 +26,7 @@ class Public::UsersController < ApplicationController
 
 	def withdraw
 		@user = current_user
-		@user.update(is_active: false)
+		@user.update(is_active: 0)
 		redirect_to root_path
 	end
 
