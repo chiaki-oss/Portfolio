@@ -22,7 +22,7 @@ class Public::ContactsController < ApplicationController
   end
 
   def index
-    @contacts = Contact.all.order("created_at DESC")
+    @contacts = current_user.contacts.all.order("created_at DESC")
   end
 
   def show
