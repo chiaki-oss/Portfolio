@@ -39,7 +39,7 @@ class Public::PostsController < ApplicationController
 	end
 
 	def history
-		@histories = current_user.browsing_histories.includes(:post, post: [:user, :prefecture, :genre])
+		@histories = current_user.browsing_histories.includes(:post, post: [:user, :prefecture, :genre]).order("created_at DESC")
 	end
 
 	def create

@@ -10,7 +10,7 @@ class Public::HomesController < ApplicationController
 			# いいね数が多い投稿
 			@liked_posts = Post.find(Favorite.group(:post_id).order('count(post_id)desc').limit(3).pluck(:post_id))
 			# 閲覧履歴
-			@histories = current_user.browsing_histories.includes(:post, post: [:user, :prefecture, :genre]).limit(3)
+			@histories = current_user.browsing_histories.includes(:post, post: [:user, :prefecture, :genre]).limit(3).order("created_at DESC")
 			# タイムライン
 		    @users = current_user.following_user
 		    @following_posts = Post.includes(:user, :genre, :prefecture).where(user_id: @users).limit(10).order("created_at DESC")
