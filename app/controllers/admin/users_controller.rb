@@ -17,7 +17,7 @@ class Admin::UsersController < ApplicationController
 			@users.uniq!
 
 		elsif
-			@users = User.all
+			@users = User.order(created_at: :desc)
 		end
 	end
 

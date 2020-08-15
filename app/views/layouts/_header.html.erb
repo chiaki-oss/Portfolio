@@ -1,8 +1,14 @@
 <div class="page-header">
   <div class="container">
     <nav class='nav navbar-nav navbar-left' >
-       <%= link_to root_path do %>
-       logo
+      <% if admin_signed_in? %>
+        <%= link_to admin_top_path do %>
+         <h2>Local</h2>
+        <% end %>
+      <% else %>
+        <%= link_to root_path do %>
+          <h2>Local</h2>
+        <% end %>
       <% end %>
     </nav>
     <nav>

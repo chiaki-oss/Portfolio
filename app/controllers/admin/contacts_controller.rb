@@ -3,7 +3,7 @@ class Admin::ContactsController < ApplicationController
 
 	# 問い合わせ内容一覧
 	def index
-        @contacts = Contact.all.order(created_at: :desc)
+        @contacts = Contact.includes(:user).page(params[:page]).per(10).order(created_at: :desc)
         @users = User.includes(:contacts)
     end
 
