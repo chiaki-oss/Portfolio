@@ -1,4 +1,4 @@
-<h1>編集する</h1>
+<h2>編集する</h2>
 <%= render 'layouts/error_messages', resource: @post %>
 
 <%= form_for(@post, url: post_path(@post)) do |f| %>
@@ -45,7 +45,15 @@
 			</table>
 		</div>
 	</div>
-
 <% end %>
+
+<!-- visionApi タグの提案 -->
+		<div>
+			<% if @post.image.present? %>
+			    <p><strong>おすすめのタグ</strong><br>
+			        	（例）<%= @label %>
+			    </p>
+			<% end %>
+		</div>
 
 </div>

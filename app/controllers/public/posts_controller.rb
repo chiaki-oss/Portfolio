@@ -17,6 +17,10 @@ class Public::PostsController < ApplicationController
 		@post_comment = PostComment.new
 		@post_comments = @post.post_comments.includes(:user)
 
+		if @post.image.present?
+			@label = Vision.get_image_data(@post)
+		end
+
 		# 閲覧履歴
 		if user_signed_in?
 			new_history = @post.browsing_histories.new
@@ -60,6 +64,10 @@ class Public::PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		# 既存タグの取得（name配列）
 		@tag_list = @post.tags.pluck(:name).join(",")
+
+		if @post.image.present?
+			@label = Vision.get_image_data(@post)
+		end
 	end
 
 	def update
