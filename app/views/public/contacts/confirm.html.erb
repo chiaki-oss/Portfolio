@@ -2,21 +2,13 @@
 
 <%= render 'layouts/error_messages', resource: @contact %>
 
-<div class="row">
-	<%= form_for @contact, url: contacts_path do |f| %>
-	<div class="field">
-		<%= f.label :タイトル %>
-		<%= f.text_field :title, class:"form-control" %>
-	</div>
+	<%= form_for @contact, url: contacts_confirm_path do |f| %>
+        <%= f.label :タイトル %>
+        <%= f.text_field :title, class:"form-control" %>
+        <%= f.label :お問い合わせ内容 %>
+        <%= f.text_area :body, rows:'10', class:"form-control" %>
+        <%= f.submit "確認画面に進む" %>
+    <% end %>
 
-    <div class="field">
-		<%= f.label :お問い合わせ内容 %>
-		<%= f.text_area :body, rows:'10', class:"form-control" %>
-	</div>
-
-    <div class="field">
-		<%= f.submit '送信する' %>
-	</div>
-	<% end %>
 </div>
 

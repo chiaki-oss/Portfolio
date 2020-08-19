@@ -78,7 +78,7 @@ Post.create!(
 			user_id: 2,
 			genre_id: 2,
 			prefecture_id: 20,
-			title: '美ヶ原から見える絶景（松本方面）',
+			title: '美ヶ原から見える絶景',
 			body: '絶景スポット',
 			image: File.open('./app/assets/images/matsumoto.jpg')
 		}

@@ -21,8 +21,8 @@
 	→　左の一覧にある各都道府県をクリックし、編集フォームにて変更ください</p>
 
 	<h3>新規エリア登録</h3>
-	<%= form_for(@new_area, url: admin_areas_path) do |f| %>
-	<%= render 'layouts/error_messages', resource: @new_area %>
+	<%= form_for(@area, url: admin_areas_path) do |f| %>
+	<%= render 'layouts/error_messages', resource: @area %>
 		<%= f.label :エリア名 %>
 		<%= f.text_field :name %>
 		<%= f.submit '新たにエリアを登録する'%>

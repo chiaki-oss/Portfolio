@@ -18,7 +18,7 @@ class Post < ApplicationRecord
 		favorites.where(user_id: user.id).exists?
 	end
 
-	# タグ保存メソッド
+	# タグ
 	def save_tags(savepost_tags)
 		current_tags = self.tags.pluck(:name) unless self.tags.nil?
 		old_tags = current_tags - savepost_tags
