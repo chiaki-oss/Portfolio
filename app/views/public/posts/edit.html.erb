@@ -1,2 +1,51 @@
 <h1>編集する</h1>
-<%= render 'form', post: @post, url: post_path(@post), submit: '更新する' %>
+<%= render 'layouts/error_messages', resource: @post %>
+
+<%= form_for(@post, url: post_path(@post)) do |f| %>
+<div class="row">
+	<div class="col-xs-5">
+		<div class="image">
+			<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "no_image.jpg", size:"350x300" %>
+			<span><%= f.attachment_field :image %></span>
+		</div>
+	</div>
+
+	<div class="col-xs-7">
+		<div class="row">
+			<table class="col-xs-12">
+				<tbody>
+					<tr>
+						<td><%= f.label :都道府県 %></td>
+						<td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name%></td>
+					</tr>
+					<tr>
+						<td><%= f.label :ジャンル %></td>
+						<td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
+					</tr>
+					<tr>
+						<td><%= f.label :タイトル %></td>
+						<td><%= f.text_field :title, class: "form-control" %></td>
+					</tr>
+
+					<tr>
+						<td><%= f.label :タグ %></td>
+						<td><%= f.text_field :tag_ids,value: @tag_list,  class: "form-control", placeholder: "タグをつける。複数つけるには','で区切ってください。"%></td>
+					</tr>
+					<tr>
+						<td><%= f.label :説明 %></td>
+						<td><%= f.text_area :body, class: "form-control" %></td>
+					</tr>
+					<tr>
+						<td><%= f.submit '更新する' %></td>
+					</tr>
+					<tr>
+						<td><%= link_to '戻る', :back %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+<% end %>
+
+</div>
