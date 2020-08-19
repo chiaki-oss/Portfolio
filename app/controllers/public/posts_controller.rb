@@ -64,6 +64,10 @@ class Public::PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		# 既存タグの取得（name配列）
 		@tag_list = @post.tags.pluck(:name).join(",")
+
+		if @post.image.present?
+			@label = Vision.get_image_data(@post)
+		end
 	end
 
 	def update

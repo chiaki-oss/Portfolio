@@ -45,7 +45,15 @@
 			</table>
 		</div>
 	</div>
-
 <% end %>
+
+<!-- visionApi タグの提案 -->
+		<div>
+			<% if @post.image.present? %>
+			    <p><strong>おすすめのタグ</strong><br>
+			        	（例）<%= @label %>
+			    </p>
+			<% end %>
+		</div>
 
 </div>
