@@ -46,6 +46,7 @@
 		        <td><%= link_to 'Show', admin_user_path(user) %></td>
 		      </tr>
 		    <% end %>
+		    <%= paginate @users %>
 		  </tbody>
 		</table>
 	</div>

@@ -7,8 +7,8 @@ class Public::PostsController < ApplicationController
 	end
 
 	def index
-		# post_serch.rbでサイドバー の検索機能一式を定義
 		@post_search = PostSearch.new(params)
+		# post_serch.rbでサイドバー の検索機能searchメソッドを定義
 		@post_search.search
 	end
 

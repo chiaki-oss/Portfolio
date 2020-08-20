@@ -5,19 +5,21 @@ class Admin::UsersController < ApplicationController
 		# 検索窓
 		if params[:keyword]
 			@keyword = params[:keyword]
-			@users = []
+			users = []
 
 			# 入力された値を区切ってキーワード毎に検索
 			@keyword.split(/[[:blank:]]+/).each do |keyword|
 				# 全半角スペース、先頭の空白に対応
 				next if @keyword == ""
-				@users += User.where('name LIKE(?)', "%#{keyword}%")
+				users += User.where('name LIKE(?)', "%#{keyword}%")
 			end
 			# 重複している結果を削除
-			@users.uniq!
+			users.uniq!
+            # paginate_arrayメソッドで配列をページネーション
+			@users = Kaminari.paginate_array(users).page(params[:page]).per(10)
 
 		elsif
-			@users = User.order(created_at: :desc)
+			@users = User.order(created_at: :desc).page(params[:page]).per(10)
 		end
 	end
 

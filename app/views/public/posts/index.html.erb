@@ -4,17 +4,17 @@
 </div>
 
 <% if params[:keyword] %>
-	<h2><%= @post_search.keyword %>の検索結果：<%= @post_search.posts.count %>件ヒットしました</h2>
+	<h2><%= @post_search.keyword %>の検索結果：<%= @post_search.count %>件ヒットしました</h2>
 <% elsif params[:area_id] %>
-	<h2><%= @post_search.area.name %>エリアの投稿一覧 (全<%= @post_search.posts.count %>件)</h2>
+	<h2><%= @post_search.area.name %>エリアの投稿一覧 (全<%= @post_search.count %>件)</h2>
 <% elsif params[:prefecture_id] %>
-	<h2><%= @post_search.prefecture.name %>の投稿一覧 (全<%= @post_search.posts.count %>件)</h2>
+	<h2><%= @post_search.prefecture.name %>の投稿一覧 (全<%= @post_search.count %>件)</h2>
 <% elsif params[:genre_id]%>
-    <h2><%= @post_search.genre.name %>の投稿一覧 (全<%= @post_search.posts.count %>件)</h2>
+    <h2><%= @post_search.genre.name %>の投稿一覧 (全<%= @post_search.count %>件)</h2>
 <% elsif params[:tag_id]%>
-    <h2>#<%= @post_search.tag.name %>の投稿一覧 (全<%= @post_search.posts.count %>件)</h2>
+    <h2>#<%= @post_search.tag.name %>の投稿一覧 (全<%= @post_search.count %>件)</h2>
 <% else %>
-	<h2>投稿一覧 (全<%= @post_search.posts.count %>件)</h2>
+	<h2>投稿一覧 (全<%= @post_search.count %>件)</h2>
 <% end %>
 
 <!-- プルダウン並び替え -->
@@ -27,5 +27,6 @@
 
 <!-- Post#index -->
 <%= render 'public/posts/index', posts: @post_search.posts, post: @post %>
+<%= paginate @post_search.posts %>
 <p><%= link_to '戻る', :back %></p>
 
