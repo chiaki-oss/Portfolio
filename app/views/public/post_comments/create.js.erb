@@ -1,5 +1,5 @@
 // コメントフォーム
-$("#comment-form<%= @post.id %>").html("<%= j(render 'public/posts/comment_form', {post: @post, post_comment: @post_comment}  %>");
+$("#comment-form-<%= @post.id %>").html("<%= j(render partial: 'public/posts/comment_form',  locals:{post: @post, post_comment: @post_comment}) %>");
 $("textarea").val("");  //コメント送信後、フォームを空に
 // コメント削除
-$("#comment_<%= @post.id %>").html("<%= j(render 'public/posts/comment', post_comments: @post_comments ) %>");
+$("#comment_index-<%= @post.id %>").html("<%= j(render 'public/posts/comment', {post: @post}) %>");

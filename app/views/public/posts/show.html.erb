@@ -73,18 +73,18 @@
 <% if user_signed_in? %>
 	<div class="row">
 		<h4>Comment Form</h4>
-		<div id="comment-form<%= @post.id %>">
-			<%= render 'public/posts/comment_form', {post: @post, post_comment: @post_comment} %>
+		<div id="comment-form-<%= @post.id %>">
+			<%= render partial: "public/posts/comment_form", locals: {post: @post, post_comment: @post_comment} %>
 		</div>
 	</div>
 <% end %>
 
 <!-- コメント一覧 -->
-<% if @post_comments.exists? %>
+<% if @post.post_comments.exists? %>
 	<div class="row">
 		<h4>コメント一覧</h4>
-		<table id="comment_<%= @post.id %>" class="table">
-			<%= render 'public/posts/comment', post_comments: @post_comments %>
+		<table id="comment_index-<%= @post.id %>" class="table">
+			<%= render partial: "public/posts/comment", locals: {post: @post, post_comments: @post_comments} %>
 		</table>
 	</div>
 <% end %>

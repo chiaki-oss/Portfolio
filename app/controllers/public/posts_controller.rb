@@ -15,7 +15,6 @@ class Public::PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@post_comment = PostComment.new
-		@post_comments = @post.post_comments.includes(:user)
 
 		if @post.image.present?
 			@label = Vision.get_image_data(@post).join(',')

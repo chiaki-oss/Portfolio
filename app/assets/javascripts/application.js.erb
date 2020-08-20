@@ -13,10 +13,11 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
+//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
-	$(document).ready(function(){
+	$(document).on('turbolinks:load', () => {
 　　 // Mainvisual
 		var mySwiper1 = new Swiper('.swiperTop', {
 	    	initialSlide: 0,
