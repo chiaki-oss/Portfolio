@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(version: 2020_08_08_124513) do
     t.string "title", null: false
     t.text "body", null: false
     t.string "image_id"
+    t.string "postal_code"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -19,9 +19,8 @@
 //= require_tree .
 
 
-	// Mainvisual
 	$(document).on('turbolinks:load', () => {
-
+　　 // Mainvisual
 		var mySwiper1 = new Swiper('.swiperTop', {
 	    	initialSlide: 0,
 	    	speed: 8000,
@@ -54,6 +53,17 @@
 	        $(".image").attr('src', e.target.result);
 	    }
 	    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+		});
+
+    // 住所自動入力
+		$('#post_postal_code').jpostal({
+			postcode : [
+			'#post_postal_code'
+			],
+
+			address: {
+				"#post_address": "%3%4%5%6%7"
+			}
 		});
 
 	// 星評価
