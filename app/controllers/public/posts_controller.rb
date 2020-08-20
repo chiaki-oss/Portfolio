@@ -18,7 +18,7 @@ class Public::PostsController < ApplicationController
 		@post_comments = @post.post_comments.includes(:user)
 
 		if @post.image.present?
-			@label = Vision.get_image_data(@post)
+			@label = Vision.get_image_data(@post).join(',')
 		end
 
 		# 閲覧履歴
