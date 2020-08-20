@@ -2,7 +2,7 @@
 
 <%= render 'layouts/error_messages', resource: @contact %>
 
-	<%= form_for @contact, url: contacts_confirm_path do |f| %>
+	<%= form_for @contact, url: contacts_path do |f| %>
         <%= f.label :タイトル %>
         <%= f.text_field :title, class:"form-control" %>
         <%= f.label :お問い合わせ内容 %>

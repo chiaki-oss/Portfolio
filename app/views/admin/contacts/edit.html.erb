@@ -1,12 +1,13 @@
 <h2>お問い合わせ内容</h2>
-    <%= form_for @contact, url: admin_contact_path do |f| %>
-        <h3>顧客名　問い合わせ日</h3>
-        <%= @contact.user.name %>さん　<%= @contact.created_at.strftime("%Y年%m月%d日 ") %>
-        <h3>タイトル</h3>
-        <%= @contact.title %>
-        <h3>問い合わせ内容</h3>
-        <%= @contact.body %>
-        <h3>返信</h3>
-        <%= f.text_area :reply, class:"form-control", size:'10x10' %>
-        <%= f.submit "送信" %>
-    <% end %>
+<%= form_for(@contact, url: admin_contact_path)do |f| %>
+<%= render 'layouts/error_messages', resource: @contact %>
+    <h3>顧客名　問い合わせ日</h3>
+    <%= @contact.user.name %>さん　<%= @contact.created_at.strftime("%Y年%m月%d日 ") %>
+    <h3>タイトル</h3>
+    <%= @contact.title %>
+    <h3>問い合わせ内容</h3>
+    <%= @contact.body %>
+    <h3>返信</h3>
+    <%= f.text_area :reply, class:"form-control", size:'10x10' %>
+    <%= f.submit "送信" %>
+<% end %>

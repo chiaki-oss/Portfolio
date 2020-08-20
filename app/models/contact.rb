@@ -4,4 +4,6 @@ class Contact < ApplicationRecord
 	validates :title, presence: true
     validates :body, presence: true
 
+    validates :reply, presence: true, on: :update
+
 end

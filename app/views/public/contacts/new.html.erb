@@ -1,16 +1,18 @@
-<h2 class="contact-title">Contact お問い合わせフォーム</h2>
-<p> サイトに関する質問やご意見等ございましたら、下記問い合わせフォームよりお気軽にお問い合わせください。<br>
-回答はメールにてお送りいたします。<%= link_to "・・・>お問い合わせ履歴", contacts_path %></</p>
+<% if user_signed_in? %>
+	<h2 class="contact-title">Contact お問い合わせフォーム</h2>
+	<p> サイトに関する質問やご意見等ございましたら、下記問い合わせフォームよりお気軽にお問い合わせください。<br>
+	回答はメールにてお送りいたします。<%= link_to "・・・>お問い合わせ履歴", contacts_path %></</p>
 
-<%= render 'layouts/error_messages', resource: @contact %>
+	<%= render 'layouts/error_messages', resource: @contact %>
 
-	<%= form_for @contact, url: contacts_confirm_path do |f| %>
-        <%= f.label :タイトル %>
-        <%= f.text_field :title, class:"form-control" %>
-        <%= f.label :お問い合わせ内容 %>
-        <%= f.text_area :body, rows:'10', class:"form-control" %>
-        <%= f.submit "確認画面に進む" %>
-    <% end %>
+		<%= form_for @contact, url: contacts_confirm_path do |f| %>
+	        <%= f.label :タイトル %>
+	        <%= f.text_field :title, class:"form-control" %>
+	        <%= f.label :お問い合わせ内容 %>
+	        <%= f.text_area :body, rows:'10', class:"form-control" %>
+	        <%= f.submit "確認画面に進む" %>
+	    <% end %>
+<% end %>
 
 <h3>よくあるご質問</h3>
 <p>・・・準備中・・・</p>
