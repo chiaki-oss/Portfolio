@@ -46,7 +46,6 @@
 			          <td><%= f.label :address, "住所（郵便番号から自動入力）" %></td>
 			          <td><%= f.text_field :address, collection: JpPrefecture::Prefecture.all, :value_method => :name, class: "form-control" %></td>
 			        </tr>
-					
 					<tr>
 						<td><%= f.label :タグ %></td>
 						<td><%= f.text_field :tag_ids, class: "form-control",placeholder: "タグをつける。複数つける場合は ,(コンマ)で区切ってください。" %></td>
@@ -59,7 +58,6 @@
 			</table>
 		</div>
 	</div>
-
 </div>
 <div class="action">
 	<%= f.submit '投稿する' %>
