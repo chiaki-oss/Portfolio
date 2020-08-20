@@ -8,6 +8,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.text :body, null: false
       t.string :image_id
+      t.string :postal_code
+      t.string :address
       t.timestamps
     end
   end

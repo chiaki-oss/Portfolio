@@ -27,17 +27,26 @@
 			<table class="col-xs-12">
 				<tbody>
 					<tr>
-						<td><%= f.label :都道府県 %></td>
-						<td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, :prompt => "選択してください"%></td>
+						<td><%= f.label :タイトル %></td>
+						<td><%= f.text_field :title, class: "form-control"%></td>
 					</tr>
 					<tr>
 						<td><%= f.label :ジャンル %></td>
 						<td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "選択してください"%></td>
 					</tr>
 					<tr>
-						<td><%= f.label :タイトル %></td>
-						<td><%= f.text_field :title, class: "form-control"%></td>
+						<td><%= f.label :都道府県 %></td>
+						<td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, :prompt => "選択してください"%></td>
 					</tr>
+					<tr>
+			          <td><%= f.label :postal_code, "郵便番号" %></td>
+			          <td><%= f.text_field :postal_code, class: "form-control" %></td>
+			        </tr>
+			        <tr>
+			          <td><%= f.label :address, "住所（郵便番号から自動入力）" %></td>
+			          <td><%= f.text_field :address, collection: JpPrefecture::Prefecture.all, :value_method => :name, class: "form-control" %></td>
+			        </tr>
+					
 					<tr>
 						<td><%= f.label :タグ %></td>
 						<td><%= f.text_field :tag_ids, class: "form-control",placeholder: "タグをつける。複数つける場合は ,(コンマ)で区切ってください。" %></td>

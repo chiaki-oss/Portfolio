@@ -80,6 +80,8 @@ gem 'dotenv-rails'
 gem 'rails-i18n'
 # ページネーション
 gem 'kaminari','~> 1.2.1'
+# 住所自動入力
+gem 'jp_prefecture'
 # デプロイ用
 group :production do
   gem 'mysql2'
