@@ -43,7 +43,7 @@
 			          <td><%= f.text_field :postal_code, class: "form-control" %></td>
 			        </tr>
 			        <tr>
-			          <td><%= f.label :address, "住所（郵便番号から自動入力）" %></td>
+			          <td><%= f.label :address, "住所" %></td>
 			          <td><%= f.text_field :address, collection: JpPrefecture::Prefecture.all, :value_method => :name, class: "form-control" %></td>
 			        </tr>
 					<tr>
@@ -60,8 +60,8 @@
 	</div>
 </div>
 <div class="action">
-	<%= f.submit '投稿する' %>
-	<p><%= link_to '戻る', :back %></p>
+	<p><%= link_to '戻る', :back, class: "btn btn-default" %>　
+		<%= f.submit '投稿する', class: "btn btn-primary" %>　</p>
 </div>
 <% end %>
 

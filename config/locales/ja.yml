@@ -8,6 +8,8 @@ ja:
         price: "税抜価格"
         genre: "ジャンル"
         prefecture: "都道府県"
+        postal_code: "郵便番号"
+        address: "住所"
       genre:
         name: "ジャンル名"
       contact:

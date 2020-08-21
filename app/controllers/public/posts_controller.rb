@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :history]
-	before_action :sidebar
+	before_action :sidebar, only: [:new, :index, :show, :edit, :history]
 
 	def new
 		@post = Post.new

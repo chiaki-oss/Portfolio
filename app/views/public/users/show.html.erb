@@ -7,24 +7,25 @@
 <div class="row">
 	<div class="col-xs-10">
 		<p><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %><%= @user.name %></p>
-		<p>Recommend<%= @user.recommend %></p>
-		<p>introduction<br><%= @user.introduction %></p>
+		<p>一番のおすすめ<%= @user.recommend %></p>
+		<p>自己紹介<br><%= @user.introduction %></p>
 		<% if @user == current_user %>
 			<p>Following：<%= link_to @user.follower.count, user_follows_path(@user) %>
 			Follower：<%= link_to @user.followed.count, user_followers_path(@user) %>
 			</p>
-			<p><%= link_to "お気に入りの投稿" , favorites_path %></p>
-			<p><%= link_to "閲覧履歴", history_posts_path %></p>
-			<p><%= link_to "Timeline", user_follows_timeline_path(current_user) %></p>
+			<p><%= link_to "お気に入りの投稿", favorites_path, class: "btn btn-default" %>　
+				<%= link_to "閲覧履歴", history_posts_path, class: "btn btn-default" %>　
+				<%= link_to "タイムライン", user_follows_timeline_path(current_user), class: "btn btn-default" %>
+			</p>
 		<% end %>
 		<!-- フォロー機能 -->
 		<% if user_signed_in? %>
 		<p>
 			<% if current_user != @user %>
 				<% if current_user.following?(@user) %>
-		            <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete %>
+		            <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-default" %>
 		        <% else %>
-		            <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST %>
+		            <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class: "btn btn-default" %>
 		        <% end %>
 		    <% end %>
 		</p>
@@ -33,9 +34,9 @@
 
 	<div class="col-xs-2">
 		<% if @user == current_user %>
-			<p><%= link_to "プロフィールを編集する", edit_user_path %></p>
-			<p><%= link_to "退会したい", confirm_path %></p>
-			<p><%= link_to "問い合わせ履歴", contacts_path %></p>
+			<p><%= link_to "プロフィールを編集する", edit_user_path, class: "btn btn-default" %></p>
+			<p><%= link_to "退会したい", confirm_path, class: "btn btn-default" %></p>
+			<p><%= link_to "問い合わせ履歴", contacts_path, class: "btn btn-default" %></p>
 		<% end %>
 	</div>
 </div>

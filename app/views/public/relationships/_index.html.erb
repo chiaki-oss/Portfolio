@@ -1,3 +1,4 @@
+<%= link_to 'マイページに戻る', user_path(current_user), class: "btn btn-default" %>　
 <% if users.count > 0 %>
     <table class='table'>
 		<thead>
@@ -33,5 +34,3 @@
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>
-
-<%= link_to 'マイページに戻る', user_path(current_user) %>

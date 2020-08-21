@@ -11,6 +11,7 @@ class Post < ApplicationRecord
 
 	validates :title, presence: true, length: { maximum: 15}
 	validates :body, presence: true
+	validates :postal_code, length: { is: 7 }
 
     # いいね いいねしてるかどうかの確認
 	has_many :favorites, dependent: :destroy

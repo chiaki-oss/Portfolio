@@ -12,7 +12,6 @@ class PostSearch
 		if @params[:keyword]
 			@keyword = @params[:keyword]
 			posts = []
-
 			# 入力された値を区切ってキーワード毎に検索
 			@keyword.split(/[[:blank:]]+/).each do |keyword|
 				# 全半角スペース、先頭の空白に対応

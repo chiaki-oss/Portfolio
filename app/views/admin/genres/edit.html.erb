@@ -3,5 +3,5 @@
 <%= render 'layouts/error_messages', resource: @genre %>
 	<%= f.label :ジャンル名 %>
 	<%= f.text_field :name %>
-	<%= f.submit '変更する' %>
+	<%= f.submit '変更する', class: "btn btn-primary btn-sm" %>
 <% end %>

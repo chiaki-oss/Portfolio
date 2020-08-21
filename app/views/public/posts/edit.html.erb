@@ -5,8 +5,9 @@
 <div class="row">
 	<div class="col-xs-5">
 		<div class="image">
-			<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "sample.jpg", size:"350x300" %>
-			<span><%= f.attachment_field :image %></span>
+			<p><%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "sample.jpg", size:"350x300" %>
+			</p>
+			<p><%= f.attachment_field :image %></p>
 		</div>
 	</div>
 
@@ -31,7 +32,7 @@
 			          <td><%= f.text_field :postal_code, class: "form-control" %></td>
 			        </tr>
 			        <tr>
-			          <td><%= f.label :address, "住所（郵便番号から自動入力）" %></td>
+			          <td><%= f.label :address, "住所" %></td>
 			          <td><%= f.text_field :address, collection: JpPrefecture::Prefecture.all, :value_method => :name, class: "form-control" %></td>
 			        </tr>
 					<tr>
@@ -42,25 +43,27 @@
 						<td><%= f.label :説明 %></td>
 						<td><%= f.text_area :body, class: "form-control" %></td>
 					</tr>
-					<tr>
-						<td><%= f.submit '更新する' %></td>
-					</tr>
-					<tr>
-						<td><%= link_to '戻る', :back %></td>
-					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
+</div>
+<div class="col-xs-5">
+	<div class="action">
+		<p><%= link_to '戻る', :back, class: "btn btn-default" %>　
+			<%= f.submit '更新する', class: "btn btn-primary" %>　</p>
+	</div>
+</div>
+<!-- visionApi タグの提案 -->
+<div class="cols-xs-7">
+	<% if @post.image.present? %>
+	    <p><strong>おすすめのタグ</strong><br>
+	        	（例）<%= @label %>
+	    </p>
+	<% end %>
+</div>
 <% end %>
 
-<!-- visionApi タグの提案 -->
-		<div>
-			<% if @post.image.present? %>
-			    <p><strong>おすすめのタグ</strong><br>
-			        	（例）<%= @label %>
-			    </p>
-			<% end %>
-		</div>
 
-</div>
+
+

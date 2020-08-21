@@ -3,7 +3,11 @@
 	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
 </div>
 
-<h2><%= @post.title %></h2>
+<h2><%= @post.title %></h2><hr>
+<% if @post.address? %>
+	<p><i class="fas fa-map-marker-alt fa-lg"></i>
+		〒<%= @post.postal_code  %> <%= @post.address %></p>
+<% end %>
 <div class="row">
 	<div class="col-xs-5">
 		<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "sample.jpg", width:'100%', height: '100%' %>
@@ -34,8 +38,8 @@
     <div class="col-xs-4">
         <!-- ユーザーの投稿編集・削除ボタン -->
         <% if @post.user == current_user  %>
-	        <p><%= link_to '投稿を編集する', edit_post_path(@post) %><br>
-	        <%= link_to '投稿を削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' } %></p>
+	        <p><%= link_to '投稿を編集する', edit_post_path(@post), class: "btn btn-default" %></p>
+	        <p><%= link_to '投稿を削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-default" %></p>
 	        <!-- visionApi タグの提案 -->
 	        <% if @post.image.present? %>
 		        <p><strong>タグを付けてみましょう！</strong><br><hr>
@@ -57,7 +61,7 @@
 			<p>お気に入り投稿の登録（♡）やコメント、☆評価は会員登録済の方のみ可能となります。</p>
 			<p>会員登録をして、あなたのおすすめを投稿したり、お気に入りやコメントを送ったり、、、みんなと交流してみましょう！</p>
 			<p>
-				-><%= link_to '会員登録はこちらから', new_user_registration_path %>
+				→　<%= link_to '会員登録はこちらから', new_user_registration_path, class: "btn btn-default" %>
 			</p>
 
 	    <% end %>

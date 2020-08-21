@@ -2,6 +2,6 @@
 <%= form_for(@prefecture, url: admin_prefecture_path(@prefecture)) do |f| %>
 	<div>
 		<%= f.collection_select :area_id, Area.all, :id, :name, :prompt => "選択してください"%>
-		<%= f.submit '更新' %></td>
+		<%= f.submit '更新する', class: "btn btn-primary" %></td>
 	</div>
 <% end %>

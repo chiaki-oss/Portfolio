@@ -17,7 +17,7 @@
 <div class="row">
 	<h4>
 		<strong>いろんな投稿を見てみよう！</strong>
-		→ <%= link_to "投稿一覧へ", posts_path %>
+		<%= link_to "投稿一覧へ", posts_path, class: "btn btn-default" %>
 	</h4>
 	<p>会員のみんなの投稿は、エリア・都道府県、カテゴリ、タグ、キーワードなどから探すことができます。<br>
 		その投稿に関連する情報をもっと知りたい！、と思ったら右側の検索から探してみましょう。<br>
@@ -28,7 +28,7 @@
 </div>
 
 <div class="row">
-	<h4><strong>投稿者同士の交流</strong>　→ <%= link_to "会員登録はこちらから", new_user_registration_path %></h4>
+	<h4><strong>投稿者同士の交流</strong>　<%= link_to "会員登録はこちらから", new_user_registration_path, class: "btn btn-default" %></h4>
 	<p>（これらの投稿同士の交流は、<i class="far fa-bell fa-md"></i>より通知内容を確認できます。)</p>
 	<p>①　<strong>お気に入り登録 ♡ </strong><br>
 		気に入った投稿や知らなかった！っと思った投稿には♡を送りましょう。

@@ -28,8 +28,8 @@
 	<%= form_for(@genre, url: admin_genres_path) do |f| %>
 	<%= render 'layouts/error_messages', resource: @genre %>
 		<%= f.label :ジャンル名 %>
-		<%= f.text_field :name %>
-		<%= f.submit '保存する'%>
+		<%= f.text_field :name %>　
+		<%= f.submit '新たにジャンルを登録する', class: "btn btn-primary btn-sm"%>
 	<% end %>
 </div>
 

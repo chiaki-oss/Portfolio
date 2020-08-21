@@ -21,12 +21,11 @@
 <div class="row">
 	<%= form_tag(posts_path, method: :get) do %>
 		<%= select_tag(:option, options_for_select([['新規投稿順', 'new'],['古い投稿順','old'],['人気の投稿順', 'likes']])) %>
-		<%= submit_tag '検索' %>
+		<%= submit_tag '検索', class: "btn btn-default btn-sm" %>
 	<% end %>
 </div>
 
 <!-- Post#index -->
 <%= render 'public/posts/index', posts: @post_search.posts, post: @post %>
 <%= paginate @post_search.posts %>
-<p><%= link_to '戻る', :back %></p>
 

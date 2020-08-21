@@ -3,16 +3,17 @@
 	<h2><%= @keyword %>の検索結果：<%= @users.count %>件ヒットしました</h2>
 <% end %>
 <div class="row">
-	<div class="col-xs-2">
+	<div class="col-xs-3">
 		<%= form_tag(admin_users_path, method: :get) do %>
-            <%= text_field_tag :keyword, '', placeholder: "会員を検索" %>
+            <p><%= text_field_tag :keyword, '', placeholder: "会員を検索", class: "form-control" %></p>
 
-            <%= submit_tag '検索' %>
+            <p><%= submit_tag '検索', class: "btn btn-primary btn-sm"  %></p>
+            <p><%= link_to "全会員表示する", admin_users_path %></p>
         <% end %>
-        <%= link_to "全会員表示する", admin_users_path %>
+        
 	</div>
 
-	<div class="col-xs-10">
+	<div class="col-xs-9">
 
 		<table class='table'>
 		  <thead>
