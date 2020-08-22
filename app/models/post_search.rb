@@ -41,7 +41,6 @@ class PostSearch
 			# エリア毎 = エリアに結びつく都道府県にある投稿取得
 		elsif @params[:area_id]
 			@area = Area.find(@params[:area_id])
-			# 投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
 			posts = Post.includes(:user, :genre, :prefecture).where(prefecture_id: @area.prefectures.pluck(:id))
 			@posts = posts.page(params[:page]).per(20)
 
@@ -51,17 +50,15 @@ class PostSearch
 			posts = @prefecture.posts.includes(:user, :genre)
 			@posts = posts.page(params[:page]).per(20)
 
-		# ジャンル毎　＝ジャンルに結びつく投稿取得
+		# ジャンル毎
 		elsif @params[:genre_id]
 			@genre = Genre.find(@params[:genre_id])
-			# 投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
 			posts = @genre.posts.includes(:user, :prefecture)
 			@posts = posts.page(params[:page]).per(20)
 
 		# タグ毎
 		elsif @params[:tag_id]
 			@tag = Tag.find(@params[:tag_id])
-			# 投稿テーブルにある該当の(指定されたエリアに紐づく)都道府県情報を取得
 			posts = @tag.posts.includes(:user, :genre, :prefecture)
 			@posts = posts.page(params[:page]).per(20)
 
@@ -72,6 +69,5 @@ class PostSearch
 		end
 
 		@count = posts.count
-
 	end
 end
