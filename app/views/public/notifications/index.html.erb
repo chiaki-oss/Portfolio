@@ -1,4 +1,4 @@
-<h1>あなたへのお知らせ</h1>
+<h2>あなたへのお知らせ</h2>
 <div>
 	<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 	<% if notifications.exists? %>

@@ -1,11 +1,21 @@
-<h2>問い合わせ内容</h2><hr>
 <div class="row">
-	<p>タイトル：<%= @contact.title %></p>
-	<p>お問い合わせ日：<%= @contact.created_at.strftime("%Y/%m/%d ") %></p>
-	<p>お問い合わせ内容：<br><%= @contact.body %></p>
-	<p>回答内容：<% if @contact.reply.nil? %>
-        回答がまだ届いておりません。
-    <% end %>
-    <br><%= @contact.reply %></p>
+	<h2>問い合わせ内容</h2><hr>
+	<div class="row">
+		<h4>タイトル：<%= @contact.title %>　
+	    問い合わせ日：<%= @contact.created_at.strftime("%Y年%m月%d日 ") %></h4>
+	</div>
+	<div class="row">
+	    <h4>問い合わせ内容：</h4>
+	    <p><%= @contact.body %></p>
+	</div>
+	<div class="row">
+	    <h4>回答内容：</h4>
+	    <p>
+	    	<% if @contact.reply.nil? %>
+		        回答がまだ届いておりません。
+		    <% end %>
+	    <br><%= @contact.reply %></p>
+	</div>
+
     <p><%= link_to '一覧に戻る', :back %><p>
 </div>

@@ -65,7 +65,7 @@ class Public::PostsController < ApplicationController
 		@tag_list = @post.tags.pluck(:name).join(",")
 
 		if @post.image.present?
-			@label = Vision.get_image_data(@post)
+			@label = Vision.get_image_data(@post).join(',')
 		end
 	end
 

@@ -3,5 +3,9 @@
 	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
 </div>
 <h3>お気に入りの投稿一覧</h3>
-<%= render 'public/posts/index', posts: @favorite_posts %>
-<%= link_to 'マイページに戻る', user_path(current_user) %>
+<% if @favorite_posts.count > 0 %>
+	<%= render 'public/posts/index', posts: @favorite_posts %>
+<% else %>
+    <p>お気に入りの投稿がまだありません</p>
+<% end %>
+<%= link_to 'マイページに戻る', user_path(current_user), class: "btn btn-default" %>

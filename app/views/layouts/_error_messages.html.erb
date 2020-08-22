@@ -1,8 +1,8 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation">
-  	<h3><%= resource.errors.count %>件のエラー:</h3>
-    <h4>記入されてない箇所があります。</h4>
-    <ul id ="error_explanation" class="alert alert-danger">
+  <div id="error_explanation" class="alert alert-warning">
+  	<h4><%= resource.errors.count %>件のエラー:
+    記入されてない箇所があります。</h4>
+    <ul id ="error_explanation" >
       <% resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>

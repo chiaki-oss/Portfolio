@@ -13,6 +13,8 @@ module Portfolio
     config.paths.add 'lib', eager_load: true # api読み込み
     config.i18n.default_locale = :ja #日本語化
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    #フォームのエラーフィールド削除
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag.html_safe }
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
