@@ -45,7 +45,10 @@
 		        <p><strong>タグを付けてみましょう！</strong><br><hr>
 			        	タグをつけると類似した投稿を見ることができます。<br>
 			        	あなたの投稿にはこんなタグをつけるといいでしょう。<br>
-			        	（例）<%= @label %><br>
+			        	（例）<% @label.each do |label| %>
+					        	<%= label %>,
+					        <% end %>
+			        	<br>
 			        	→　<%= link_to '投稿にタグを追加する', edit_post_path(@post) %>
 			    </p>
 	        <% end %>

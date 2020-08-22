@@ -13,11 +13,10 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
-	$(document).on('turbolinks:load', () => {
+	$(document).ready( () => {
 　　 // Mainvisual
 		var mySwiper1 = new Swiper('.swiperTop', {
 	    	initialSlide: 0,
@@ -40,7 +39,6 @@
 				reverseDirection: false //最初から順に再生
 			}
 	    });
-
 
 	// 画像プレビュー
 	// inputのidから情報の取得

@@ -15,9 +15,9 @@ class Public::PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@post_comment = PostComment.new
-
+		# visionApiによつ画像分析ラベル表示
 		if @post.image.present?
-			@label = Vision.get_image_data(@post).join(',')
+			@label = Vision.get_image_data(@post)
 		end
 
 		# 閲覧履歴
@@ -65,7 +65,7 @@ class Public::PostsController < ApplicationController
 		@tag_list = @post.tags.pluck(:name).join(",")
 
 		if @post.image.present?
-			@label = Vision.get_image_data(@post).join(',')
+			@label = Vision.get_image_data(@post)
 		end
 	end
 

@@ -58,7 +58,9 @@
 <div class="cols-xs-7">
 	<% if @post.image.present? %>
 	    <p><strong>おすすめのタグ</strong><br>
-	        	（例）<%= @label %>
+	        	（例）<% @label.each do |label| %>
+			        	<%= label %>,
+			        <% end %>
 	    </p>
 	<% end %>
 </div>
