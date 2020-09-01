@@ -77,22 +77,13 @@
 </div>
 
 <!-- コメントフォーム -->
-<% if user_signed_in? %>
-	<div class="row">
-		<h4>Comment Form</h4>
-		<div id="comment-form-<%= @post.id %>">
-			<%= render partial: "public/posts/comment_form", locals: {post: @post, post_comment: @post_comment} %>
-		</div>
-	</div>
-<% end %>
+<div id="comment-form-<%= @post.id %>">
+	<%= render partial: "public/posts/comment_form", locals: {post: @post, post_comment: @post_comment} %>
+</div>
+
 
 <!-- コメント一覧 -->
-<% if @post.post_comments.exists? %>
-	<div class="row">
-		<h4>コメント一覧</h4>
-		<table id="comment_index-<%= @post.id %>" class="table">
-			<%= render partial: "public/posts/comment", locals: {post: @post, post_comments: @post_comments} %>
-		</table>
-	</div>
-<% end %>
+<div id="comment_index-<%= @post.id %>">
+	<%= render partial: "public/posts/comment", locals: {post: @post, post_comments: @post_comments} %>
+</div>
 

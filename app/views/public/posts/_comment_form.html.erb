@@ -1,9 +1,14 @@
-<%= form_with model: [post, post_comment] do |f| %>
-    <%= f.text_area :comment, size: "90x5" %>
-    <!-- 星評価 -->
-    <p id=star>
-	    <%= f.hidden_field :rate, id: :post_comment_rate %>
-    </p>
+<div class="row">
+	<% if user_signed_in? %>
+		<h4>Comment Form</h4>
+		<%= form_with model: [post, post_comment], method: :post do |f| %>
+		    <%= f.text_area :comment, size: "90x5" %>
+		    <!-- 星評価 -->
+		    <p id=star>
+			    <%= f.hidden_field :rate, id: :post_comment_rate %>
+		    </p>
 
-    <%= f.submit '送信', class: "btn btn-default" %>
-<% end %>
+		    <%= f.submit '送信', class: "btn btn-default" %>
+		<% end %>
+	<% end %>
+</div>

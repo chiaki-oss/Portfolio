@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
 			@label = Vision.get_image_data(@post)
 		end
 
-		# 閲覧履歴
+		# 閲覧履歴保存
 		if user_signed_in?
 			new_history = @post.browsing_histories.new
 			new_history.user_id = current_user.id
