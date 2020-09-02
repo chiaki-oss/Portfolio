@@ -22,10 +22,15 @@
 
 	<div class="main-msg">
 		<h3> Local </h3>
-		<p>みんなが知っているローカルの魅力を発信、共有するサイトです。( ポートフォリオ )<br>
-			( → <%= link_to "もっと知る", about_path %> )
+		<p>みんなが知っているローカルの魅力を発信、共有するサイトです。( ポートフォリオです )　
+			→ <%= link_to "もっと知る", about_path %> <br>
+			<% if user_signed_in? %>
+				<%= link_to 'ログアウトする', destroy_user_session_path, method: :delete , class: "btn btn-default btn-sm" %>　
+			<% else %>
+				<%= link_to '簡単ログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>　
+				<%= link_to '簡単ログイン ADMIN ', admins_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>
+			<% end %>
 		</p>
-
 	</div>
 
 	<div class="swiper-container swiperBottom">

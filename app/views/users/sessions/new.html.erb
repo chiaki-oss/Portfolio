@@ -20,7 +20,8 @@
       <% end %>
     </div>
     <div class="actions">
-      <%= f.submit "ログインする", class: "btn btn-primary" %>
+      <%= f.submit "ログインする", class: "btn btn-primary" %>　
+      <%= link_to '簡単ログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default" %>　
     </div>
   <% end %>
   </div>

@@ -3,11 +3,16 @@ Rails.application.routes.draw do
     get 'contacts/new'
     get 'contacts/create'
   end
+
   devise_for :admins, controllers: {
   	sessions: 'admin/sessions',
     passwords: 'admin/passwords',
     registrations: 'admin/registrations'
   }
+
+  devise_scope :admin do
+    post '/admins/guest_sign_in', to: 'admin/sessions#guest'
+  end
 
   namespace :admin do
   	get 'top' => 'homes#top'
@@ -24,6 +29,10 @@ Rails.application.routes.draw do
     passwords: 'public/passwords',
     registrations: 'public/registrations'
   }
+
+  devise_scope :user do
+    post '/users/guest_sign_in', to: 'public/sessions#new_guest'
+  end
 
   scope module: :public do
   	root 'homes#top'

@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class Public::PasswordsController < Devise::PasswordsController
+  before_action :check_guest, only: :destroy
+
+  def check_guest 
+    if resource.email == 'guestuser@mail.com'
+      redirect_to root_path, alert: 'ゲストユーザーは削除できません'
+    end
+  end
+
   # GET /resource/password/new
   # def new
   #   super
