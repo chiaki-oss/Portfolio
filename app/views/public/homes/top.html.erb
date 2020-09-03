@@ -126,10 +126,14 @@
 	<div>
 
 		<h3>新しい投稿</h3>
-		<%= render 'public/posts/index', posts: @new_posts %>
+		<div class="row">
+			<%= render 'public/posts/index', posts: @new_posts %>
+		</div>
 
 		<h3>人気の投稿</h3>
-		<%= render 'public/posts/index', posts: @liked_posts %>
+		<div class="row">
+			<%= render 'public/posts/index', posts: @liked_posts %>
+		</div>
 
 		<%= link_to posts_path do %>
 			<div class="to_posts">

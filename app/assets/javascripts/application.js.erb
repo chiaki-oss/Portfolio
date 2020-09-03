@@ -16,87 +16,87 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-	$(document).ready( () => {
+$(document).ready( () => {
 　　 // Mainvisual
-		var mySwiper1 = new Swiper('.swiperTop', {
-	    	initialSlide: 0,
-	    	speed: 8000,
-	    	loop: true,
-	    	spaceBetween: 5, //スライド毎の間隔
-	    	slidesPerView: 7, //一度に表示するスライドの枚数
-			autoplay: {
-				delay: 0, //速さ
-				reverseDirection: true //最初から順に再生
-			}
-	    });
+	var mySwiper1 = new Swiper('.swiperTop', {
+    	initialSlide: 0,
+    	speed: 8000,
+    	loop: true,
+    	spaceBetween: 5, //スライド毎の間隔
+    	slidesPerView: 7, //一度に表示するスライドの枚数
+		autoplay: {
+			delay: 0, //速さ
+			reverseDirection: true //最初から順に再生
+		}
+    });
 
-	    var mySwiper2 = new Swiper('.swiperBottom', {
-	    	speed: 50000,
-	    	loop: true,
-	    	slidesPerView: 0.9, //一度に表示するスライドの枚数
-			autoplay: {
-				delay: 0, //速さ
-				reverseDirection: false //最初から順に再生
-			}
-	    });
+    var mySwiper2 = new Swiper('.swiperBottom', {
+    	speed: 50000,
+    	loop: true,
+    	slidesPerView: 0.9, //一度に表示するスライドの枚数
+		autoplay: {
+			delay: 0, //速さ
+			reverseDirection: false //最初から順に再生
+		}
+    });
 
 	// 画像プレビュー
 	// inputのidから情報の取得
-	    $('#image').on('change', function (e) {
-		// ここから既存の画像のurlの取得
-	    var reader = new FileReader();
-	    reader.onload = function (e) {
-	        $(".image").attr('src', e.target.result);
-	    }
-	    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
-		});
+    $('#image').on('change', function (e) {
+	// ここから既存の画像のurlの取得
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $(".image").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+	});
 
     // 住所自動入力
-		$('#post_postal_code').jpostal({
-			postcode : [
-			'#post_postal_code'
-			],
+	$('#post_postal_code').jpostal({
+		postcode : [
+		'#post_postal_code'
+		],
 
-			address: {
-				"#post_address": "%3%4%5%6%7"
-			}
-		});
+		address: {
+			"#post_address": "%3%4%5%6%7"
+		}
+	});
 
 	// 星評価
-		$('#star').raty({
-		size: 36,
-	    starOff: "<%= asset_path('star-off.png') %>",
-	    starOn: "<%= asset_path('star-on.png')%>",
-	    starHalf: "<%= asset_path('star-half.png') %>",
-	    scoreName: 'post_comment[rate]', //reviewカラムに保存
-	    half: true, //★の半分の入力を行う
-		});
+	$('#star').raty({
+	size: 36,
+    starOff: "<%= asset_path('star-off.png') %>",
+    starOn: "<%= asset_path('star-on.png')%>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'post_comment[rate]', //reviewカラムに保存
+    half: true, //★の半分の入力を行う
+	});
 
 	// マウスオンで検索サイドバーを表示
-	    $('#slide').hover(
-	    	function(){
-	    		$(this).stop(true).animate({'marginRight':'300px'},500);
-	    	},
-	    	function () {
-	    		$(this).animate({'marginRight':'0'},500);
-	    	}
-	    );
+    $('#slide').hover(
+    	function(){
+    		$(this).stop(true).animate({'marginRight':'300px'},500);
+    	},
+    	function () {
+    		$(this).animate({'marginRight':'0'},500);
+    	}
+    );
 
 	// サイドバースクロール
+	fit();
+	$(window).resize(function(){
 		fit();
-		$(window).resize(function(){
-			fit();
-		})
-		function fit(){
-			var h = $(window).height();
-			$('.slide-inner').css("height",h);
-		};
+	})
+	function fit(){
+		var h = $(window).height();
+		$('.slide-inner').css("height",h);
+	};
 
 	//エリア・都道府県クリックで表示
-		$(".openBtn").click(function(){
-		  $(this).next(".textArea").animate({
-		  	height: 'toggle', opacity: 'toggle'  //折りたたみ
-		  },'nomal');  //速度
-		});
+	$(".openBtn").click(function(){
+	  $(this).next(".textArea").animate({
+	  	height: 'toggle', opacity: 'toggle'  //折りたたみ
+	  },'nomal');  //速度
+	});
 
 });

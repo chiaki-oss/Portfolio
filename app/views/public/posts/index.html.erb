@@ -26,6 +26,8 @@
 </div>
 
 <!-- Post#index -->
-<%= render 'public/posts/index', posts: @post_search.posts, post: @post %>
-<%= paginate @post_search.posts %>
+<div class="row">
+	<%= render 'public/posts/index', posts: @post_search.posts %>
+	<%= paginate @post_search.posts %>
+</div>
 

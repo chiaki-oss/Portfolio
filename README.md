@@ -1,7 +1,6 @@
 # Local 〜ローカルの魅力を発信、発見〜
 
-## サイト概要
-日本各地の魅力発信促進を目的としたサイト<br>
+## サイト概要　：日本各地の魅力発信・交流促進を目的としたサイト
 URL：http://18.180.110.123/<br>
 サイト紹介スライド：https://docs.google.com/presentation/d/1fibBwSUdOlzwcrq44g0k4Gye2YWtZ4w8UE0i8k9G4Fs/edit?usp=sharing
 
