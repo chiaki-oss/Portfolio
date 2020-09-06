@@ -21,20 +21,20 @@ class PostSearch
 			# 重複している結果を削除
 			posts.uniq!
             # paginate_arrayメソッドで配列をページネーション
-			@posts = Kaminari.paginate_array(posts).page(params[:page]).per(20)
+			@posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
 
 		# ソート検索
 		elsif @params[:option]
 			@option = @params[:option]
 			if @option == 'new'
 				posts = Post.includes(:user, :genre, :prefecture).order("created_at DESC")
-				@posts = posts.page(params[:page]).per(20)
+				@posts = posts.page(params[:page]).per(12)
 			elsif @option == 'old'
 				posts = Post.includes(:user, :genre, :prefecture)
-				@posts = posts.page(params[:page]).per(20)
+				@posts = posts.page(params[:page]).per(12)
 			elsif @option == 'likes'
 				posts = Post.includes(:user, :prefecture, :genre).find(Favorite.group(:post_id).order('count(post_id)desc').pluck(:post_id))
-				@posts = Kaminari.paginate_array(posts).page(params[:page]).per(20)
+				@posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
 			end
 
 		# トップサイドバーリンク
@@ -42,32 +42,31 @@ class PostSearch
 		elsif @params[:area_id]
 			@area = Area.find(@params[:area_id])
 			posts = Post.includes(:user, :genre, :prefecture).where(prefecture_id: @area.prefectures.pluck(:id))
-			@posts = posts.page(params[:page]).per(20)
+			@posts = posts.page(params[:page]).per(12)
 
 		# 都道府県毎
 		elsif @params[:prefecture_id]
 			@prefecture = Prefecture.find(@params[:prefecture_id])
 			posts = @prefecture.posts.includes(:user, :genre)
-			@posts = posts.page(params[:page]).per(20)
+			@posts = posts.page(params[:page]).per(12)
 
 		# ジャンル毎
 		elsif @params[:genre_id]
 			@genre = Genre.find(@params[:genre_id])
 			posts = @genre.posts.includes(:user, :prefecture)
-			@posts = posts.page(params[:page]).per(20)
+			@posts = posts.page(params[:page]).per(12)
 
 		# タグ毎
 		elsif @params[:tag_id]
 			@tag = Tag.find(@params[:tag_id])
 			posts = @tag.posts.includes(:user, :genre, :prefecture)
-			@posts = posts.page(params[:page]).per(20)
+			@posts = posts.page(params[:page]).per(12)
 
 		# 一覧　全件取得
 		else
 			posts = Post.includes(:user, :genre, :prefecture)
-			@posts = posts.page(params[:page]).per(20)
+			@posts = posts.page(params[:page]).per(12)
 		end
-
 		@count = posts.count
 	end
 end

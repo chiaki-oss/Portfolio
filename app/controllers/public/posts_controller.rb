@@ -15,11 +15,6 @@ class Public::PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@post_comment = PostComment.new
-		# visionApiによつ画像分析ラベル表示
-		if @post.image.present?
-			@label = Vision.get_image_data(@post)
-		end
-
 		# 閲覧履歴保存
 		if user_signed_in?
 			new_history = @post.browsing_histories.new
@@ -63,7 +58,7 @@ class Public::PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		# 既存タグの取得（name配列）
 		@tag_list = @post.tags.pluck(:name).join(",")
-
+		# visionApiによつ画像分析ラベル表示
 		if @post.image.present?
 			@label = Vision.get_image_data(@post)
 		end

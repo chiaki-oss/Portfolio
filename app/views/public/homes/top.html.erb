@@ -1,97 +1,66 @@
+<!-- SIDEBAR -->
+<div>
+	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
+</div>
 
-	<!-- SIDEBAR -->
-	<div>
-		<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
-	</div>
+<!-- Main Visual -->
+<div class="swiper-container swiperTop">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+        	<%= image_tag asset_path("matsuri.jpg")%>
+        </div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"><%= image_tag asset_path("sea_cafeteria.jpg")%></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+    </div>
+</div>
 
-    <!-- Main Visual -->
-	<div class="swiper-container swiperTop">
-	    <div class="swiper-wrapper">
-	        <div class="swiper-slide">
-	        	<%= image_tag asset_path("matsuri.jpg")%>
-	        </div>
-	        <div class="swiper-slide"></div>
-	        <div class="swiper-slide"></div>
-	        <div class="swiper-slide"><%= image_tag asset_path("sea_cafeteria.jpg")%></div>
-	        <div class="swiper-slide"></div>
-	        <div class="swiper-slide"></div>
-	        <div class="swiper-slide"></div>
-	        <div class="swiper-slide"></div>
-	    </div>
-	</div>
+<div class="main-msg">
+	<h3> Local </h3>
+	<p>みんなが知っているローカルの魅力を発信、共有するサイトです。( ポートフォリオです )　
+		→ <%= link_to "もっと知る", about_path %> <br>
+		<% if user_signed_in? %>
+			<%= link_to 'ログアウトする', destroy_user_session_path, method: :delete , class: "btn btn-default btn-sm" %>　
+		<% else %>
+			<%= link_to '簡単ログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>　
+			<%= link_to '簡単ログイン ADMIN ', admins_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>
+		<% end %>
+	</p>
+</div>
 
-	<div class="main-msg">
-		<h3> Local </h3>
-		<p>みんなが知っているローカルの魅力を発信、共有するサイトです。( ポートフォリオです )　
-			→ <%= link_to "もっと知る", about_path %> <br>
-			<% if user_signed_in? %>
-				<%= link_to 'ログアウトする', destroy_user_session_path, method: :delete , class: "btn btn-default btn-sm" %>　
-			<% else %>
-				<%= link_to '簡単ログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>　
-				<%= link_to '簡単ログイン ADMIN ', admins_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>
-			<% end %>
-		</p>
-	</div>
-
-	<div class="swiper-container swiperBottom">
-	    <div class="swiper-wrapper">
-	        <div class="swiper-slide"><%= image_tag asset_path("machi.jpg")%></div>
-	        <div class="swiper-slide"><%= image_tag asset_path("machi.jpg")%></div>
-	    </div>
-	</div>
-
-	<% if user_signed_in? %>
-
-		<div class="row">
-			<div class="col-xs-8">
-
-				<h3>新しい投稿</h3>
-				<h5><%= link_to new_post_path do %>
-		              <i class="fas fa-plus"> 投稿する</i>
-		            <% end %>
-		        </h5>
+<div class="swiper-container swiperBottom">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><%= image_tag asset_path("machi.jpg")%></div>
+        <div class="swiper-slide"><%= image_tag asset_path("machi.jpg")%></div>
+    </div>
+</div>
+<!-- post#index -->
+<% if user_signed_in? %>
+	<div class="row">
+		<div class="col-sm-8">
+			<h3>新しい投稿</h3>
+			<h5><%= link_to new_post_path do %>
+	              <i class="fas fa-plus"> 投稿する</i>
+	            <% end %>
+	        </h5>
+	        <div class="row">
 				<%= render 'public/homes/index', posts: @new_posts %>
-
-				<h3>人気の投稿</h3>
-				<%= render 'public/homes/index', posts: @liked_posts %>
-
-				<h3>最近見た投稿<h5><%= link_to 'もっと見る', history_posts_path %></h5></h3>
-				<div class="row">
-					<% @histories.each do |history| %>
-						<div class="col-xs-4">
-							<%= link_to post_path(history.post) do %>
-								<%= attachment_image_tag history.post, :image, format: "jpeg", fallback: "sample.jpg", size:"230x150"%>
-							<% end %>
-							<h5><%= history.post.title %></h5>
-							<hr>
-							<p>
-								<%= attachment_image_tag history.post.user, :image, format: "jpeg", fallback: "no_image.jpg", size: "20x20" %>
-								<span><%= history.post.user.name %></span>
-
-								<!-- いいね機能 -->
-								<span class="favorite-<%= history.post.id %>">
-									<%= render 'public/favorites/favorite', post: history.post %>
-						        </span>
-						    </p>
-						    <span class="post-prefecture"><%= link_to history.post.prefecture.name, posts_path(prefecture_id: history.post.prefecture.id)  %></span>
-							<span class="post-genre"><%= link_to history.post.genre.name, posts_path(genre_id: history.post.genre.id) %></span>
-						</div>
-					<% end %>
-				</div>
-
-				<%= link_to posts_path do %>
-					<div class="to_posts">
-						投稿をもっとみる
-					</div>
-				<% end %>
-
 			</div>
+			<h3>人気の投稿</h3>
+			<div class="row">
+				<%= render 'public/homes/index', posts: @liked_posts %>
+			</div>
+		</div>
 
-			<div class="col-xs-4">
-				<h3>タイムライン</h3>
-				<div class="row">
-					<% @following_posts.each do |post| %>
-					<div class="col-xs-6">
+		<div class="col-sm-4">
+			<h3>タイムライン</h3>
+			<div class="row">
+				<% @following_posts.each do |post| %>
+					<div class="col-md-6 col-sm-12">
 						<%= link_to post_path(post) do %>
 							<%= attachment_image_tag post, :image, format: "jpeg", fallback: "sample.jpg", size:"160x100" %>
 						<% end %>
@@ -100,7 +69,6 @@
 						<p>
 							<%= attachment_image_tag post.user, :image, format: "jpeg", fallback: "no_image.jpg", size: "20x20" %>
 							<span><%= post.user.name %></span>
-
 							<!-- いいね機能 -->
 							<span class="favorite-<%= post.id %>">
 								<%= render 'public/favorites/favorite', post: post %>
@@ -109,42 +77,58 @@
 					    <span class="post-prefecture"><%= link_to post.prefecture.name, posts_path(prefecture_id: post.prefecture.id)  %></span>
 						<span class="post-genre"><%= link_to post.genre.name, posts_path(genre_id: post.genre.id) %></span>
 					</div>
-					<% end %>
-				</div>
-
-				<%= link_to user_follows_timeline_path (current_user.id)do %>
-					<div class="to_posts">
-						タイムラインをもっとみる
-					</div>
 				<% end %>
-
 			</div>
+			<%= link_to user_follows_timeline_path (current_user.id)do %>
+				<div class="to_posts">タイムラインをもっとみる</div>
+			<% end %>
 		</div>
+	</div>
+	<div class="row">
+		<h3>最近見た投稿</h3>
+		<% @histories.each do |history| %>
+			<div class="col-md-3 col-sm-6">
+				<%= link_to post_path(history.post) do %>
+					<%= attachment_image_tag history.post, :image, format: "jpeg", fallback: "sample.jpg", size:"200x150"%>
+				<% end %>
+				<h5><%= history.post.title %></h5>
+				<hr>
+				<p>
+					<%= attachment_image_tag history.post.user, :image, format: "jpeg", fallback: "no_image.jpg", size: "20x20" %>
+					<span><%= history.post.user.name %></span>
 
-	<% else %>
-    <!-- 非会員 -->
+					<!-- いいね機能 -->
+					<span class="favorite-<%= history.post.id %>">
+						<%= render 'public/favorites/favorite', post: history.post %>
+			        </span>
+			    </p>
+			    <span class="post-prefecture"><%= link_to history.post.prefecture.name, posts_path(prefecture_id: history.post.prefecture.id)  %></span>
+				<span class="post-genre"><%= link_to history.post.genre.name, posts_path(genre_id: history.post.genre.id) %></span>
+			</div>
+		<% end %>
+	</div>
+	<%= link_to posts_path do %>
+		<div class="to_posts">投稿をもっとみる</div>
+	<% end %>
+<% else %>
+	<!-- 非会員 -->
 	<div>
-
 		<h3>新しい投稿</h3>
 		<div class="row">
 			<%= render 'public/posts/index', posts: @new_posts %>
 		</div>
-
 		<h3>人気の投稿</h3>
 		<div class="row">
 			<%= render 'public/posts/index', posts: @liked_posts %>
 		</div>
-
 		<%= link_to posts_path do %>
 			<div class="to_posts">
 				もっとみる
 			</div>
 		<% end %>
-
 	</div>
+<% end %>
 
-	<% end %>
 
-	
 
 

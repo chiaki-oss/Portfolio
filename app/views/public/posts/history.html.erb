@@ -5,9 +5,9 @@
 
 <h2>最近見た投稿</h2>
 <% @histories.each do |history| %>
-	<div class="col-xs-3">
+	<div class="col-lg-3 col-md-4 col-sm-6">
 		<%= link_to post_path(history.post) do %>
-			<%= attachment_image_tag history.post, :image, format: "jpeg", fallback: "sample.jpg", size:"250x200" %>
+			<%= attachment_image_tag history.post, :image, format: "jpeg", fallback: "sample.jpg", size:"240x200" %>
 		<% end %>
 		<h4><%= history.post.title %></h4>
 		<hr>

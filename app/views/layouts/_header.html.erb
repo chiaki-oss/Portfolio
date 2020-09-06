@@ -13,7 +13,6 @@
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-
         <% if user_signed_in? %>
           <li><%= link_to 'Localとは？', about_path %></li>
           <li><%= link_to 'マイページ', user_path(current_user) %></li>

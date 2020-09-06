@@ -28,6 +28,8 @@
 <!-- Post#index -->
 <div class="row">
 	<%= render 'public/posts/index', posts: @post_search.posts %>
+</div>
+<div class="row">
 	<%= paginate @post_search.posts %>
 </div>
 
