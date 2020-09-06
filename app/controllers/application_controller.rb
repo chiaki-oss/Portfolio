@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 		end
     end
 
-	private
+	protected
 	#sign up時の登録情報追加 # ログイン時にnameを使用
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
