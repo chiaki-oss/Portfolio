@@ -118,11 +118,13 @@
 <% else %>
 	<!-- 非会員 -->
 	<div>
-		<h3>新しい投稿</h3>
+		<h3>New
+			<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+		</h3>
 		<div class="row">
 			<%= render 'public/posts/index', posts: @new_posts %>
 		</div>
-		<h3>人気の投稿</h3>
+		<h3>Popular<i class="fas fa-fire-alt"></i></h3>
 		<div class="row">
 			<%= render 'public/posts/index', posts: @liked_posts %>
 		</div>
