@@ -29,7 +29,8 @@
     </p>
 
     <div class="actions">
-      <%= f.submit "ユーザー登録する", class: "btn btn-primary" %>
+      <%= f.submit "ユーザー登録する", class: "btn btn-primary" %>　
+      <%= link_to 'ゲストログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default" %>
     </div>
   <% end %>
   </div>

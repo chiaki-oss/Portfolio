@@ -1,24 +1,29 @@
 <h2>問い合わせ履歴<small>　
 	<%= link_to '問い合わせする', new_contact_path, class: "btn btn-default" %></small>
 </h2>
-<div class="row">
-	<table class="table">
-		<thead>
-			<tr>
-				<td>タイトル</td>
-				<td>日時</td>
-			</tr>
-		</thead>
-		<% @contacts.each do |contact| %>
-		<tbody>
-			<tr>
-				<td>
-					<%= link_to contact.title, contact_path(contact) %>
-				</td>
-				<td><%= contact.created_at.strftime("%Y/%m/%d") %></td>
-			</tr>
-	    <% end %>
-		</tbody>
-	</table>
-</div>
+<% if @contacts.exists? %>
+	<div class="row">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>タイトル</td>
+					<td>日時</td>
+				</tr>
+			</thead>
+			<% @contacts.each do |contact| %>
+			<tbody>
+				<tr>
+					<td>
+						<%= link_to contact.title, contact_path(contact) %>
+					</td>
+					<td><%= contact.created_at.strftime("%Y/%m/%d") %></td>
+				</tr>
+		    <% end %>
+			</tbody>
+		</table>
+	</div>
+<% else %>
+	<P>まだ問い合わせがありません</P>
+<% end %>
+
 

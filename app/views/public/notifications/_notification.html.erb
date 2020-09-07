@@ -1,8 +1,8 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 
-<table class="table">
-	<td>
+<div class="col-md-6">
+	<p class="alert">
 		<%= link_to user_path(visitor) do %>
 			<%= attachment_image_tag visitor, :image, format: 'jpeg', fallback: "no_image.jpg", size: "20x20" %>
 			<%= visitor.name %>
@@ -13,17 +13,16 @@
 		when 'follow' then %>
 			あなたをフォローしました
 		<% when 'like' then %>
+			あなたの投稿にいいねしました
 			<%= link_to notification.post do %>
-				<%= attachment_image_tag notification.post, :image, format: 'jpeg', fallback: "no_image.jpg", size: "20x20" %>あなたの投稿に
+				<%= attachment_image_tag notification.post, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
 			<% end %>
-			いいねしました
 		<% when 'post_comment' then %>
-			<%= link_to notification.post do %>
-				<%= attachment_image_tag notification.post, :image, format: 'jpeg', fallback: "no_image.jpg", size: "20x20" %>あなたの投稿に
-			<% end %>
 			<% PostComment.find_by(id: notification.post_comment.id)&.comment %>
-			コメントしました
-		<% end %>
-	</td>
-	<td><%= time_ago_in_words(notification.created_at).upcase %>前</td>
-</table>
+			あなたの投稿にコメントしました
+			<%= link_to notification.post do %>
+				<%= attachment_image_tag notification.post, :image, format: 'jpeg', fallback: "sample.jpg", size: "30x30" %>
+			<% end %>
+		<% end %><br>
+	<%= time_ago_in_words(notification.created_at).upcase %>前</p>
+</div>

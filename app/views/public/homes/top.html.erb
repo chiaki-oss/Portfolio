@@ -42,22 +42,27 @@
 <% if user_signed_in? %>
 	<div class="row">
 		<div class="col-sm-8">
-			<h3>新しい投稿</h3>
-			<h5><%= link_to new_post_path do %>
-	              <i class="fas fa-plus"> 投稿する</i>
+			<h3>New<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+			<small><%= link_to new_post_path do %>
+	              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 投稿する</i>
 	            <% end %>
-	        </h5>
+	        </small>
+	        </h3>
 	        <div class="row">
 				<%= render 'public/homes/index', posts: @new_posts %>
 			</div>
-			<h3>人気の投稿</h3>
+			<h3>Popular
+				<i class="fas fa-fire-alt"></i>
+			</h3>
 			<div class="row">
 				<%= render 'public/homes/index', posts: @liked_posts %>
 			</div>
 		</div>
 
 		<div class="col-sm-4">
-			<h3>タイムライン</h3>
+			<h3>Timeline 
+				<i class="fas fa-user-friends"></i>
+			</h3>
 			<div class="row">
 				<% @following_posts.each do |post| %>
 					<div class="col-md-6 col-sm-12">
