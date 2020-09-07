@@ -3,28 +3,31 @@
 
 <%= form_for(@post, url: post_path(@post)) do |f| %>
 <div class="row">
-	<div class="col-xs-5">
-		<div class="image">
-			<p><%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "sample.jpg", size:"350x300" %>
+	<div class="col-md-5 col-sm-12">
+		<span class="image">
+			<p><%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "sample.jpg", width:'100%', height: '100%' %>
 			</p>
 			<p><%= f.attachment_field :image %></p>
-		</div>
+		</span>
 	</div>
 
-	<div class="col-xs-7">
+	<div class="col-md-7 col-sm-12">
 		<div class="row">
 			<table class="col-xs-12">
 				<tbody>
 					<tr>
-						<td><%= f.label :タイトル %></td>
+						<td><%= f.label :タイトル %> 
+							<span class="label label-default">必須</span> </td>
 						<td><%= f.text_field :title, class: "form-control" %></td>
 					</tr>
 					<tr>
-						<td><%= f.label :ジャンル %></td>
+						<td><%= f.label :ジャンル %> 
+							<span class="label label-default">必須</span> </td>
 						<td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
 					</tr>
 					<tr>
-						<td><%= f.label :都道府県 %></td>
+						<td><%= f.label :都道府県 %> 
+							<span class="label label-default">必須</span> </td>
 						<td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name%></td>
 					</tr>
 					<tr>
@@ -40,7 +43,8 @@
 						<td><%= f.text_field :tag_ids,value: @tag_list,  class: "form-control", placeholder: "タグをつける。複数つけるには','で区切ってください。"%></td>
 					</tr>
 					<tr>
-						<td><%= f.label :説明 %></td>
+						<td><%= f.label :説明 %> 
+							<span class="label label-default">必須</span> </td>
 						<td><%= f.text_area :body, class: "form-control" %></td>
 					</tr>
 				</tbody>
@@ -58,9 +62,10 @@
 <div class="cols-xs-7">
 	<% if @post.image.present? %>
 	    <p><strong>おすすめのタグ</strong><br>
-	        	（例）<% @label.each do |label| %>
-			        	<%= label %>,
-			        <% end %>
+	    	（例）
+	    	<% @label.each do |label| %>
+		    	<%= label %>,
+			 <% end %>
 	    </p>
 	<% end %>
 </div>

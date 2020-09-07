@@ -2,6 +2,7 @@
 	<%= @user.name %>さんの会員ステータスの編集</h1>
 
 <%= form_for(@user, url: admin_user_path) do |f| %>
+<%= render 'layouts/error_messages', resource: @user %>
 
 	<p>会員ステータス　
 		<%= f.radio_button :is_active, 1 %>

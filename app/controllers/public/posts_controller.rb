@@ -64,13 +64,13 @@ class Public::PostsController < ApplicationController
 	end
 
 	def update
-		post = Post.find(params[:id])
+		@post = Post.find(params[:id])
 		# 既存タグの取得（name配列）
 		tag_list = params[:post][:tag_ids].split(",")
 		# update_attributes：バリデーション チェックされない
-		if post.update_attributes(post_params)
-			post.save_tags(tag_list)
-			redirect_to post_path(post), notice:'投稿を更新しました'
+		if @post.update_attributes(post_params)
+			@post.save_tags(tag_list)
+			redirect_to post_path(@post), notice:'投稿を更新しました'
 		else
 			render 'edit'
 		end

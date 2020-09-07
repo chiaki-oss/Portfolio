@@ -22,8 +22,8 @@ class Admin::AreasController < ApplicationController
 	end
 
 	def update
-		area = Area.find(params[:id])
-		if area.update(area_params)
+		@area = Area.find(params[:id])
+		if @area.update(area_params)
 			redirect_to admin_areas_path, notice:'エリア名を更新しました'
 		else
 			render 'edit'

@@ -4,14 +4,14 @@
 <%= form_for(@user, url: user_path) do |f| %>
 <div class="row">
 
-	<div class="col-xs-5">
+	<div class="col-md-5">
 		<p>
 			<%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg", size:"50x50" %>
 		</p>
 		<p><%= f.attachment_field :image %></p>
 	</div>
 
-	<div class="col-xs-7">
+	<div class="col-md-7">
 		<p>
 			<%= f.label :ユーザー名 %><br>
 			<%= f.text_field :name %>
