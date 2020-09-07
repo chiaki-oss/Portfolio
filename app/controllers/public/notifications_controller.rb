@@ -9,5 +9,4 @@ class Public::NotificationsController < ApplicationController
 		end
 	end
 
-
 end

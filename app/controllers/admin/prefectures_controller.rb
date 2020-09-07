@@ -6,12 +6,9 @@ class Admin::PrefecturesController < ApplicationController
 	end
 
 	def update
-		@prefecture = Prefecture.find(params[:id])
-		if @prefecture.update(prefecture_params)
-			redirect_to admin_areas_path, notice:'エリア設定を変更しました'
-		else
-			render edit_admin_prefecture_path(@prefecture)
-		end
+		prefecture = Prefecture.find(params[:id])
+		prefecture.update(prefecture_params)
+		redirect_to admin_areas_path, notice:'エリア設定を変更しました'
 	end
 
 	private

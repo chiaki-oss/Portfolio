@@ -27,10 +27,10 @@ class PostSearch
 		elsif @params[:option]
 			@option = @params[:option]
 			if @option == 'new'
-				posts = Post.includes(:user, :genre, :prefecture).order("created_at DESC")
+				posts = Post.includes(:user, :genre, :prefecture)
 				@posts = posts.page(params[:page]).per(12)
 			elsif @option == 'old'
-				posts = Post.includes(:user, :genre, :prefecture)
+				posts = Post.includes(:user, :genre, :prefecture).reverse_order
 				@posts = posts.page(params[:page]).per(12)
 			elsif @option == 'likes'
 				posts = Post.includes(:user, :prefecture, :genre).find(Favorite.group(:post_id).order('count(post_id)desc').pluck(:post_id))
@@ -69,4 +69,5 @@ class PostSearch
 		end
 		@count = posts.count
 	end
+
 end

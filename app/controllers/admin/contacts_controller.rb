@@ -1,13 +1,11 @@
 class Admin::ContactsController < ApplicationController
     before_action :authenticate_admin!
 
-	# 問い合わせ内容一覧
 	def index
         @contacts = Contact.includes(:user).page(params[:page]).per(10).order(created_at: :desc)
         @users = User.includes(:contacts)
     end
 
-    # 問い合わせ内容を取得して更新
     def edit
         @contact = Contact.find(params[:id])
     end

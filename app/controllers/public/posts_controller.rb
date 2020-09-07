@@ -19,7 +19,6 @@ class Public::PostsController < ApplicationController
 		if user_signed_in?
 			new_history = @post.browsing_histories.new
 			new_history.user_id = current_user.id
-
 			# 閲覧履歴が既にあるか確認、ある場合は古い記録を削除して新しく保存
 			if current_user.browsing_histories.exists?(post_id: "#{params[:id]}")
 				old_history = current_user.browsing_histories.find_by(post_id: "#{params[:id]}")
@@ -37,7 +36,7 @@ class Public::PostsController < ApplicationController
 	end
 
 	def history
-		@histories = current_user.browsing_histories.includes(:post, post: [:user, :prefecture, :genre]).order("created_at DESC")
+		@histories = current_user.browsing_histories.includes(:post, post: [:user, :prefecture, :genre]).reverse_order
 	end
 
 	def create
@@ -65,21 +64,21 @@ class Public::PostsController < ApplicationController
 	end
 
 	def update
-		@post = Post.find(params[:id])
+		post = Post.find(params[:id])
 		# 既存タグの取得（name配列）
 		tag_list = params[:post][:tag_ids].split(",")
 		# update_attributes：バリデーション チェックされない
-		if @post.update_attributes(post_params)
-			@post.save_tags(tag_list)
-			redirect_to post_path(@post), notice:'投稿を更新しました'
+		if post.update_attributes(post_params)
+			post.save_tags(tag_list)
+			redirect_to post_path(post), notice:'投稿を更新しました'
 		else
 			render 'edit'
 		end
 	end
 
 	def destroy
-		@post = Post.find(params[:id])
-		@post.destroy
+		post = Post.find(params[:id])
+		post.destroy
 		redirect_to posts_path, notice:'投稿を削除しました'
 	end
 

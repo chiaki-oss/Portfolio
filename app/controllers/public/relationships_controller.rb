@@ -21,7 +21,7 @@ class Public::RelationshipsController < ApplicationController
   def follower
     user = User.find(params[:user_id])
     @users = user.following_user
-    @following_posts = Post.includes(:user, :genre, :prefecture).where(user_id: @users).order("created_at DESC")
+    @following_posts = Post.includes(:user, :genre, :prefecture).where(user_id: @users)
   end
 
   # フォロワー
@@ -33,8 +33,7 @@ class Public::RelationshipsController < ApplicationController
   def timeline
     user = User.find(params[:user_id])
     @users = user.following_user
-    @following_posts = Post.includes(:user, :genre, :prefecture).where(user_id: @users).order("created_at DESC")
+    @following_posts = Post.includes(:user, :genre, :prefecture).where(user_id: @users)
   end
-
 
 end

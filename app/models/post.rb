@@ -8,10 +8,11 @@ class Post < ApplicationRecord
 	has_many :browsing_histories, dependent: :destroy
 
 	attachment :image
-
 	validates :title, presence: true, length: { maximum: 15}
 	validates :body, presence: true
 	validates :postal_code, length: { is: 7 }, if: -> {postal_code.present? }
+
+	default_scope -> { order(created_at: :desc) }  #デフォルトの並び方；新しい順
 
     # いいね いいねしてるかどうかの確認
 	has_many :favorites, dependent: :destroy
@@ -61,7 +62,6 @@ class Post < ApplicationRecord
 
 			notification.save if notification.valid?
 		end
-
 	end
 
 	# コメント通知

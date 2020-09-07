@@ -1,7 +1,6 @@
 class Public::ContactsController < ApplicationController
   before_action :authenticate_user!, only: [:confirm, :create, :index, :show]
 
-
   def new
   	@contact = Contact.new
   end
