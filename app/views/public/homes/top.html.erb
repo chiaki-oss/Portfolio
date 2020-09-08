@@ -26,8 +26,8 @@
 		<% if user_signed_in? %>
 			<%= link_to 'ログアウトする', destroy_user_session_path, method: :delete , class: "btn btn-default btn-sm" %>　
 		<% else %>
-			<%= link_to '簡単ログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>　
-			<%= link_to '簡単ログイン ADMIN ', admins_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>
+			<%= link_to 'ゲストログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>　
+			<%= link_to 'ゲストログイン ADMIN ', admins_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>
 		<% end %>
 	</p>
 </div>

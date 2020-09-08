@@ -1,8 +1,8 @@
 <!-- 投稿一覧 => index/top/liked/show-->
 <% posts.each do |post| %>
-	<div class="col-md-3">
+	<div class="col-md-3 col-sm-6">
 		<%= link_to post_path(post) do %>
-			<%= attachment_image_tag post, :image, format: "jpeg", fallback: "sample.jpg", size:"240x200" %>
+			<%= attachment_image_tag post, :image, format: "jpeg", fallback: "sample.jpg", size:"250x200" %>
 		<% end %>
 		<h5><%= post.title %></h5>
 		<hr>

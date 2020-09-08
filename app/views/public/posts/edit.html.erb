@@ -52,22 +52,23 @@
 		</div>
 	</div>
 </div>
-<div class="col-xs-5">
-	<div class="action">
+
+<div class="row">
+	<!-- visionApi タグの提案 -->
+	<div class="col-sm-offset-5 col-sm-4">
+		<% if @post.image.present? %>
+		    <p><strong>おすすめのタグ</strong><br>
+		    	（例）
+		    	<% @label.each do |label| %>
+			    	<%= label %>,
+				 <% end %>
+		    </p>
+		<% end %>
+	</div>
+	<div class="col-sm-3">
 		<p><%= link_to '戻る', :back, class: "btn btn-default" %>　
 			<%= f.submit '更新する', class: "btn btn-primary" %>　</p>
 	</div>
-</div>
-<!-- visionApi タグの提案 -->
-<div class="cols-xs-7">
-	<% if @post.image.present? %>
-	    <p><strong>おすすめのタグ</strong><br>
-	    	（例）
-	    	<% @label.each do |label| %>
-		    	<%= label %>,
-			 <% end %>
-	    </p>
-	<% end %>
 </div>
 <% end %>
 

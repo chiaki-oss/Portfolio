@@ -3,7 +3,7 @@
 	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
 </div>
 
-<h2>タイムライン
+<h2>Timeline
 <% if @following_posts.count > 0 %>
  <%= link_to 'Following User', user_follows_path, class: "btn btn-default" %>
 </h2>
