@@ -10,4 +10,6 @@
 <% else %>
     <p>フォローしているユーザーがいません</p>
 <% end %>
-<%= render 'public/posts/index', posts: @following_posts, post: @post %>
+<div class="row">
+	<%= render 'public/posts/index', posts: @following_posts, post: @post %>
+</div>

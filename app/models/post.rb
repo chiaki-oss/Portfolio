@@ -20,6 +20,11 @@ class Post < ApplicationRecord
 		favorites.where(user_id: user.id).exists?
 	end
 
+	# ソート：いいねが多い順
+	def self.rank
+		find(Favorite.group(:post_id).order('count(post_id)desc').pluck(:post_id))
+	end
+
 	# タグ
 	def save_tags(savepost_tags)
 		current_tags = self.tags.pluck(:name) unless self.tags.nil?

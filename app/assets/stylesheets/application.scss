@@ -75,7 +75,6 @@
 	color: inherit;
  }
 
-
  .fa{
  color: black;
  }
@@ -107,13 +106,15 @@
     opacity: 0.8;
  }
 
- .post-prefecture{
+.post-prefecture{
 	background-color: #a8d7ff;
 	display: inline-block;
     color: #fff;
     font-weight: 700;
-    padding: 3px 10px;
+    padding: 4px 5px;
     letter-spacing: .1em;
+    border-radius: 3px;
+    margin-bottom: 3px;
 
     a{
 		color: inherit;
@@ -126,14 +127,15 @@
 	display: inline-block;
     color: #fff;
     font-weight: 700;
-    padding: 3px 10px;
+    padding: 4px 5px;
     letter-spacing: .1em;
+    border-radius: 3px;
+    margin-bottom: 3px;
 
     a{
 		color: inherit;
 		text-decoration: none;
 	}
-
  }
 
  /* 通知時の● */

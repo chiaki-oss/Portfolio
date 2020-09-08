@@ -32,8 +32,8 @@ class PostSearch
 			elsif @option == 'old'
 				posts = Post.includes(:user, :genre, :prefecture).reverse_order
 				@posts = posts.page(params[:page]).per(12)
-			elsif @option == 'likes'
-				posts = Post.includes(:user, :prefecture, :genre).find(Favorite.group(:post_id).order('count(post_id)desc').pluck(:post_id))
+			elsif @option == 'likes' #rankメソッド(post.rb定義)
+				posts = Post.includes(:user, :prefecture, :genre).except(:order).rank
 				@posts = Kaminari.paginate_array(posts).page(params[:page]).per(12)
 			end
 

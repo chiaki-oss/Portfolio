@@ -67,7 +67,7 @@
 				<% @following_posts.each do |post| %>
 					<div class="col-md-6 col-sm-12">
 						<%= link_to post_path(post) do %>
-							<%= attachment_image_tag post, :image, format: "jpeg", fallback: "sample.jpg", size:"160x100" %>
+							<%= attachment_image_tag post, :image, format: "jpeg", fallback: "sample.jpg", size:"150x100" %>
 						<% end %>
 						<h5><%= post.title %></h5>
 						<hr>
@@ -79,8 +79,8 @@
 								<%= render 'public/favorites/favorite', post: post %>
 					        </span>
 					    </p>
-					    <span class="post-prefecture"><%= link_to post.prefecture.name, posts_path(prefecture_id: post.prefecture.id)  %></span>
-						<span class="post-genre"><%= link_to post.genre.name, posts_path(genre_id: post.genre.id) %></span>
+					    <span class="label post-prefecture"><%= link_to post.prefecture.name, posts_path(prefecture_id: post.prefecture.id)  %></span>
+						<span class="label post-genre"><%= link_to post.genre.name, posts_path(genre_id: post.genre.id) %></span>
 					</div>
 				<% end %>
 			</div>
@@ -92,7 +92,7 @@
 	<div class="row">
 		<h3>最近見た投稿</h3>
 		<% @histories.each do |history| %>
-			<div class="col-md-3 col-sm-6">
+			<div class="col-md-3 col-sm-4">
 				<%= link_to post_path(history.post) do %>
 					<%= attachment_image_tag history.post, :image, format: "jpeg", fallback: "sample.jpg", size:"200x150"%>
 				<% end %>

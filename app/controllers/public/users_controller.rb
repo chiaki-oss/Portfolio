@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update]
 
 	def show
-		@posts = @user.posts
+		@posts = @user.posts.includes(:genre, :prefecture)
 	end
 
 	def update
