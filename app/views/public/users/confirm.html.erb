@@ -1,10 +1,14 @@
 <h3>本当に退会しますか？</h3>
+<div class="alert alert-danger">
+	<p><strong>一度退会しますと、投稿した記事やお気に入りの投稿など
+		会員情報がすべて削除されます。<br>
+	   退会する場合は、「退会する」をクリックしてください。
+	</strong></p>
 
-<p>一度退会しますと、投稿した記事やお気に入りの投稿など
-	会員情報がすべて削除されます。<br>
-   退会する場合は、「退会する」をクリックしてください。</p>
+	<p>
+		<%= link_to "退会する", confirm_path, method: :put, class: "btn btn-outline-danger", "data-confirm" => "本当に退会しますか？", class:"btn btn-danger" %>　
 
-<%= link_to "退会する", confirm_path, method: :put, class: "btn btn-outline-danger", "data-confirm" => "本当に退会しますか？", class:"btn btn-danger" %>
-
-<%= link_to "退会しない", user_path(current_user), class:"btn btn-default" %>
-<%= link_to 'マイページに戻る', user_path(current_user) %>
+		<%= link_to "退会しない", user_path(current_user), class:"btn btn-default" %>　
+		<%= link_to 'マイページに戻る', user_path(current_user) %>
+	</p>
+</div>

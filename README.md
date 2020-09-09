@@ -1,17 +1,15 @@
 # Local
-〜ローカルの魅力を発信、発見〜
+〜ローカルの魅力を発信、発見〜　URL：https://share-local.work/
 
 ### サイト概要　：日本各地の魅力発信・交流促進を目的としたサイト
-URL：https://share-local.work/ <br>
-
-サイト紹介スライド：https://docs.google.com/presentation/d/1fibBwSUdOlzwcrq44g0k4Gye2YWtZ4w8UE0i8k9G4Fs/edit?usp=sharing
+紹介スライド：https://docs.google.com/presentation/d/1fibBwSUdOlzwcrq44g0k4Gye2YWtZ4w8UE0i8k9G4Fs/edit?usp=sharing
 
 ### サイトテーマ
 "みんなが知っている観光地" ではなく、<br>
 "まだ広く知られていない、ローカルの魅力" を共有➡︎再発見
 
 ### 開発環境
-・サーバーサイド：Ruby(2.5.7),　Ruby on Rails(5.2.4)
+・サーバーサイド：Ruby(2.5.7), Ruby on Rails(5.2.4)
 
 ・フロントエンド：BootStrap, JQuery
 
@@ -24,14 +22,14 @@ URL：https://share-local.work/ <br>
 ### テーマを選んだ理由
 日本には有名な観光地がたくさんあります。<br>
 しかし、それぞれの地域には地元の人やその地に訪れた人しか知らない素晴らしい魅力が溢れています。<br>
-そんなまだ広く知られていない各地の魅力を広めたい、もっと知りたい、という思い。<br>
+そんなまだ多くの人に知られていない各地の魅力を知りたい、広めたい、さらには理解、交流を深めたい、<br>
 という思いでこのサイトを作成しました。
 
 ### ターゲットユーザ
 地域の魅力発信をしたい人。旅先のこと、日本の魅力をもっと知りたい人。
 
 ### 主な利用シーン
- -自分の地元や自分しか知らない地域の魅力を発信したいとき。<br>
+ -自分の地元や自分しか知らない地域の魅力を発信、共有したいとき。<br>
  -その地域のことをよく知っている人目線の情報が知りたいとき。
 
 ## 設計書

@@ -57,7 +57,7 @@
 	<!-- visionApi タグの提案 -->
 	<div class="col-sm-offset-5 col-sm-4">
 		<% if @post.image.present? %>
-		    <p><strong>おすすめのタグ</strong><br>
+		    <p class="alert alert-warning"><strong>おすすめのタグ</strong><br>
 		    	（例）
 		    	<% @label.each do |label| %>
 			    	<%= label %>,

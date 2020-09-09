@@ -9,60 +9,58 @@
 		〒<%= @post.postal_code  %> <%= @post.address %></p>
 <% end %>
 <div class="row">
-	<div class="col-xs-5">
+	<div class="col-md-5">
 		<%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "sample.jpg", width:'100%', height: '100%' %>
 		<p>投稿日 <%= @post.created_at.strftime("%Y/%m/%d") %>
 		   更新日 <%= @post.updated_at.strftime("%Y/%m/%d ") %></p>
+		<p>《紹介文》</p>
+		<p><%= @post.body %></p>
 	</div>
-	<div class="col-xs-3">
+	<div class="col-md-3">
 		<p>
 	        <span class="post-prefecture"><%= link_to @post.prefecture.name, posts_path(prefecture_id: @post.prefecture.id)  %></span>
 			<span class="post-genre"><%= link_to @post.genre.name, posts_path(genre_id: @post.genre.id) %></span>
 		</p>
 
-		<%= link_to user_path(@post.user) do %>
-            <%= attachment_image_tag @post.user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
-            <%= @post.user.name %>
-        <% end %>
-
 		<p><% @post.tags.each do |tag| %>
 				#<%= link_to tag.name, posts_path(tag_id: tag.id) %>
 			<% end %>
 		</p>
+
+		<p><%= link_to user_path(@post.user) do %>
+            <%= attachment_image_tag @post.user, :image, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
+            <%= @post.user.name %>　
+        <% end %>
+
 		<!-- いいね機能 -->
-		<p class="favorite-<%= @post.id %>">
+		<span class="favorite-<%= @post.id %>">
 			<%= render 'public/favorites/favorite', post: @post %>
+		</span>
 		</p>
     </div>
 
-    <div class="col-xs-4">
+    <div class="col-md-4">
         <!-- ユーザーの投稿編集・削除ボタン -->
         <% if @post.user == current_user  %>
-	        <p><%= link_to '投稿を編集する', edit_post_path(@post), class: "btn btn-default" %></p>
-	        <p><%= link_to '投稿を削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-default" %></p>
-
+	        <span><%= link_to '投稿を編集する', edit_post_path(@post), class: "btn btn-default" %>　</span>
+	        <span><%= link_to '投稿を削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-default" %></span>
 	    <% elsif user_signed_in? %>
 	    <!-- howto -->
-		    <p>「知らなかった！」「行ってみたい！」と思った投稿に♡を送りましょう。
-			    ♡をつけた投稿はマイページから確認できます。</p>
-			    <p>
-			    「もっと知りたい！」など投稿者に聞いてみたいことや、「これは伝えたい！」などあなたが感じたことがあればコメントを送ったり、星の評価を送ってみましょう。</p>
+	    <p class="alert alert-warning">「知らなかった！」「行ってみたい！」と思った投稿に♡を送りましょう。<br>
+	    	♡をつけた投稿はマイページから確認できます。<br>
+		    「もっと知りたい！」など投稿者に聞いてみたいことや、「これは伝えたい！」などあなたが感じたことがあればコメントを送ったり、星の評価を送ってみましょう。
+		</p>
 
 		<% else %>
-			<p>お気に入り投稿の登録（♡）やコメント、☆評価は会員登録済の方のみ可能となります。</p>
-			<p>会員登録をして、あなたのおすすめを投稿したり、お気に入りやコメントを送ったり、、、みんなと交流してみましょう！</p>
-			<p>
-				<%= link_to '会員登録はこちらから', new_user_registration_path, class: "btn btn-default" %>
-			</p>
-
+		<p class="alert alert-warning">お気に入り投稿の登録（♡）やコメント、☆評価は会員登録済の方のみ可能となります。<br>
+		会員登録をして、あなたのおすすめを投稿したり、お気に入りやコメントを送ったり、、、みんなと交流してみましょう！<br>
+		<%= link_to '会員登録はこちらから', new_user_registration_path, class: "btn btn-default" %>
+		</p>
 	    <% end %>
 	</div>
 </div>
 
-<div class="row">
-	<p>《紹介文》</p>
-	<p><%= @post.body %></p>
-</div>
+
 
 <!-- コメントフォーム -->
 <div id="comment-form-<%= @post.id %>">

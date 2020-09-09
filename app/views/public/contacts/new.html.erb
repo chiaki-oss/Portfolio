@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 	<h2 class="contact-title">Contact お問い合わせフォーム</h2>
-	<p> サイトに関する質問やご意見等ございましたら、下記問い合わせフォームよりお気軽にお問い合わせください。<br>
+	<p class="alert alert-warning"> サイトに関する質問やご意見等ございましたら、下記問い合わせフォームよりお気軽にお問い合わせください。<br>
 	回答はメールにてお送りいたします。<%= link_to "お問い合わせ履歴", contacts_path, class: "btn btn-default btn-sm" %></p>
 
 	<%= render 'layouts/error_messages', resource: @contact %>
@@ -14,7 +14,7 @@
 		        <%= f.label :お問い合わせ内容 %>
 		        <%= f.text_area :body, rows:'10', class:"form-control" %>
 		    </p>
-	        <p><%= f.submit "確認画面に進む", class: "btn btn-info" %></p>
+	        <p><%= f.submit "確認画面に進む", class: "btn btn-primary" %></p>
 	    <% end %>
 <% end %>
 
