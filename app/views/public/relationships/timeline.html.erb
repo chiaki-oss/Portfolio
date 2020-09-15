@@ -3,13 +3,18 @@
 	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
 </div>
 
-<h2>Timeline
+<h2>Timeline <i class="fas fa-user-friends"></i>
 <% if @following_posts.count > 0 %>
- <%= link_to 'Following User', user_follows_path, class: "btn btn-default" %>
+　<%= link_to 'Following User', user_follows_path, class: "btn btn-default" %>
 </h2>
 <% else %>
     <p>フォローしているユーザーがいません</p>
 <% end %>
 <div class="row">
 	<%= render 'public/posts/index', posts: @following_posts, post: @post %>
+	<span id="back">
+		<a href="#">
+			<i class="fas fa-chevron-circle-up fa-4x"></i>
+		</a>
+	</span>
 </div>

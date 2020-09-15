@@ -30,6 +30,10 @@
 	height: 100px;
 }
 
+.btn, .label{
+	opacity: 0.9;
+}
+
 /* 全スライド共通スタイル */
 .swiper-slide {
 	color: #000;
@@ -98,13 +102,20 @@
 	padding: 10px 10px 10px 10px;
  }
 
- /*post#index*/
+ /*投稿一覧*/
  hr{
 	margin: 0 0 10px 0;
     border: 0;
     border-top: 1px solid gray;
     opacity: 0.8;
  }
+
+ /*トップに戻るボタン*/
+ #back {
+  position: fixed;
+  right: 60px;
+  bottom: 50px;
+  }
 
 .post-prefecture{
 	background-color: #a8d7ff;
@@ -205,6 +216,7 @@ main{
 		cursor: default;
 	}
  }
+
 .img-rounded{
 	border-radius: 3px;
 }

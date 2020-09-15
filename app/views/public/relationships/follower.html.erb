@@ -1,3 +1,5 @@
-<h2>Following Users</h2>
-<%= link_to 'タイムライン', user_follows_timeline_path, class: "btn btn-default" %>　
+<h2>Following Users　
+	<%= link_to 'マイページに戻る', user_path(current_user), class: "btn btn-default" %>　
+	<%= link_to 'タイムライン', user_follows_timeline_path, class: "btn btn-default" %>
+</h2>
 <%= render 'public/relationships/index', users: @users %>

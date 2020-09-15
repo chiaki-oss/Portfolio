@@ -3,11 +3,11 @@
     <nav class='nav navbar-nav navbar-left' >
       <% if admin_signed_in? %>
         <%= link_to admin_top_path do %>
-         <h2>Local</h2>
+         <h2><i class="fas fa-home"></i></h2>
         <% end %>
       <% else %>
         <%= link_to root_path do %>
-          <h2>Local</h2>
+          <h2><i class="fas fa-walking">Local</i></h2>
         <% end %>
       <% end %>
     </nav>

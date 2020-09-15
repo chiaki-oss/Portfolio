@@ -22,7 +22,7 @@
 			<span class="post-genre"><%= link_to @post.genre.name, posts_path(genre_id: @post.genre.id) %></span>
 		</p>
 
-		<p><% @post.tags.each do |tag| %>
+		<p><i class="fas fa-tags"></i><% @post.tags.each do |tag| %>
 				#<%= link_to tag.name, posts_path(tag_id: tag.id) %>
 			<% end %>
 		</p>
@@ -42,8 +42,10 @@
     <div class="col-md-4">
         <!-- ユーザーの投稿編集・削除ボタン -->
         <% if @post.user == current_user  %>
-	        <span><%= link_to '投稿を編集する', edit_post_path(@post), class: "btn btn-default" %>　</span>
-	        <span><%= link_to '投稿を削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-default" %></span>
+	        <span><%= link_to '投稿を編集する', edit_post_path(@post), class: "btn btn-primary" %>　</span>
+	        <span><%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" do %>
+	        	<i class="fas fa-trash-alt"> 投稿を削除する</i>
+	        	<% end %></span>
 	    <% elsif user_signed_in? %>
 	    <!-- howto -->
 	    <p class="alert alert-warning">「知らなかった！」「行ってみたい！」と思った投稿に♡を送りましょう。<br>

@@ -27,19 +27,19 @@
 				<tbody>
 					<tr>
 						<td><%= f.label :タイトル %> 
-							<span class="label label-default">必須</span> 
+							<span class="label label-danger">必須</span> 
 						</td>
 						<td><%= f.text_field :title, class: "form-control"%></td>
 					</tr>
 					<tr>
 						<td><%= f.label :ジャンル %> 
-							<span class="label label-default">必須</span> 
+							<span class="label label-danger">必須</span> 
 						</td>
 						<td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "選択してください"%></td>
 					</tr>
 					<tr>
 						<td><%= f.label :都道府県 %> 
-							<span class="label label-default">必須</span> 
+							<span class="label label-danger">必須</span> 
 						</td>
 						<td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, :prompt => "選択してください"%></td>
 					</tr>
@@ -57,7 +57,7 @@
 					</tr>
 					<tr>
 						<td><%= f.label :説明 %> 
-							<span class="label label-default">必須</span> 
+							<span class="label label-danger">必須</span> 
 						</td>
 						<td><%= f.text_area :body, rows:'10', class: "form-control" %></td>
 					</tr>

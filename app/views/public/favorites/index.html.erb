@@ -8,6 +8,11 @@
 	</h3>
 	<% if @favorite_posts.count > 0 %>
 		<%= render 'public/posts/index', posts: @favorite_posts %>
+		<span id="back">
+			<a href="#">
+				<i class="fas fa-chevron-circle-up fa-4x"></i>
+			</a>
+		</span>
 	<% else %>
 	    <p>お気に入りの投稿がまだありません</p>
 	<% end %>

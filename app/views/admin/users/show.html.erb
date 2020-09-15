@@ -4,15 +4,13 @@
 <div class="row">
 		<p>会員ステータス：
 			<% if @user.is_active? %>
-		        <span>有効</span>
+		        <span><i class="fas fa-user-circle fa-lg"> 有効</i></span>
 	        <% else %>
 		       	<span>退会済</span>
 		    <% end %>　
-		    <%= link_to "編集する", edit_admin_user_path, class: "btn btn-primary btn-xs" %>　
-		メールアドレス：<%= @user.email %>　
-		Follows：<%= @user.follower.count %>
-			Follower：<%= @user.followed.count %>
-		</p>
+		    <%= link_to "編集する", edit_admin_user_path, class: "btn btn-primary btn-sm" %>
+			　Follows：<%= @user.follower.count %>　Follower：<%= @user.followed.count %></p>
+		<p>メールアドレス：<%= @user.email %>　</p>
 		<p>おすすめ：<%= @user.recommend %></p>
 		<p>自己紹介：<%= @user.introduction %></p>
 		<p><%= link_to '会員一覧に戻る', admin_users_path, class: "btn btn-default" %></p>

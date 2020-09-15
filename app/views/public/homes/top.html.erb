@@ -20,13 +20,17 @@
 </div>
 
 <div class="main-msg">
-	<h3> Local </h3>
-	<p>みんなが知っているローカルの魅力を発信、共有するサイトです。( ポートフォリオです )　
-		→ <%= link_to "もっと知る", about_path %> <br>
+	<h3>Local
+	<small>
+		みんなが知っているローカルの魅力を発信、共有するサイトです。( ポートフォリオ）
+		</small></h3>
+	<p>
 		<% if user_signed_in? %>
-			<%= link_to 'ログアウトする', destroy_user_session_path, method: :delete , class: "btn btn-default btn-sm" %>　
+			<%= link_to 'ログアウトする', destroy_user_session_path, method: :delete , class: "btn btn-default btn-md" %>　
 		<% else %>
-			<%= link_to 'ゲストログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>　
+		登録すると投稿やお気に入り登録などができるようになります。
+			→ <%= link_to "もっと知る", about_path %> </p>
+			<p><%= link_to 'ゲストログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>　
 			<%= link_to 'ゲストログイン ADMIN ', admins_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>
 		<% end %>
 	</p>
@@ -90,7 +94,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<h3>最近見た投稿</h3>
+		<h3>最近見た投稿 <i class="fas fa-history fa-lg"></i></h3>
 		<% @histories.each do |history| %>
 			<div class="col-md-3 col-sm-4">
 				<%= link_to post_path(history.post) do %>
@@ -135,6 +139,12 @@
 		<% end %>
 	</div>
 <% end %>
+
+<span id="back">
+	<a href="#">
+		<i class="fas fa-chevron-circle-up fa-4x"></i>
+	</a>
+</span>
 
 
 

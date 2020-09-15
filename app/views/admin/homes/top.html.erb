@@ -1,3 +1,31 @@
-<h4>本日のお問い合わせ：<%=  link_to @new_contatcts, admin_contacts_path  %>件</h4>
-<h4>新規登録者数：<%= link_to @new_users, admin_users_path %>件</h4>
-<h4>新規投稿数：<%= link_to @new_posts, admin_posts_path %>件</h4>
+<h4>本日のお問い合わせ：
+	<% if @new_contatcts > 0 %>
+		<%=  link_to @new_contatcts, admin_contacts_path  %>
+	<% else %>
+		<%= @new_contatcts %>
+	<% end %> 件
+</h4>
+
+<h4>未回答の問い合わせ
+	<% if @need_reply > 0 %>
+		<%=  link_to  @need_reply, admin_contacts_path  %>
+	<% else %>
+		<%=  @need_reply %>
+	<% end %> 件
+</h4>
+
+<h4>新規登録者数：
+	<% if @new_users > 0 %>
+		<%=  link_to @new_users, admin_users_path  %>
+	<% else %>
+		<%= @new_users %>
+	<% end %> 件
+</h4>
+
+<h4>新規投稿数：
+	<% if @new_posts > 0 %>
+		<%= link_to @new_posts , admin_posts_path %>
+	<% else %>
+		<%= @new_posts %>
+	<% end %> 件
+</h4>

@@ -26,9 +26,10 @@
           <td><%= contact.title %></td>
           <td>
             <% if contact.reply.nil? %>
-              未回答
+               未
             <% else %>
-               回答済
+            <i class="fas fa-check"> 済</i>
+               
             <% end %>
           </td>
 

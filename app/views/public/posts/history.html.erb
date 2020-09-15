@@ -3,7 +3,7 @@
 	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
 </div>
 
-<h2>最近見た投稿</h2>
+<h2>最近見た投稿 <i class="fas fa-history"></i></h2>
 <% @histories.each do |history| %>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<%= link_to post_path(history.post) do %>
@@ -23,6 +23,11 @@
 	    <span class="post-prefecture"><%= link_to history.post.prefecture.name, posts_path(prefecture_id: history.post.prefecture.id)  %></span>
 		<span class="post-genre"><%= link_to history.post.genre.name, posts_path(genre_id: history.post.genre.id) %></span>
 	</div>
-	<% end %>
+<% end %>
+<span id="back">
+	<a href="#">
+		<i class="fas fa-chevron-circle-up fa-4x"></i>
+	</a>
+</span>
 </div>
 

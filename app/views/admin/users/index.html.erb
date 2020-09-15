@@ -38,9 +38,9 @@
 		      	</td>
 		        <td>
 		        	<% if user.is_active? %>
-			        	<span>有効</span>
+			        	<span><i class="fas fa-user-circle fa-lg"></i> 有効</span>
 		        	<% else %>
-			        	<span>退会済</span>
+			        	<span>退会</span>
 			      	<% end %>
 			    </td>
 			    <td><%= user.posts.count %>
