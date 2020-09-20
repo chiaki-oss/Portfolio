@@ -1,14 +1,13 @@
   <%= render "users/shared/error_messages", resource: resource %>
 <div class="row">
-  <div class="col-xs-6">
-  <h3>Log in ログイン</h3>
+  <h3 class="title">Log in ログイン</h3>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
+    <p>
       <%= f.label :email %>　メールアドレス
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+    </p>
 
-    <div class="field">
+    <p>
       <%= f.label :password %>　パスワード
       <%= f.password_field :password, autocomplete: "current-password" %>
 
@@ -18,14 +17,13 @@
           <%= f.label :パスワードを記録する %>
         </p>
       <% end %>
-    </div>
+    </p>
     <div class="actions">
       <%= f.submit "ログインする", class: "btn btn-primary" %>　
       <%= link_to 'ゲストログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default" %>　
     </div>
   <% end %>
-  </div>
-
-  <div class="col-xs-6">
+</div>
+<div class="row">
     <%= render "users/shared/links" %>
-  </div>
+</div>

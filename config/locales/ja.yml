@@ -1,6 +1,10 @@
 ja:
   activerecord:
     attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        name: "ユーザー名"
       post:
         title: "タイトル"
         body: "説明"
@@ -46,5 +50,5 @@ ja:
       # not_found: "not found"
       # not_locked: "was not locked"
       not_saved: 
-        one: "エラーが発生しました。以下ご確認お願いいたします。"
-        other: "エラーが発生しました。以下ご確認お願いいたします。"
+        one: "エラーが発生しました。"
+        other: "エラーが発生しました。"

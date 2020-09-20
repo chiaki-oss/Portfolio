@@ -1,17 +1,23 @@
 <%- if controller_name != 'sessions' %>
-  <h3><%= link_to "Log in ログイン", new_session_path(resource_name) %></h3>
-  <p>登録済の方は、↑のボタンよりログインください。
+  <h3 class="title">Log In ログイン</h3>
+  <p>登録済の方は、下記リンクよりログインください</p>
+  <p>
+    <%= link_to "Log In ログイン", new_session_path(resource_name), class: "btn btn-default" %></p>
+  
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <h3><%= link_to "Sign up　新規登録", new_registration_path(resource_name) %></h3>
-  <p>会員登録がお済みでない方は、↑のリンクより登録ください。<br>
+  <h3 class="title">Sign Up新規会員登録</h3>
+  <p>会員登録がお済みでない方は、下記リンクより登録ください。<br>
 	  会員になると、投稿やお気に入りの登録などが可能になります</p>
+  <p><%= link_to "Sign up　新規登録", new_registration_path(resource_name), class: "btn btn-default" %>
+  </p>
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-<p><h3>パスワードをお忘れの方</h3>下のボタンへお進みください。<br>
-  <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-default" %><br />
+<p>
+  <%= link_to "パスワードをお忘れの方", new_password_path(resource_name), class: "btn btn-default" %>
+</p>
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

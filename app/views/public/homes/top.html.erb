@@ -2,7 +2,6 @@
 <div>
 	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
 </div>
-
 <!-- Main Visual -->
 <div class="swiper-container swiperTop">
     <div class="swiper-wrapper">
@@ -29,7 +28,7 @@
 			<%= link_to 'ログアウトする', destroy_user_session_path, method: :delete , class: "btn btn-default btn-md" %>　
 		<% else %>
 		登録すると投稿やお気に入り登録などができるようになります。
-			→ <%= link_to "もっと知る", about_path %> </p>
+			<%= link_to "もっと知る", about_path, class: "btn btn-primary btn-xs" %> </p>
 			<p><%= link_to 'ゲストログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>　
 			<%= link_to 'ゲストログイン ADMIN ', admins_guest_sign_in_path, method: :post, class: "btn btn-default btn-sm" %>
 		<% end %>
@@ -46,27 +45,25 @@
 <% if user_signed_in? %>
 	<div class="row">
 		<div class="col-sm-8">
-			<h3>New<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-			<small><%= link_to new_post_path do %>
-	              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 投稿する</i>
-	            <% end %>
-	        </small>
-	        </h3>
+			<div class="row">
+				<h3 class="topic_line">
+					<span><strong>New<small>　新着投稿　
+					<%= link_to "+ 投稿する", new_post_path, class: "btn btn-default"  %></small></strong></span>
+				</h3>
+			</div>
 	        <div class="row">
 				<%= render 'public/homes/index', posts: @new_posts %>
 			</div>
-			<h3>Popular
-				<i class="fas fa-fire-alt"></i>
-			</h3>
 			<div class="row">
+				<h3 class="topic_line"><strong>Popular<small>　人気の投稿</small></strong></h3>
 				<%= render 'public/homes/index', posts: @liked_posts %>
 			</div>
 		</div>
 
 		<div class="col-sm-4">
-			<h3>Timeline 
+			<h3 class="topic_line"><strong>Timeline 
 				<i class="fas fa-user-friends"></i>
-			</h3>
+			</strong></h3>
 			<div class="row">
 				<% @following_posts.each do |post| %>
 					<div class="col-md-6 col-sm-12">
@@ -94,55 +91,56 @@
 		</div>
 	</div>
 	<div class="row">
-		<h3>最近見た投稿 <i class="fas fa-history fa-lg"></i></h3>
-		<% @histories.each do |history| %>
-			<div class="col-md-3 col-sm-4">
-				<%= link_to post_path(history.post) do %>
-					<%= attachment_image_tag history.post, :image, format: "jpeg", fallback: "sample.jpg", size:"200x150"%>
-				<% end %>
-				<h5><%= history.post.title %></h5>
-				<hr>
-				<p>
-					<%= attachment_image_tag history.post.user, :image, format: "jpeg", fallback: "no_image.jpg", size: "20x20" %>
-					<span><%= history.post.user.name %></span>
+		<h3 class="topic_line"><strong>History 
+			<i class="fas fa-history fa-md"></i>　
+			<small>最近見た投稿 </small></strong>
+		</h3>
+		<div class="row">
+			<% @histories.each do |history| %>
+				<div class="col-md-3 col-sm-4">
+					<%= link_to post_path(history.post) do %>
+						<%= attachment_image_tag history.post, :image, format: "jpeg", fallback: "sample.jpg", size:"200x150"%>
+					<% end %>
+					<h5><%= history.post.title %></h5>
+					<hr>
+					<p>
+						<%= attachment_image_tag history.post.user, :image, format: "jpeg", fallback: "no_image.jpg", size: "20x20" %>
+						<span><%= history.post.user.name %></span>
 
-					<!-- いいね機能 -->
-					<span class="favorite-<%= history.post.id %>">
-						<%= render 'public/favorites/favorite', post: history.post %>
-			        </span>
-			    </p>
-			    <span class="post-prefecture"><%= link_to history.post.prefecture.name, posts_path(prefecture_id: history.post.prefecture.id)  %></span>
-				<span class="post-genre"><%= link_to history.post.genre.name, posts_path(genre_id: history.post.genre.id) %></span>
-			</div>
-		<% end %>
+						<!-- いいね機能 -->
+						<span class="favorite-<%= history.post.id %>">
+							<%= render 'public/favorites/favorite', post: history.post %>
+				        </span>
+				    </p>
+				    <span class="post-prefecture"><%= link_to history.post.prefecture.name, posts_path(prefecture_id: history.post.prefecture.id)  %></span>
+					<span class="post-genre"><%= link_to history.post.genre.name, posts_path(genre_id: history.post.genre.id) %></span>
+				</div>
+			<% end %>
+		</div>
 	</div>
-	<%= link_to posts_path do %>
-		<div class="to_posts">投稿をもっとみる</div>
-	<% end %>
 <% else %>
 	<!-- 非会員 -->
 	<div>
-		<h3>New
-			<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+		<h3 class="topic_line"><strong><span>New<small>　新着投稿</small></span></strong>
 		</h3>
 		<div class="row">
 			<%= render 'public/posts/index', posts: @new_posts %>
 		</div>
-		<h3>Popular<i class="fas fa-fire-alt"></i></h3>
+		<h3 class="topic_line"><strong>Popular<small>　人気の投稿</small></strong></h3>
 		<div class="row">
 			<%= render 'public/posts/index', posts: @liked_posts %>
 		</div>
-		<%= link_to posts_path do %>
-			<div class="to_posts">
-				もっとみる
-			</div>
-		<% end %>
 	</div>
 <% end %>
 
+	<%= link_to posts_path do %>
+		<div class="to_posts">投稿をもっとみる</div>
+	<% end %>
+</div>
+
 <span id="back">
 	<a href="#">
-		<i class="fas fa-chevron-circle-up fa-4x"></i>
+		<i class="fas fa-chevron-circle-up fa-3x"></i>
 	</a>
 </span>
 

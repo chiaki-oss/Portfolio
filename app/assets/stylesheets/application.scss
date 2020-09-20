@@ -46,6 +46,22 @@
 	}
 }
 
+.title{
+	border-bottom: solid 5px #cce4ff;
+  position: relative;
+  width: 600px;
+}
+
+.title:after{
+	position: absolute;
+  content: " ";
+  display: block;
+  border-bottom: solid 5px #dbf5ff;
+  bottom: -5px;
+  width: 20%;
+}
+
+
 /*検索サイドバー*/
  #slide{
 	z-index: 10;
@@ -102,6 +118,35 @@
 	padding: 10px 10px 10px 10px;
  }
 
+/* top見出し */
+ .topic_line{
+	position: relative;
+    display: inline-block;
+    padding: 0 80px;
+	text-align: center;
+	margin-bottom: 20px;
+	color: #495193;
+ }
+
+ .topic_line:before, .topic_line:after{
+	content: '';
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    width: 45px;
+    height: 4px;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+ }
+
+ .topic_line:before{
+	left: 0;
+ }
+
+ .topic_line:after{
+	right: 0;
+ }
+
  /*投稿一覧*/
  hr{
 	margin: 0 0 10px 0;
@@ -115,6 +160,12 @@
   position: fixed;
   right: 60px;
   bottom: 50px;
+
+  a{
+		color: inherit;
+		text-decoration: none;
+	}
+
   }
 
 .post-prefecture{
@@ -149,6 +200,25 @@
 	}
  }
 
+ .about{
+	position: relative;
+	padding: 5px;
+	background: #bcdcc8;
+	color: white;
+	width: 700px;
+	margin-bottom: 20px;
+ }
+
+ .about::before{
+	position: absolute;
+	content: '';
+	top: 100%;
+	left: 0;
+	border: none;
+	border-bottom: solid 10px transparent;
+	border-right: solid 20px rgb(149, 158, 155);
+ }
+
  /* 通知時の● */
  .n-circle {
   position: absolute;
@@ -158,18 +228,24 @@
 }
 
 .to_posts{
-	background-color: #aaddee;
-	width: 70%;
-	height: 50px;
-	text-align: center;
-	margin: 0 auto;
-	margin-top: 50px;
-	opacity: 0.7;
+	display: inline-block;
+	position: relative;
+	padding: 10px 15px;
+	font-size: 18px;
+	color: #FFF;
+	background: #a6d3c8;
+	width: 300px;
+	margin-top:20px;
+}
 
-	a{
-		color: inherit;
-		text-decoration: none;
-	}
+.to_posts:before{
+	position: absolute;
+	content: '';
+	top: 100%;
+	left: 0;
+	border: none;
+	border-bottom: solid 10px transparent;
+	border-right: solid 15px rgb(149, 158, 155);/*折り返し部分*/
 }
 
 .notification{

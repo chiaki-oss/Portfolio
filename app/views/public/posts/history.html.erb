@@ -3,7 +3,8 @@
 	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
 </div>
 
-<h2>最近見た投稿 <i class="fas fa-history"></i></h2>
+<h2 class="title">History<i class="fas fa-history"></i>　
+	<small>最近見た投稿 </small></h2>
 <% @histories.each do |history| %>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<%= link_to post_path(history.post) do %>

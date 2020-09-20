@@ -2,20 +2,21 @@
 <div>
 	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
 </div>
-
+<h2 class="title">
 <% if params[:keyword] %>
-	<h2><%= @post_search.keyword %>の検索結果：<%= @post_search.count %>件ヒットしました</h2>
+	<%= @post_search.keyword %>の検索結果：<%= @post_search.count %>件ヒットしました
 <% elsif params[:area_id] %>
-	<h2><%= @post_search.area.name %>エリアの投稿一覧 (全<%= @post_search.count %>件)</h2>
+	<%= @post_search.area.name %>エリアの投稿一覧 (全<%= @post_search.count %>件)
 <% elsif params[:prefecture_id] %>
-	<h2><%= @post_search.prefecture.name %>の投稿一覧 (全<%= @post_search.count %>件)</h2>
+	<%= @post_search.prefecture.name %>の投稿一覧 (全<%= @post_search.count %>件)
 <% elsif params[:genre_id]%>
-    <h2><%= @post_search.genre.name %>の投稿一覧 (全<%= @post_search.count %>件)</h2>
+    <%= @post_search.genre.name %>の投稿一覧 (全<%= @post_search.count %>件)
 <% elsif params[:tag_id]%>
-    <h2>#<%= @post_search.tag.name %>の投稿一覧 (全<%= @post_search.count %>件)</h2>
+    #<%= @post_search.tag.name %>の投稿一覧 (全<%= @post_search.count %>件)
 <% else %>
-	<h2>投稿一覧 (全<%= @post_search.count %>件)</h2>
+	Articles<small>　記事一覧</small> (全<%= @post_search.count %>件)
 <% end %>
+</h2>
 
 <!-- プルダウン並び替え -->
 <div class="row">
@@ -35,7 +36,7 @@
 
 <span id="back">
 	<a href="#">
-		<i class="fas fa-chevron-circle-up fa-4x"></i>
+		<i class="fas fa-chevron-circle-up fa-3x"></i>
 	</a>
 </span>
 
