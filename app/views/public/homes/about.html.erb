@@ -1,4 +1,6 @@
-
+<div>
+	<%= render 'layouts/sidebar', {genres: @s_genres, tags: @s_tags, areas: @s_areas} %>
+</div>
 <div class="row">
 	<h1 class="title">Local とは...</h1>
 	<h4>「みんなが知っている観光地」ではなく、<br>
@@ -21,9 +23,11 @@
 	<p>
 		　このサイトはみんなの知っているローカル（地域の）魅力を投稿・共有・交流するサイトです。<br>
 		　みんなでお気に入りの魅力を投稿・交流しましょう!<br>
-		　投稿は、エリア・都道府県、カテゴリ、タグ、キーワードなどから探すことができます。<br>　左側にある検索欄で気になる記事を探してみましょう。
-	</p>
-	<p><%= link_to "投稿一覧へ", posts_path, class: "btn btn-default" %></p>
+		　投稿は、エリア・都道府県、カテゴリ、タグ、キーワードなどから探すことができます。<br>　右側の検索欄で気になる記事を探してみましょう　
+		<%= link_to "投稿一覧へ", posts_path, class: "btn btn-default btn-sm" %><br>
+		　※投稿には<%= link_to "会員登録", new_user_registration_path %>が必要となります。
+		</p>
+	
 </div>
 
 <div class="row">
@@ -32,24 +36,22 @@
 		<i class="far fa-bell fa-md"></i>より通知内容を確認できます。　
 		<%= link_to "会員登録はこちらから", new_user_registration_path, class: "btn btn-default" %>
 	</p>
-	<div class="col-md-4">
+	<div class="col-md-6">
 		<h5>①<strong>お気に入り登録 ♡ </strong></h5><hr>
-		<p>気に入った投稿や知らなかった！っと思った投稿には♡を送りましょう。
+		<p>気に入った投稿や知らなかった！っと思った投稿には♡を送りましょう。<br>
 		♡を送った投稿はマイページでいつでも確認できます。</p>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-6">
 		<h5>②　<strong>コメント・星評価☆</strong></h5><hr>
 		<p>もっと知りたい！と思ったことや投稿者さんに伝えたいことをコメント欄から送りましょう。<br>
 		コメントは難しいけど、すごいいいと思った！！という投稿があれば星評価☆で送りましょう。</p>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-6">
 		<h5>③　<strong>フォロー</strong></h5><hr>
 		<p>気になった情報を投稿しているユーザーがいたらフォローしてみましょう。<br>
 		フォローすると、トップページのタイムラインに投稿が表示されます</p>
 	</div>
-</div>
-<div class="row">
-	<div class="col-md-4">
+	<div class="col-md-6">
 		<h5>④　<strong>閲覧履歴</strong></h5><hr>
 		<p>これまで閲覧した投稿を確認することができます。<br>
 		一度見た投稿は検索を使わずに簡単に見つけ出すことができます。</p>

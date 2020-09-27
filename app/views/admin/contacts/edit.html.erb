@@ -2,23 +2,33 @@
 <h2>お問い合わせ内容</h2><hr>
 <%= form_for(@contact, url: admin_contact_path)do |f| %>
 <%= render 'layouts/error_messages', resource: @contact %>
-　　 <div class="row">
-		<h4>顧客名：<%= @contact.user.name %>さん</h4>
-	    <h4>問い合わせ日：<%= @contact.created_at.strftime("%Y年%m月%d日 ") %></h4>
-	</div>
+　　<div class="form-horizontal">
+	    <div class="form-group">
+	      <h4 class= "col-sm-3">顧客名</h4>
+	      <h4 class="col-sm-4"><%= @contact.user.name %>さん</h4>
+	    </div>
 
-	<div class="row">
-	    <h4>タイトル：<%= @contact.title %></h4>
-	</div>
+	    <div class="form-group">
+	      <h4 class= "col-sm-3">問い合わせ日</h4>
+	      <h4 class="col-sm-4"><%= @contact.created_at.strftime("%Y年%m月%d日 ") %></h4>
+	    </div>
 
-	<div class="row">
-	    <h4>問い合わせ内容：</h4>
-	    <p><%= @contact.body %></p>
-	</div>
-	<div class="row">
-	    <h4>返信</h4>
-	    <p><%= f.text_area :reply, class:"form-control", size:'10x10' %></p>
-	    <p><%= f.submit "送信", class: "btn btn-primary" %></p>
+	    <div class="form-group">
+	      <h4 class= "col-sm-3">タイトル</h4>
+	      <h4 class="col-sm-4"><%= @contact.title %></h4>
+	    </div>
+
+	    <div class="form-group">
+	      <h4 class= "col-sm-3">問い合わせ内容</h4>
+	      <h4 class="col-sm-4"><%= @contact.body %></h4>
+	    </div>
+
+	    <div class="form-group">
+		    <h4 class= "col-sm-3">返信</h4>
+		    <p><%= f.text_area :reply, class:"form-control", size:'10x10' %></p>
+		    <p><%= f.submit "送信", class: "btn btn-primary" %></p>
+	    </div>
+
 	</div>
 <% end %>
 </div>

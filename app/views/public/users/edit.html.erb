@@ -1,41 +1,36 @@
-<h3>登録情報の編集</h3>
+<h3 class="title">登録情報の編集　
+<%= link_to "パスワードを変更する", edit_user_registration_path, class: "btn btn-default" %>　
+	<%= link_to 'マイページに戻る', user_path(current_user), class: "btn btn-default" %></h3>
 <p>あなたの一番のおすすめ、紹介文も書いてみましょう！</p>
 
 <%= form_for(@user, url: user_path) do |f| %>
 <div class="row">
 
-	<div class="col-md-5">
-		<p>
-			<%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg", size:"50x50" %>
-		</p>
-		<p><%= f.attachment_field :image %></p>
-	</div>
+	<p><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg", size:"50x50" %>
+	<%= f.attachment_field :image %></p>
 
-	<div class="col-md-7">
-		<p>
-			<%= f.label :ユーザー名 %><br>
-			<%= f.text_field :name %>
-		</p>
-		<p>
-			<%= f.label :おすすめ %><br>
-			<%= f.text_field :recommend %>
-		</p>
-		<p>
-			<%= f.label :紹介文 %><br>
-			<%= f.text_area :introduction, size: "90x5", placeholder:"（例）訪れてよかった場所、印象に残っている出来事、景色、食べもの、出身地など"  %>
-		</p>
-		<p>
-			<%= f.submit "編集内容を保存する", class: "btn btn-primary" %>
-　　　　 </p>
-	</div>
+	<div class="form-horizontal">
+	    <div class="form-group">
+	    	<%= f.label :ユーザー名, class: "col-sm-2"  %>
+			<%= f.text_field :name, placeholder: "Name", class: "col-sm-4" %>
+		</div>
 
+		<div class="form-group">
+	    	<%= f.label :おすすめ, class: "col-sm-2" %>
+			<%= f.text_field :recommend, placeholder: "Your Recommend", class: "col-sm-4" %>
+		</div>
+
+		<div class="form-group">
+	    	<%= f.label :紹介文, class: "col-sm-2" %>
+	    	<%= f.text_area :introduction, size: "90x5", placeholder:"（例）訪れてよかった場所、印象に残っている出来事、景色、食べもの、出身地など", class: "col-sm-8"  %>
+		</div>
+
+	<div class="actions">
+		<%= f.submit "編集内容を保存する", class: "btn btn-primary" %>
+　　</div>
 </div>
 <% end %>
 
-<div>
-	<%= link_to "パスワードを変更する", edit_user_registration_path, class: "btn btn-default" %>　
-	<%= link_to 'マイページに戻る', user_path(current_user), class: "btn btn-default" %>
-</div>
 
 
 

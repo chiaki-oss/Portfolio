@@ -62,16 +62,13 @@
 	</div>
 </div>
 
+<div class="row">
+	<div id="comment-form-<%= @post.id %>" class="col-sm-12">
+		<%= render partial: "public/posts/comment_form", locals: {post: @post, post_comment: @post_comment} %>
+	</div>
 
-
-<!-- コメントフォーム -->
-<div id="comment-form-<%= @post.id %>">
-	<%= render partial: "public/posts/comment_form", locals: {post: @post, post_comment: @post_comment} %>
-</div>
-
-
-<!-- コメント一覧 -->
-<div id="comment_index-<%= @post.id %>">
-	<%= render partial: "public/posts/comment", locals: {post: @post, post_comments: @post_comments} %>
+	<div id="comment_index-<%= @post.id %>" class="col-sm-12">
+		<%= render partial: "public/posts/comment", locals: {post: @post, post_comments: @post_comments} %>
+	</div>
 </div>
 

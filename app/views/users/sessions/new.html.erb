@@ -2,27 +2,31 @@
 <div class="row">
   <h3 class="title">Log in ログイン</h3>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <p>
-      <%= f.label :email %>　メールアドレス
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </p>
 
-    <p>
-      <%= f.label :password %>　パスワード
-      <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="form-horizontal">
+    <div class="form-group">
+      <%= f.label :email, class: "col-sm-2" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "col-sm-4" %>
+    </div>
 
+    <div class="form-group">
+      <%= f.label :password, class: "col-sm-2" %>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "col-sm-4" %>
+    </div>
+
+    <div class="form-group">
       <% if devise_mapping.rememberable? %>
-        <p>
-          <%= f.check_box :remember_me %>
-          <%= f.label :パスワードを記録する %>
-        </p>
+        <%= f.label :　パスワードを記録する %>
+        <%= f.check_box :remember_me %>　　
       <% end %>
-    </p>
-    <div class="actions">
       <%= f.submit "ログインする", class: "btn btn-primary" %>　
+    </div>
+
+    <div class="actions">
       <%= link_to 'ゲストログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default" %>　
     </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 <div class="row">
     <%= render "users/shared/links" %>

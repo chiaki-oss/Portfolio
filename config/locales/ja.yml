@@ -5,6 +5,7 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         name: "ユーザー名"
+        password_confirmation: "パスワード（確認用）"
       post:
         title: "タイトル"
         body: "説明"

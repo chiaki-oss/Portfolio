@@ -4,12 +4,9 @@
 </div>
 
 <h2 class="title">Timeline <i class="fas fa-user-friends"></i>
-<% if @following_posts.count > 0 %>
 　<%= link_to 'Following User', user_follows_path, class: "btn btn-default" %>
 </h2>
-<% else %>
-    <p>フォローしているユーザーがいません</p>
-<% end %>
+
 <div class="row">
 	<%= render 'public/posts/index', posts: @following_posts, post: @post %>
 	<span id="back">

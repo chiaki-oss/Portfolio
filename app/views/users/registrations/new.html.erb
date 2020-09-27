@@ -3,37 +3,39 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="row">
-    <h3 class="title">Sign up　会員登録</h3>
+    <h3 class="title">Sign up　新規会員登録</h3>
     <p>ユーザー名、メールアドレス、パスワードを入力ください</p>
-    <p>
-      <%= f.label :name %> ユーザー名　　　 
-      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-    </p>
+    <div class="form-horizontal">
+      <div class="form-group">
+        <%= f.label :name, class: "col-sm-2" %>　
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "name", class: "col-sm-4" %>
+      </div>
 
-    <p>
-      <%= f.label :email %> メールアドレス　
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </p>
+      <div class="form-group">
+        <%= f.label :email, class: "col-sm-2" %>　
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "col-sm-4" %>
+      </div>
 
-    <p>
-      <%= f.label :password %> 
-      <% if @minimum_password_length %>パスワード
-      <em>(<%= @minimum_password_length %> 文字以上)</em>
-      <% end %>　　　 　
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </p>
+      <div class="form-group">
+        <%= f.label :password, class: "col-sm-2" %> 
+        <% if @minimum_password_length %>
+          <em> *<%= @minimum_password_length %> 文字以上</em>
+        <% end %>　　　 　
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "col-sm-4" %>
+      </div>
 
-    <p>
-      <%= f.label :password_confirmation %> パスワード(確認用） 
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </p>
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: "col-sm-2" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password confirmation", class: "col-sm-4" %>
+      </div>
 
-    <div class="actions">
-      <%= f.submit "ユーザー登録する", class: "btn btn-primary" %>　
-      <%= link_to 'ゲストログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default" %>
+      <div class="actions">
+        <%= f.submit "ユーザー登録する", class: "btn btn-primary" %>　
+        <%= link_to 'ゲストログイン USER ', users_guest_sign_in_path, method: :post, class: "btn btn-default" %>
+      </div>
     </div>
-  <% end %>
   </div>
+<% end %>
   <div class="row">
     <%= render "users/shared/links" %>
   </div>

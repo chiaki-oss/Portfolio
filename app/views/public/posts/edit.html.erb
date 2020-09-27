@@ -13,47 +13,51 @@
 
 	<div class="col-md-7 col-sm-12">
 		<div class="row">
-			<table class="col-xs-12">
-				<tbody>
-					<tr>
-						<td><%= f.label :タイトル %> 
-							<span class="label label-default">必須</span> </td>
-						<td><%= f.text_field :title, class: "form-control" %></td>
-					</tr>
-					<tr>
-						<td><%= f.label :ジャンル %> 
-							<span class="label label-default">必須</span> </td>
-						<td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
-					</tr>
-					<tr>
-						<td><%= f.label :都道府県 %> 
-							<span class="label label-default">必須</span> </td>
-						<td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name%></td>
-					</tr>
-					<tr>
-			          <td><%= f.label :postal_code, "郵便番号" %></td>
-			          <td><%= f.text_field :postal_code, class: "form-control" %></td>
-			        </tr>
-			        <tr>
-			          <td><%= f.label :address, "住所" %></td>
-			          <td><%= f.text_field :address, collection: JpPrefecture::Prefecture.all, :value_method => :name, class: "form-control" %></td>
-			        </tr>
-					<tr>
-						<td><%= f.label :タグ %></td>
-						<td><%= f.text_field :tag_ids,value: @tag_list,  class: "form-control", placeholder: "タグをつける。複数つけるには','で区切ってください。"%></td>
-					</tr>
-					<tr>
-						<td><%= f.label :説明 %> 
-							<span class="label label-default">必須</span> </td>
-						<td><%= f.text_area :body, class: "form-control" %></td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="form-horizontal">
+				<label class="label label-default">必須</label>
+			    <div class="form-group">
+				    <%= f.label :タイトル, class: "col-sm-3" %>
+				    <%= f.text_field :title, autofocus: true, class: "col-sm-8" %>
+			    </div>
+
+			    <label class="label label-default">必須</label>
+			    <div class="form-group">
+				    <%= f.label :ジャンル, class: "col-sm-3" %>
+				    <%= f.collection_select :genre_id, Genre.all, :id, :name, autofocus: true, class: "col-sm-8" %>
+			    </div>
+
+			    <label class="label label-default">必須</label>
+			    <div class="form-group">
+				    <%= f.label :都道府県, class: "col-sm-3" %>
+				    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: "col-sm-8 
+				    form-control" %>
+			    </div>
+
+			    <div class="form-group">
+				    <%= f.label :郵便番号, class: "col-sm-3" %>
+				    <%= f.text_field :postal_code, class: "col-sm-8" %>
+			    </div>
+
+			    <div class="form-group">
+				    <%= f.label :住所, class: "col-sm-3" %>
+				    <%= f.text_field :address, collection: JpPrefecture::Prefecture.all, :value_method => :name, class: "form-control", class: "col-sm-8" %>
+			    </div>
+
+			    <label class="label label-default">必須</label>
+			    <div class="form-group">
+				    <%= f.label :タグ, class: "col-sm-3" %>
+				    <%= f.text_field :tag_ids,value: @tag_list,  class: "form-control", placeholder: ", (コンマ)で区切って入力", class: "col-sm-8" %>
+			    </div>
+
+			    <label class="label label-default">必須</label>
+			    <div class="form-group">
+				    <%= f.label :説明, class: "col-sm-3" %>
+				    <%= f.text_area :body, rows:'10', class: "form-control", class: "col-sm-8" %>
+			    </div>
+
+			</div>
 		</div>
 	</div>
-</div>
-
-<div class="row">
 	<!-- visionApi タグの提案 -->
 	<div class="col-sm-offset-5 col-sm-4">
 		<% if @post.image.present? %>
@@ -71,6 +75,8 @@
 	</div>
 </div>
 <% end %>
+
+
 
 
 

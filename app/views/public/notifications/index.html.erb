@@ -1,12 +1,13 @@
-<h2 class="title">あなたへのお知らせ</h2>
-<div class="row">
+<h2 class="title">あなたへのお知らせ　<%= link_to '戻る', :back, class: "btn btn-default" %></h2>
+
 	<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 	<% if notifications.exists? %>
+	<div class="row">
         <!-- collectionオプション 複数形で渡す＝そのテンプレートを繰り返し表示できる -->
 		<%= render notifications %>
+	</div>
 
 	<% else %>
 		<P>通知はありません</P>
 	<% end %>
 </div>
-<p><%= link_to '戻る', :back, class: "btn btn-default" %></p>
